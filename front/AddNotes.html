@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    
+    <!--Important meta tags-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <!--Title-->
+    <title>Add Notes</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/home/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="css/font-awesome/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/forms.css">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive-forms.css">
+
+</head>
+
+<body>
+
+        
+    <header>
+        <link rel="stylesheet" href="front-header/css/header.css">
+        <link rel="stylesheet" href="front-header/css/header-responsive.css">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/home/logo.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" style="border-color: #6255a5; outline:none" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-bars" style="color: #6255a5; border-color: #6255a5;"></i>
+            </button>
+    
+            <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
+              <ul class="navbar-nav ">            
+                <li class="menu-item">
+                    <a href="#">Search Notes</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Sell Your Notes</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Buyer Requests</a>
+                  </li>
+                <li class="menu-item">
+                    <a href="#">FAQ</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Contact Us</a>
+                </li>
+                <li>
+                  <div class="dropdown">
+                    <a href="#" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-center "
+                        aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">My Profile</a>
+                        <a class="dropdown-item" href="#">My Downloads</a>
+                        <a class="dropdown-item" href="#">My Sold Notes</a>
+                        <a class="dropdown-item" href="#">My Rejected Notes</a>
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="#" style="color: #6255a5">LOGOUT</a>
+    
+                    </div>
+                </li>
+                <li>
+                    <button class="btn log_btn" type="submit">Logout</button>
+                </li>           
+              </ul>
+              </div>
+          </nav>
+        </header>
+    
+
+    <!--Add Notes-->
+    <section id="add-notes">
+
+        <!--Banner-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner-outer col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="banner-box">
+                        <img src="images/assets/banner-with-overlay.jpg" alt="bg-overlay" class="image-responsive">
+                        <h1>Add Notes</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Add Notes Form-->
+        <div class="container-fluid" id="add-notes-box">
+
+            <form action="#" method="post">
+
+                <h2>Basic Notes Details</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-title">Title *</label>
+                            <input type="text" class="form-control" id="an-title" placeholder="Enter your notes title" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-category">Category *</label><br>
+                            <select name="an-category" id="an-category" required>
+                                <option value="" disabled selected hidden>Select your category</option>
+                                <option value="it">IT</option>
+                                <option value="ca">CA</option>
+                                <option value="cs">CS</option>
+                                <option value="mba">MBA</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-dpicture">Display Picture</label><br>
+                            <button onClick="document.getElementById('an-dpicture').click()" class="btn" id="an-upload-btn">
+
+                                <img id="an-img-preview" src="" alt="Image Preview">
+
+                                <span id="an-default-text">
+                                    <img src="images/assets/upload.png" alt="upload"><br>
+                                    <p>Upload a picture </p>
+                                </span>
+
+                            </button>
+                            <input type="file" style="display: none" class="form-control" id="an-dpicture" name="an-picture">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-unote">Upload Notes *</label><br>
+                            <button onClick="document.getElementById('an-unote').click()" class="btn" id="an-noteupload-btn">
+
+                                <img id="an-noteimg-preview" src="" alt="Image Preview">
+
+                                <span id="an-notedefault-text">
+                                    <img src="images/assets/upload.png" alt="upload note"><br>
+                                    <p>Upload your notes</p>
+                                </span>
+
+                            </button>
+                            <input type="file" style="display: none" class="form-control" id="an-unote" name="an-unote" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-type">Type</label><br>
+                            <select name="an-type" id="an-type">
+                                <option value="" disabled selected hidden>Select your note type</option>
+                                <option value="handwritten">Hand Written</option>
+                                <option value="storybooks">Story Books</option>
+                                <option value="universitynotes">University Notes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-nop">Number of Pages</label>
+                            <input type="text" class="form-control" id="an-nop" placeholder="Enter number of note pages">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="an-description">Description *</label>
+                            <textarea class="form-control" style="resize: none" id="an-description" rows="4" placeholder="Enter your description" required></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2>Institution Information</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-country">Country</label><br>
+                            <select name="an-country" id="an-country">
+                                <option value="" disabled selected>Select your country</option>
+                                <option value="india">India</option>
+                                <option value="australia">Australia</option>
+                                <option value="brazil">Brazil</option>
+                                <option value="canada">Canada</option>
+                                <option value="china">China</option>
+                                <option value="france">France</option>
+                                <option value="germany">Germany</option>
+                                <option value="italy">Italy</option>
+                                <option value="japan">Japan</option>
+                                <option value="newzealand">New Zealand</option>
+                                <option value="russia">Russia</option>
+                                <option value="southafrica">South Africa</option>
+                                <option value="switzerland">Switzerland</option>
+                                <option value="unitedkingdom">United Kingdom</option>
+                                <option value="unitedstates">United States</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-iname">Institution Name</label>
+                            <input type="text" class="form-control" id="an-iname" placeholder="Enter your institution name">
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2>Course Details</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-crname">Course Name</label>
+                            <input type="text" class="form-control" id="an-crname" placeholder="Enter your course name">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-crcode">Course Code</label>
+                            <input type="text" class="form-control" id="an-crcode" placeholder="Enter your course code">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="an-professor">Professor / Lecturer</label>
+                            <input type="text" class="form-control" id="an-professor" placeholder="Enter your professor name">
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2>Selling Information</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <span id="sell-for">Sell For *</span>
+
+                        <div class="radio-group">
+
+                            <label for="free" class="radio-btn">
+                                <input type="radio" name="radio" id="free">
+                                Free
+                                <span></span><span class="border-span"></span>
+                            </label>
+
+                            <label for="paid" class="radio-btn">
+                                <input type="radio" name="radio" id="paid">
+                                Paid
+                                <span></span><span class="border-span"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="an-sellprice">Sell Price *</label>
+                            <input type="text" class="form-control" id="an-sellprice" placeholder="Enter your price">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="an-dpicture">Note Preview</label><br>
+                            <button onClick="document.getElementById('an-notepreview').click()" class="btn" id="an-npupload-btn">
+
+                                <img id="an-note-preview" src="" alt="Image Preview">
+
+                                <span id="an-npdefault-text">
+                                    <img src="images/assets/upload.png" alt="upload"><br>
+                                    <p>Upload a file </p>
+                                </span>
+
+                            </button>
+                            <input type="file" style="display: none" class="form-control" id="an-notepreview" name="an-notepreview">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--Buttons-->
+                <button class="btn submit-btn" id="an-save-btn">SAVE</button>
+
+                <button class="btn submit-btn" value="submit" id="an-publish-btn">PUBLISH</button>
+
+            </form>
+
+        </div>
+
+    </section>
+    <!--Add Notes Ends-->
+
+
+    
+    <footer id="footer1">
+        <div class="container-fluid">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+          <div class="col-md-8 col-sm-8 col-8">
+            <div class="row">
+              <p>
+                Copyright &copy; Tatvasoft All rights reserved.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-4">
+            <div class="row" style="float: right;">
+              <div class="social">
+                <a>
+                 <img src="images/home/facebook.png" alt="facebook">
+                </a>
+                <a>
+                  <img src="images/home/twitter.png" alt="twitter">
+                </a>
+                <a>
+                  <img src="images/home/linkedin.png" alt="linkedin">
+                </a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </footer>
+
+
+
+    <!-- JQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- External JS -->
+    <script src="js/forms.js"></script>
+
+</body>
+
+</html>

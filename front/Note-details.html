@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/home/favicon.ico">
+
+    <!--Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap">
+
+    <!--Custom css-->
+    <link rel="stylesheet" type="text/css" href="css/details.css">
+
+    <!--Custom Js-->
+    <script type="text/javascript" scr="js/style.js"></script>
+
+    <!--Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+
+    <!--Bootstrap Js-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="css/font-awesome/css/all.css">
+
+    <!--Responsive Css-->
+    <link rel="stylesheet" href="css/details-responsive.css">
+
+    <!--Site Title-->
+    <title>Note Details</title>
+</head>
+
+<body>
+    <!--Navigation Bar-->
+ 
+   
+    <header>
+        <link rel="stylesheet" href="front-header/css/header.css">
+        <link rel="stylesheet" href="front-header/css/header-responsive.css">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/home/logo.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" style="border-color: #6255a5; outline:none" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-bars" style="color:#6255a5; border-color:#6255a5;"></i>
+            </button>
+    
+            <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
+              <ul class="navbar-nav ">            
+                <li class="menu-item">
+                    <a href="#">Search Notes</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Sell Your Notes</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Buyer Requests</a>
+                  </li>
+                <li class="menu-item">
+                    <a href="#">FAQ</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Contact Us</a>
+                </li> 
+                <li>
+                  <div class="dropdown">
+                    <a href="#" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-center "
+                        aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">My Profile</a>
+                        <a class="dropdown-item" href="#">My Downloads</a>
+                        <a class="dropdown-item" href="#">My Sold Notes</a>
+                        <a class="dropdown-item" href="#">My Rejected Notes</a>
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="#" style="color: #6255a5">LOGOUT</a>
+    
+                    </div>
+                </li>
+                <li>
+                    <button class="btn log_btn" type="submit">Logout</button>
+                </li>           
+              </ul>
+              </div>
+          </nav>
+        </header>
+    
+
+
+    <!--Navigation Bar End-->
+
+    <!-- Main Container-->
+    <div class="container nd-main-container">
+        <!--Note Details Section-->
+        <div class="row note-section">
+            <div class="col-md-6">
+                <div class="row">
+                    <span class="note-section-title">Notes Details</span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="book-img" src="images/NoteDetails/book_front.jpg">
+                    </div>
+                    <div class="col-md-6 book-details">
+                        <span class="nd-book-title">Computer Science</span>
+                        <p class="book-subtitle">Science</p>
+                        <p class="book-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <button class="download-btn" data-toggle="modal" data-target="#exampleModalLong">DOWNLOAD / $15</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-top:auto;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="border: none;">
+                            <div class="model">
+                                <img src="images/NoteDetails/SUCCESS.png" /><br>
+                                <span>Thank you for Purchasing!</span>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: relative;">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="model-body">
+                            <span>Dear Smith,</span>
+                            <p>
+                                As thi paid notes - you need to pay to seller Rahil Shah offline. We will send him an email that you want to download this note. He may contact you futher for payment process completion.
+                            </p>
+                            <p>
+                                In case, you have emergency, Please contact us on +9195377345959.
+                            </p>
+                            <p>
+                                Once he receives the payment and acknoledge us - selected notes you can see over my download tab for download.
+                            </p>
+                            <p>
+                                Have a good day.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Modal End -->
+
+
+            <div class="col-md-6 book-details-table">
+
+                <table class="table borderless">
+
+                    <tr>
+                        <td class="column-name ">Institution:</td>
+                        <td class="column-data ">University Of California</td>
+                    </tr>
+                    <tr>
+                        <td class="column-name">Country:</td>
+                        <td class="column-data">United State</td>
+                    </tr>
+                    <tr>
+                        <td class="column-name">Course Name:</td>
+                        <td class="column-data">Computer Engineering</td>
+                    </tr>
+                    <tr>
+                        <td class="column-name">Course Code:</td>
+                        <td class="column-data">248705</td>
+                    </tr>
+                    <tr>
+                        <td class="column-name">Professor:</td>
+                        <td class="column-data">Mr. Richard Brown</td>
+                    </tr>
+                    <tr>
+                        <td class="column-name">Number Of Pages:</td>
+                        <td class="column-data">200</td>
+                    </tr>
+                    <tr>
+                        <td class="column-name">Approved Date:</td>
+                        <td class="column-data">November 20 2001</td>
+                    </tr>
+                    <tr>
+                        <td class="column-name">Rating:</td>
+                        <td class="column-data"><span>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star-o"></i>
+                                100 Reviews</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="review-note">5 User marked this note as inappropriate </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+        <!--Note Details Section End-->
+
+        <!--Note Preview & Customer Review Section-->
+        <div class="row note-preview">
+            <div class="col-md-5">
+                <div class="row">
+                    <span class="note-preview-title">Notes Preview</span>
+                </div>
+                <div class="row">
+                    <iframe src="files"></iframe>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="row ">
+                    <span class="customer-review-title">Customer Reviews</span>
+                </div>
+                <div class="row reviews-section">
+                    <div class="row">
+
+                        <div class="row review">
+                            <div class="col-md-2">
+                                <img class="customer-img" src="images/NoteDetails/user-img.png">
+                            </div>
+                            <div class="col-md-9 customer-details">
+                                <span>Richard Brown</span>
+                                <p>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star-o"></span><br>
+                                    <span class="given-review">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row review">
+                            <div class="col-md-2">
+                                <img class="customer-img" src="images/NoteDetails/user-img.png">
+                            </div>
+                            <div class="col-md-9 customer-details">
+                                <span>Richard Brown</span>
+                                <p>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star-o"></span><br>
+                                    <span class="given-review">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row review">
+                            <div class="col-md-2">
+                                <img class="customer-img" src="images/NoteDetails/user-img.png">
+                            </div>
+                            <div class="col-md-9 customer-details">
+                                <span>Richard Brown</span>
+                                <p>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star-o"></span><br>
+                                    <span class="given-review">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--Note Preview & Customer Review Section End-->
+    </div>
+    <!-- Main Container-->
+
+    <!--Footer Section-->
+      
+
+    <footer id="footer1">
+        <div class="container-fluid">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+          <div class="col-md-8 col-sm-8 col-8">
+            <div class="row">
+              <p>
+                Copyright &copy; Tatvasoft All rights reserved.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-4">
+            <div class="row" style="float: right;">
+              <div class="social">
+                <a>
+                    <img src="images/home/facebook.png" alt="facebook">
+                   </a>
+                   <a>
+                     <img src="images/home/twitter.png" alt="twitter">
+                   </a>
+                   <a>
+                     <img src="images/home/linkedin.png" alt="linkedin">
+                   </a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </footer>
+      
+
+
+
+</body>
+
+</html>

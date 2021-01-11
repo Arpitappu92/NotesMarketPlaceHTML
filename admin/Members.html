@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- Important meta tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Title -->
+	<title>Members </title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/home/favicon.ico">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+	<!-- Fontawesome -->
+	<link rel="stylesheet" href="css/font-awesome/css/all.css">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<link rel="stylesheet" href="css/responsive.css">
+
+
+
+</head>
+
+<body>
+
+
+	
+    <!-- Admin logout Header -->
+<header>
+	<link rel="stylesheet" href="admin-header1/css/header1.css">
+			<link rel="stylesheet" href="front-header/css/header-responsive.css">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="images/home/logo.png" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" style="border-color: #6255a5; outline:none" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars" style="color: #6255a5; border-color: #6255a5;"></i>
+        </button>
+  
+        <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
+          <ul class="navbar-nav ">            
+            <li class="menu-item">
+                <div class="dropdown">
+                    <a href="#" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dashboard
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left "
+                        aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Notes Under Review</a>
+                        <a class="dropdown-item" href="#">Published Notes</a>
+                        <a class="dropdown-item" href="#">Downloaded Notes</a>
+                        <a class="dropdown-item" href="#">Rejected Notes</a>
+
+                    </div>
+            </li>
+            <li class="menu-item">
+                <a href="#">Notes</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Members</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Reports</a>
+            </li>
+            <li class="menu-item">
+                <div class="dropdown">
+                    <a href="#" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Settings
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-center "
+                        aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Manage System Configuration</a>
+                        <a class="dropdown-item" href="#">Manage Administrator</a>
+                        <a class="dropdown-item" href="#">Manage Category</a>
+                        <a class="dropdown-item" href="#">Manage Type</a>
+                        <a class="dropdown-item" href="#">Manage Countries</a>
+
+                    </div>
+            </li>
+            <li>
+
+                  <div class="dropdown">
+                    <a href="#" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-center"
+                        aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Update Profile</a>
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="#" style="color: #6255a5">LOGOUT</a>
+
+                    </div>
+
+
+            </li>
+            <li>
+                <button class="btn log_btn" type="submit">Logout</button>
+            </li>    
+        
+          </ul>
+          </div>
+      </nav>
+    </header>
+   <!-- Admin logout Header ends -->
+
+		 
+
+	<!-- Main Body-->
+	<section id="mains">
+
+		<div class="container">
+            <div class="middle-head">
+                <p> Members </p>
+
+                <form>
+                    <div class="search form-inline">
+                        <div class="searchContainer form-group">
+                            <i class="fas fa-search form-control-feedback "></i>
+                            <input type="text" class="form-control" placeholder="Search" />
+						</div>
+                    </div>
+                    <div class="bttn">
+                        <button type="submit" class="btn allBtn">SEARCH</button>
+                    </div>
+                </form>
+ 
+            </div>
+
+
+
+			<div class="row members-table">
+
+				<div class="col-md-12">
+					<div class="table-responsive{-sm|-md|-lg|-xl} data-table mem_table">
+						<table class="table table-bordered text-nowrap">
+							<thead>
+								<tr>
+									<th class="text-center">SR NO.</th>
+									<th>FIRST NAME</th>
+									<th>LAST NAME</th>
+									<th>EMAIL</th>
+									<th>JOINING DATE</th>
+									<th class="text-center">UNDER REVIEW <br> NOTES</th>
+									<th class="text-center">PUBLISHED <br> NOTES</th>
+									<th class="text-center">DOWNLOADED <br> NOTES</th>
+									<th class="text-center">TOTAL <br> EXPENSES</th>
+									<th class="text-center">TOTAL <br> EARNINGS</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Khayati</td>
+									<td>Patel</td>
+									<td>khayatipatel@gmail.com</td>
+									<td>09-10-2020, 10:10</td>
+									<td>19</td>
+									<td>10</td>
+									<td>22</td>
+									<td>$220</td>
+									<td>$177</td>
+									<td>
+										<span>
+											<i class="fa fa-ellipsis-v"></i>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Rahul</td>
+									<td>Shah</td>
+									<td>rahulshah@gmail.com</td>
+									<td>10-10-2020, 11:25</td>
+									<td>4</td>
+									<td>5</td>
+									<td>4</td>
+									<td>$220</td>
+									<td>$177</td>
+									<td>
+										<span>
+											<i class="fa fa-ellipsis-v"></i>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Suman</td>
+									<td>Trivedi</td>
+									<td>sumantrivedi@gmail.com</td>
+									<td>11-10-2020, 01:00</td>
+									<td>12</td>
+									<td>11</td>
+									<td>17</td>
+									<td>$886</td>
+									<td>$978</td>
+									<td>
+										<span>
+											<i class="fa fa-ellipsis-v"></i>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>Raj</td>
+									<td>Malhotra</td>
+									<td>rajmalhotra77@gmail.com</td>
+									<td>12-10-2020, 10:10</td>
+									<td>2</td>
+									<td>123</td>
+									<td>28</td>
+									<td>$1284</td>
+									<td>$15254</td>
+									<td>
+										<span>
+											<i class="fa fa-ellipsis-v"></i>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>Niya</td>
+									<td>Patel</td>
+									<td>niyapatel12@gmail.com</td>
+									<td>13-10-2020, 11;25</td>
+									<td>20</td>
+									<td>1</td>
+									<td>0</td>
+									<td>$0</td>
+									<td>$69</td>
+									<td>
+										<span>
+											<i class="fa fa-ellipsis-v"></i>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+			</div>
+
+
+			<!-- Footer -->
+	<footer id="footer2">
+        <div class="container-fluid">
+          <div class="col-md-12">
+            <div class="row">
+          <div class="col-md-4 col-sm-4 col-4">
+              <p>
+                version 1.1.24
+              </p>
+          </div>
+          <div class="col-md-8 col-sm-8 col-8">
+            <div style="float: right;">
+                <p>
+                    Copyright &copy; Tatvasoft All rights reserved.
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </footer>
+	<!--Footer ends-->
+
+	</section>
+
+	<!-- JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Bootstrap JS -->
+	<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+
+	<!-- Custom JS -->
+	<script src="js/script.js"></script>
+
+</body>
+
+</html>

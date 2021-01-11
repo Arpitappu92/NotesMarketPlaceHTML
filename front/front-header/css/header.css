@@ -1,0 +1,131 @@
+body{
+    font-family: "Open Sans", sans-serif;
+}
+
+
+.navbar{
+    min-height: 100px;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.08);
+}
+
+
+.log_btn{
+    background-color: #6255a5;
+    width: 89px;
+    height: 30px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    color: #fff !important;
+    font-weight: 400;
+    line-height: 22%;
+}
+
+.item-set{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.menu-item > a{
+    color: black;
+    text-decoration: none;
+}
+
+.navbar-nav{
+    display: flex;
+    align-items: center;
+
+}
+
+.btn:focus,.btn:active{
+    outline:none !important;
+    box-shadow: 0px 0px 0px 1px #6255a5;
+}
+
+.navbar-nav > li{
+    font-size: 16px;
+    font-weight: 600;
+    color: black !important;
+    margin: 10px 0px 10px 20px;
+}
+
+
+.my_footer1 {
+    border: 1px solid #d1d1d1;
+    border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.social > a{
+        background-color: #6255a5;
+        float: left;
+        width: 34px;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        text-decoration: none !important;
+        border-radius: 50% ;
+        transition: background-color .3s;
+        -webkit-border-radius: 50% ;
+        -moz-border-radius: 50% ;
+        -ms-border-radius: 50% ;
+        -o-border-radius: 50% ;
+        margin-right: 8px;
+}
+
+#footer1{
+    padding-top: 10px;
+    border-top: 1px solid #d1d1d1;
+}
+
+
+#footer2{
+    padding-top: 10px;
+    border-top: 1px solid #d1d1d1;
+}
+
+.dropdown-menu-center {
+    right: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+
+    .dropdown-item:active {
+        background-color: #6255a5;
+        color: white !important;
+        text-decoration: none !important;
+    }
+    
+    .menu-item a:active{
+        color: #6255a5;
+        padding-bottom: 5px; 
+        border-bottom-style: solid; 
+        border-bottom-width: 3.1px; 
+        width: fit-content; 
+    }
+    
+    .menu-item .dropdown a:active{
+        color: #6255a5;
+        padding-bottom: 5px; 
+        border-bottom-style: solid; 
+        border-bottom-width: 3.1px; 
+        width: fit-content; 
+    }
+    
+    
+  
+#footer2{
+    display: flex;
+    align-items: center;
+}

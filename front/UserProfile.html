@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <!--Important meta tags-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <!--Title-->
+    <title>User Profile</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/home/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="css/font-awesome/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="css/datetimepicker/jquery.datetimepicker.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/forms.css">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive-forms.css">
+
+</head>
+
+<body>
+
+
+        
+    <header>
+        <link rel="stylesheet" href="front-header/css/header.css">
+        <link rel="stylesheet" href="front-header/css/header-responsive.css">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/home/logo.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" style="border-color: #6255a5; outline:none" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-bars" style="color: #6255a5; border-color: #6255a5;"></i>
+            </button>
+    
+            <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
+              <ul class="navbar-nav ">            
+                <li class="menu-item">
+                    <a href="#">Search Notes</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Sell Your Notes</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Buyer Requests</a>
+                  </li>
+                <li class="menu-item">
+                    <a href="#">FAQ</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Contact Us</a>
+                </li>
+                <li>
+                  <div class="dropdown">
+                    <a href="#" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-center "
+                        aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">My Profile</a>
+                        <a class="dropdown-item" href="#">My Downloads</a>
+                        <a class="dropdown-item" href="#">My Sold Notes</a>
+                        <a class="dropdown-item" href="#">My Rejected Notes</a>
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="#" style="color: #6255a5">LOGOUT</a>
+    
+                    </div>
+                </li>
+                <li>
+                    <button class="btn log_btn" type="submit">Logout</button>
+                </li>           
+              </ul>
+              </div>
+          </nav>
+        </header>
+    
+
+
+    <!-- User Profile -->
+    <section id="user-profile">
+
+        <!-- User Profile Banner -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 banner-outer">
+                    <div class="banner-box">
+                        <img src="images/User-Profile/banner-with-overlay.jpg" alt="bg-overlay" class="image-responsive">
+                        <h1>User Profile</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--User Profile Form-->
+        <div class="container-fluid" id="uprofile-box">
+
+            <form action="#" method="post">
+
+                <h2>Basic Profile Details</h2>
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="firstname">First Name *</label>
+                            <input type="text" class="form-control" id="firstname" placeholder="Enter your first name" required>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="lastname">Last Name *</label>
+                            <input type="text" class="form-control" id="lastname" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="email3">Email *</label>
+                            <input type="email" class="form-control" id="email3" placeholder="Enter your email address" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="dob">Date Of Birth</label>
+                            <input type="text" class="form-control" id="dob" placeholder="Enter your date of birth">
+                            <i id="cal-icon" class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="gender">Gender</label><br>
+                            <select name="gender" id="gender">
+                                <option value="" disabled selected hidden>Select your gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="pnumber ccode">Phone Number</label><br>
+                            <select name="ccode" id="ccode">
+                                <option value="india">(+91)India</option>
+                                <option value="australia">(+61) Australia</option>
+                                <option value="brazil">(+55)Brazil</option>
+                                <option value="canada">(+1)Canada</option>
+                                <option value="china">(+86)China</option>
+                                <option value="france">(+33)France</option>
+                                <option value="germany">(+49)Germany</option>
+                                <option value="italy">(+39)Italy</option>
+                                <option value="japan">(+81)Japan</option>
+                                <option value="newzealand">(+64)New Zealand</option>
+                                <option value="russia">(+7)Russia</option>
+                                <option value="southafrica">(+27)South Africa</option>
+                                <option value="switzerland">(+41)Switzerland</option>
+                                <option value="unitedkingdom">(+44)United Kingdom</option>
+                                <option value="unitedstates">(+1)United States</option>
+                            </select>
+                            <input id="pnumber" type="tel" class="form-control" placeholder="Enter your phone number" pattern="[0-9]{10}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="ppicture">Profile Picture</label><br>
+                            <button onClick="document.getElementById('ppicture').click()" class="btn" id="upload-btn">
+
+                                <img id="img-preview" src="" alt="Image Preview">
+
+                                <span id="default-text">
+                                    <img src="images/user-profile/upload.png" alt="upload"><br>
+                                    <p>Upload a picture </p>
+                                </span>
+
+                            </button>
+                            <input type="file" style="display: none" class="form-control" id="ppicture" name="ppicture">
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2>Address Details</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="addr1">Address Line 1 *</label>
+                            <input type="text" class="form-control" id="addr1" placeholder="Enter your address" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="addr2">Address Line 2</label>
+                            <input type="text" class="form-control" id="addr2" placeholder="Enter your address">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" class="form-control" id="city" placeholder="Enter your city" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="state">State *</label>
+                            <input type="text" class="form-control" id="state" placeholder="Enter your state" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="zipcode">Zip Code *</label>
+                            <input type="text" class="form-control" id="zipcode" placeholder="Enter your zipcode" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="country">Country *</label><br>
+                            <select name="country" id="country" required>
+                                <option value="" disabled selected>Select your country</option>
+                                <option value="india">India</option>
+                                <option value="australia">Australia</option>
+                                <option value="brazil">Brazil</option>
+                                <option value="canada">Canada</option>
+                                <option value="china">China</option>
+                                <option value="france">France</option>
+                                <option value="germany">Germany</option>
+                                <option value="italy">Italy</option>
+                                <option value="japan">Japan</option>
+                                <option value="newzealand">New Zealand</option>
+                                <option value="russia">Russia</option>
+                                <option value="southafrica">South Africa</option>
+                                <option value="switzerland">Switzerland</option>
+                                <option value="unitedkingdom">United Kingdom</option>
+                                <option value="unitedstates">United States</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2>University and College Information</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="university">University</label>
+                            <input type="text" class="form-control" id="university" placeholder="Enter your university">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="college">College</label>
+                            <input type="text" class="form-control" id="college" placeholder="Enter your college">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Submit Button-->
+                <button class="btn submit-btn" type="submit">SUBMIT</button>
+
+            </form>
+
+        </div>
+
+    </section>
+    <!-- User Profile Ends -->
+
+
+    
+    <footer id="footer1">
+        <div class="container-fluid">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+          <div class="col-md-8 col-sm-8 col-8">
+            <div class="row">
+              <p>
+                Copyright &copy; Tatvasoft All rights reserved.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-4">
+            <div class="row" style="float: right;">
+              <div class="social">
+                <a>
+                    <img src="images/home/facebook.png" alt="facebook">
+                   </a>
+                   <a>
+                     <img src="images/home/twitter.png" alt="twitter">
+                   </a>
+                   <a>
+                     <img src="images/home/linkedin.png" alt="linkedin">
+                   </a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </footer>
+
+
+
+    <!-- JQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Datetimepicker JS -->
+    <script src="js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+
+    <!-- External JS -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

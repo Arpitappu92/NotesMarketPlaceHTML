@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <!--Important meta tags-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <!--Title-->
+    <title>Dashboard Profile Dubmenu</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/home/favicon.ico">
+
+
+    <!--Custom css-->
+    <link href="css/style.css" rel="stylesheet">
+
+   <!--Responsive css-->
+   <link href="css/responsive.css" rel="stylesheet">
+
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <!--Google Fonts-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="css/font-awesome/css/all.css">
+
+</head>
+
+<body>
+
+
+    <!--Header-->
+    
+  <header>
+    <link rel="stylesheet" href="front-header/css/header.css">
+    <link rel="stylesheet" href="front-header/css/header-responsive.css">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="images/home/logo.png" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" style="border-color: #6255a5; outline:none" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars" style="color: #6255a5; border-color: #6255a5;"></i>
+        </button>
+
+        <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
+          <ul class="navbar-nav ">            
+            <li class="menu-item">
+                <a href="#">Search Notes</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Sell Your Notes</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Buyer Requests</a>
+              </li>
+            <li class="menu-item">
+                <a href="#">FAQ</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Contact Us</a>
+            </li>
+            <li>
+              <div class="dropdown">
+                <a href="#" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+                </a>
+                <div class="dropdown-menu dropdown-menu-center "
+                    aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">My Profile</a>
+                    <a class="dropdown-item" href="#">My Downloads</a>
+                    <a class="dropdown-item" href="#">My Sold Notes</a>
+                    <a class="dropdown-item" href="#">My Rejected Notes</a>
+                    <a class="dropdown-item" href="#">Change Password</a>
+                    <a class="dropdown-item" href="#" style="color: #6255a5">LOGOUT</a>
+
+                </div>
+            </li>
+            <li>
+                <button class="btn log_btn" type="submit">Logout</button>
+            </li>           
+          </ul>
+          </div>
+      </nav>
+    </header>
+ 
+
+
+
+    <section class="profile-dubmenu">
+
+        <div class="content-box-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="dash-header">
+                            <p>Dashboard</p>
+                            <button type="button" class="btn main_btn">ADD NOTE</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            <div class="flex-box">
+                
+                    <div class="box1">
+                        <h1><i style="color: #6255a5;" class="fas fa-user"></i></h1>
+                        <p>My Earning</p>
+                    </div>
+                    <div class="box2">
+                            <p class="counter">100</p>
+                            <p> Number of Notes Sold </p>
+                    </div>
+                    <div class="box3">
+                            <div class="money">
+                            <p id="dollar"> $ </p>
+                            <p class="counter">10,00,000</p> 
+                            </div>
+                            <p> Money Earned</p>
+                    </div>
+                    <div class="box4">
+                        <p class="counter">38</p>
+                        <p>My Downloads</p>
+                    </div>
+                    <div class="box5">
+                        <p class="counter">12</p>
+                        <p>My Rejected Notes</p>
+                    </div>
+                    <div class="box6">
+                        <p class="counter">102</p>
+                        <p>Buyer Requests</p>
+                    </div>
+              
+            </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- next -->
+
+
+    <section class="middle">
+        <div class="container">
+
+
+            <div class="middle-head">
+                <p>In Progress Notes</p>
+
+                <form>
+                    <div class="search form-inline">
+                        <div class="searchContainer form-group">
+                            <i class="fas fa-search form-control-feedback "></i>
+                            <input type="text" class="form-control" placeholder="Search" />
+                        </div>
+
+                    </div>
+                    <div class="bttn">
+                        <button type="submit" class="btn allBtn">SEARCH</button>
+                    </div>
+                </form>
+
+            </div> 
+
+
+            <div class="row in-progress-notes">
+
+                <div class="col-md-12">
+                    <div class="table-responsive{-sm|-md|-lg|-xl} data-table">
+                        <table class="table table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>ADDED DATE</th>
+                                    <th>TITLE</th>
+                                    <th>CATEGORY</th>
+                                    <th>STATUS</th>
+                                    <th class="text-center">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>InReview</td>
+                                    <td class="text-center"><i class="far fa-eye"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>Draft</td>
+                                    <td class="text-center"><i class="fas fa-pen"></i> <i class="fas fa-trash"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>InReview</td>
+                                    <td class="text-center"><i class="far fa-eye"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>Draft</td>
+                                    <td class="text-center"><i class="fas fa-pen"></i> <i class="fas fa-trash"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>InReview</td>
+                                    <td class="text-center"><i class="far fa-eye"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row paging">
+                <div class="col-md-12 text-center">
+                    <div class="pagination ">
+                        <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+
+    <section class="bottom">
+
+        <div class="container">
+            <div class="middle-head">
+                <p>Published Notes</p>
+
+                <form>
+                    <div class="search form-inline">
+                        <div class="searchContainer form-group">
+                            <i class="fas fa-search form-control-feedback "></i>
+                            <input type="text" class="form-control" placeholder="Search" />
+                        </div>
+
+                    </div>
+                    <div class="bttn">
+                        <button type="submit" class="btn allBtn">SEARCH</button>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <div class="row published-notes">
+
+                <div class="col-md-12">
+                    <div class="table-responsive{-sm|-md|-lg|-xl} data-table">
+                        <table class="table table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>ADDED DATE</th>
+                                    <th>TITLE</th>
+                                    <th>CATEGORY</th>
+                                    <th>SELL TYPE</th>
+                                    <th>PRICE</th>
+                                    <th class="text-center">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>Free</td>
+                                    <td>$0</td>
+                                    <td class="text-center"><i class="far fa-eye"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>Free</td>
+                                    <td>$0</td>
+                                    <td class="text-center"><i class="far fa-eye"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>Paid</td>
+                                    <td>$500</td>
+                                    <td class="text-center"><i class="far fa-eye"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>Paid</td>
+                                    <td>$200</td>
+                                    <td class="text-center"><i class="far fa-eye"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>Free</td>
+                                    <td>$0</td>
+                                    <td class="text-center"><i class="far fa-eye"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row paging">
+                <div class="col-md-12 text-center">
+                    <div class="pagination ">
+                        <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+
+
+    <footer id="footer1">
+        <div class="container-fluid">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+          <div class="col-md-8 col-sm-8 col-8">
+            <div class="row">
+              <p>
+                Copyright &copy; Tatvasoft All rights reserved.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-4">
+            <div class="row" style="float: right;">
+              <div class="social">
+                <a>
+                    <img src="images/home/facebook.png" alt="facebook">
+                   </a>
+                   <a>
+                     <img src="images/home/twitter.png" alt="twitter">
+                   </a>
+                   <a>
+                     <img src="images/home/linkedin.png" alt="linkedin">
+                   </a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </footer>
+      
+      
+    
+      
+
+
+
+
+    <script src="js/jQuery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+
+    <script src="js/counter/jquery.counterup.min.js"></script>
+
+    <script src="js/waypoints/jquery.waypoints.min.js"></script>
+ 
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+
+
+
+</body>
+
+</html>

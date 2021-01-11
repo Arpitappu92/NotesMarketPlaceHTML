@@ -1,0 +1,496 @@
+.form-control:focus {
+    border-color: #6255a5 !important;
+    box-shadow: 0 0 0 0.2rem rgba(98, 85, 165, 0.25) !important;
+} 
+
+
+
+body {
+    padding-top: 80px;
+  }
+/* ###### Dashboard profile dubmenu ######## */
+
+.dash-header {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 0px 30px 0px;
+} 
+
+.dash-header>p {
+    color: #6255a5;
+    margin-top: 15px;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38%;
+}
+
+/* For all icon in webapp */
+i {
+    color: #8a8a8a;
+}
+
+/* For all Buttons */
+
+.main_btn{
+    background-color: #6255a5 !important;
+    color: #fff !important;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    line-height: 22px;
+    border: none;
+    outline: none;
+}
+
+.btn:focus,.btn:active{
+    outline:none !important;
+    box-shadow: 0 0 0 0.2rem rgba(98, 85, 165,0.25);
+}
+
+.form-control:focus {
+    border-color: #6255a5 !important;
+    box-shadow: 0 0 0 0.2rem rgba(98, 85, 165, 0.25) !important;
+} 
+
+
+.allBtn {
+    color: #fff !important;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 22px;
+    font-style: Bold(700);
+    border: none;
+    outline: none;
+}
+
+
+.btn-top {
+	border-radius: 3px;
+	width: 112px;
+	color: #fff;
+	font-family: "Open Sans", sans-serif;
+	font-size: 18px;
+	line-height: 22px;
+	border: none;
+    outline: none;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+.btn-approve {
+	background-color: #28a745 !important;
+    height: 40px;
+    margin-right: 5px;
+
+}
+
+.btn-reject {
+	background-color: #ff3636 !important;
+	height: 40px;
+	margin-right: 5px;
+}
+
+.btn-inreview {
+	background-color: #cccccc !important;
+	height: 40px;
+	margin-right: 5px;
+}
+
+
+/* ####### For Grid Boxes ######### */
+
+
+.money{
+    display: flex !important;
+    align-items: center;
+}
+
+#dollar{
+    color: #6255a5;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34px;
+    margin-top: 20px;
+}
+
+
+
+.box7,
+.box8,
+.box9 {
+    height: 151px;
+    border: 1px solid #d1d1d1;
+}
+
+.flex-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+
+
+/* ######## For Counter ##### */
+
+.counter {
+    color: #6255a5;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34px;
+    margin-top: 20px;
+
+}
+
+
+/* #### my-download page ##### */
+
+.middle,
+.bottom
+{
+    margin-top: 50px;
+}
+
+/* ########## for all search using in webapp ##########*/
+
+
+.search {
+    display: flex;
+    align-items: center;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.searchContainer .form-control {
+	padding-left: 2.375rem;
+	width: 322px;
+	height: 48px;
+    line-height: 20px;
+}
+
+
+.searchContainer .form-control-feedback {
+	position: absolute;
+	z-index: 2;
+	display: block;
+	width: 2.375rem;
+	height: 2.375rem;
+	line-height: 2.375rem;
+	text-align: center;
+	pointer-events: none;
+	color: #aaa;
+}
+
+/* For search button*/
+
+.bttn {
+    display: flex;
+    padding: 10px;
+    margin-right: -10px;
+  
+}
+
+.large-bttn > button{
+    width: 200px;
+    height: 50px;
+    background-color: #6255a5;
+}
+
+.bttn>button {
+    padding-left: 10px;
+    width: 117px;
+    height: 50px;
+    background-color: #6255a5;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    width: 100%;
+}
+
+.searchContainer>input {
+
+    padding-left: 10px;
+    flex: 1;
+    border: none;
+    outline-width: 0px;
+}
+
+
+/* ########### All middle header name (ex. published notes)  ########### */
+
+.middle-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.mid-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown_tic{
+    margin-top: -10px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.mid-head > form{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#tit{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color:#6255a5;
+    margin-top: 50px;
+}
+
+.middle-head > p{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color:#6255a5;
+}
+
+
+.middle-head>form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.space{
+    margin-bottom: 50px;
+}
+
+/* ########## Dropdown menu ############ */
+
+.dropdown1 {
+    margin-left: 10px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    border: 1px solid #d1d1d1;
+}
+
+.dropdown>i {
+    margin-right: 10px;
+}
+
+.published-notes {
+    padding-top: 20px;
+}
+
+.in-progress-notes {
+    padding-top: 20px;
+}
+
+
+
+/*####### For all table in webapp ##########*/
+
+.table-bordered>tbody>tr>td,
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th,
+.table-bordered {
+    border-right: 0;
+    border-left: 0;
+}
+
+tbody>tr:hover {
+    transform: scale(1.001);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    -webkit-transform: scale(1.001);
+    -moz-transform: scale(1.001);
+    -ms-transform: scale(1.001);
+    -o-transform: scale(1.001);
+}
+
+.data-table{
+    overflow-x: auto hidden; overflow-y:hidden; }
+
+.dashboard > table> tbody> tr>:nth-child(1), 
+.dashboard > table> tbody> tr>:nth-child(4),
+.dashboard > table> tbody> tr>:nth-child(5),
+.dashboard > table> tbody> tr>:nth-child(9),
+.download_page > table> tbody> tr>:nth-child(1), 
+.download_page > table> tbody> tr>:nth-child(6),
+.member_table > table > tbody > tr>:nth-child(1),
+.member_table > table > tbody > tr>:nth-child(6),
+.member_table > table > tbody > tr>:nth-child(7),
+.member_table > table > tbody > tr>:nth-child(8),
+.member_table > table > tbody > tr>:nth-child(9),
+.member_table > table > tbody > tr>:nth-child(10),
+.published_table > table> tbody> tr>:nth-child(1),
+.published_table > table> tbody> tr>:nth-child(10),
+.rejected_table > table> tbody> tr>:nth-child(1),
+.down_table > table> tbody> tr>:nth-child(1),
+.administrator_table> table> tbody> tr>:nth-child(1),
+.administrator_table> table> tbody> tr>:nth-child(7),
+.category_table> table> tbody> tr>:nth-child(1),
+.category_table> table> tbody> tr>:nth-child(7),
+.country_table> table> tbody> tr>:nth-child(1),
+.country_table> table> tbody> tr>:nth-child(6),
+.type_table> table> tbody> tr>:nth-child(1),
+.type_table> table> tbody> tr>:nth-child(6),
+.spam_table> table> tbody> tr>:nth-child(1),
+.spam_table> table> tbody> tr>:nth-child(7),
+.mem_table> table> tbody> tr>:nth-child(1),
+.mem_table> table> tbody> tr>:nth-child(6),
+.mem_table> table> tbody> tr>:nth-child(7),
+.mem_table> table> tbody> tr>:nth-child(8),
+.mem_table> table> tbody> tr>:nth-child(9),
+.mem_table> table> tbody> tr>:nth-child(10)
+{
+    text-align: center;
+}
+
+.rejected_notes> table> tbody> tr>:nth-child(1){
+
+    padding-left: 30px;
+}
+
+.dashboard > table> tbody> tr>:nth-child(2),
+.download_page > table> tbody> tr>:nth-child(2),
+.rejected_notes> table> tbody> tr>:nth-child(2),
+.rejected_notes> table> tbody> tr>:nth-child(5),
+.member_table > table > tbody > tr>:nth-child(6),
+.member_table > table > tbody > tr>:nth-child(7),
+.member_table > table > tbody > tr>:nth-child(8),
+.member_table > table > tbody > tr>:nth-child(9),
+.published_table > table> tbody> tr>:nth-child(2),
+.published_table > table> tbody> tr>:nth-child(10),
+.rejected_table > table> tbody> tr>:nth-child(2),
+.down_table > table> tbody> tr>:nth-child(2),
+.spam_table> table> tbody> tr>:nth-child(3),
+.mem_table> table> tbody> tr>:nth-child(6),
+.mem_table> table> tbody> tr>:nth-child(7),
+.mem_table> table> tbody> tr>:nth-child(8),
+.mem_table> table> tbody> tr>:nth-child(9)
+ {
+    color: #6255a5;
+}
+
+
+
+th{
+    vertical-align: middle !important;
+}
+
+
+.published {
+    margin-top: 30px;
+}
+
+/*############ Pagination ########*/
+
+
+.pagination {
+    display: inline-block;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 30px
+
+}
+
+.pagination > a {
+    color: #333333;
+    float: left;
+    width: 34px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-decoration: none !important;
+    border-radius: 50% ;
+    transition: background-color .3s;
+    -webkit-border-radius: 50% ;
+    -moz-border-radius: 50% ;
+    -ms-border-radius: 50% ;
+    -o-border-radius: 50% ;
+}
+
+.pagination > a.active {
+    background-color: #6255a5;
+    color: white;
+}
+
+.pagination > a:hover:not(.active) {
+    background-color: #ddd;
+    color: black;
+
+}
+
+
+
+/*########## Modal Popup Add review ############*/
+.modal-header_container {
+    color: #6255a5;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.review {
+    color: #fff;
+    width: 580px;
+    height: 50px;
+    margin-top: 30px;
+}
+
+.review>i {
+    margin-left: 30px;
+
+}
+
+.review>.fas {
+    color: #ffc107;
+}
+
+#input {
+    margin-left: 50px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    height: 100px;
+    width: 300px;
+    padding-top: 10px;
+    border: 1px solid #d1d1d1;
+    border-radius: 50px !important;
+    outline: 0px;
+    resize: none;
+    -webkit-border-radius: 50px !important;
+    -moz-border-radius: 50px !important;
+    -ms-border-radius: 50px !important;
+    -o-border-radius: 50px !important;
+}

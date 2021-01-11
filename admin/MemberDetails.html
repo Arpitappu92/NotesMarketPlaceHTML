@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+    <!--Important meta tags-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <!--Title-->
+    <title>Member Details</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/home/favicon.ico">
+
+    <!--Custom css-->
+    <link href="css/details.css" rel="stylesheet">
+
+    <!--Responsive css-->
+    <link href="css/details-responsive.css" rel="stylesheet">
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <!--Google Fonts-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="css/font-awesome/css/all.css">
+
+</head>
+
+<body>
+ 
+        <!-- Admin logout Header -->
+        <header>
+            <link rel="stylesheet" href="admin-header1/css/header1.css">
+            <link rel="stylesheet" href="front-header/css/header-responsive.css">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/home/logo.png" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" style="border-color: #6255a5; outline:none" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars" style="color: #6255a5; border-color: #6255a5;"></i>
+                </button>
+          
+                <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
+                  <ul class="navbar-nav ">            
+                    <li class="menu-item">
+                        <div class="dropdown">
+                            <a href="#" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dashboard
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-left "
+                                aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Notes Under Review</a>
+                                <a class="dropdown-item" href="#">Published Notes</a>
+                                <a class="dropdown-item" href="#">Downloaded Notes</a>
+                                <a class="dropdown-item" href="#">Rejected Notes</a>
+        
+                            </div>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Notes</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Members</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Reports</a>
+                    </li>
+                    <li class="menu-item">
+                        <div class="dropdown">
+                            <a href="#" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Settings
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-center "
+                                aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Manage System Configuration</a>
+                                <a class="dropdown-item" href="#">Manage Administrator</a>
+                                <a class="dropdown-item" href="#">Manage Category</a>
+                                <a class="dropdown-item" href="#">Manage Type</a>
+                                <a class="dropdown-item" href="#">Manage Countries</a>
+        
+                            </div>
+                    </li>
+                    <li>
+        
+                          <div class="dropdown">
+                            <a href="#" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-center"
+                                aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Update Profile</a>
+                                <a class="dropdown-item" href="#">Change Password</a>
+                                <a class="dropdown-item" href="#" style="color: #6255a5">LOGOUT</a>
+        
+                            </div>
+        
+        
+                    </li>
+                    <li>
+                        <button class="btn log_btn" type="submit">Logout</button>
+                    </li>    
+                
+                  </ul>
+                  </div>
+              </nav>
+            </header>
+           <!-- Admin logout Header ends -->
+        
+         
+
+    <!--Main Section-->
+    <div class="container" id="md">
+
+        <div class="row main-section-title">
+
+            <span>Member Details</span>
+
+        </div>
+        <div class="row" id="md-upper-box">
+            <div class="col-md-6 member-info-left">
+                <div class="row">
+                    <div class="col-md-3" style="padding-left: 0;">
+                        <img src="images/memberdetails/customer1.jfif" width="110px" height="110px">
+                    </div>
+                    <div class="col-md-9 md-upper-right">
+
+                        <table class="table md-upper-table">
+                            <tr>
+                                <td class="columnname">
+                                    First Name:
+                                </td>
+                                <td class="columndata">
+                                    Richard
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    Last Name:
+                                </td>
+                                <td class="columndata">
+                                    Brown
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    Email:
+                                </td>
+                                <td class="columndata">
+                                    richardbrown77@gmail.com
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    DOB:
+                                </td>
+                                <td class="columndata">
+                                    13-08-1999
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    Phone Number:
+                                </td>
+                                <td class="columndata">
+                                    9876543210
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    College/University:
+                                </td>
+                                <td class="columndata">
+                                    University Of California
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 member-info-right">
+                <table class="table md-upper-table">
+                    <tr>
+                        <td class="columnname">
+                            Address 1:
+                        </td>
+                        <td class="columndata">
+                            144 Diamond Height
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            Address 2:
+                        </td>
+                        <td class="columndata">
+                            Star Colony
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            City:
+                        </td>
+                        <td class="columndata">
+                            Newyork
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            State:
+                        </td>
+                        <td class="columndata">
+                            Newyork
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            Country:
+                        </td>
+                        <td class="columndata">
+                            United State
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            Zip Code:
+                        </td>
+                        <td class="columndata">
+                            11004-05
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row bottom-section-title">
+            <span>Notes</span>
+        </div>
+        <div class="row notes-details-table">
+            <table class="table table-hover table-responsive" id="md-bottom-table">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center;">SR NO</th>
+                        <th scope="col">NOTE TITLE</th>
+                        <th scope="col">CATEGORY</th>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">DOWNLOAD NOTES</th>
+                        <th scope="col">TOTAL EARNINGS</th>
+                        <th scope="col">DATA ADDED</th>
+                        <th scope="col">PUBLISHED DATE</th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">1</td>
+                        <td class="note">Software Development</td>
+                        <td>IT</td>
+                        <td>Published</td>
+                        <td class="note" style="text-align: center;">22</td>
+                        <td style="text-align: center;">$177</td>
+                        <td>09-10-2020, 10:10</td>
+                        <td>09-10-2020, 10:10</td>
+                        <td>
+                            <div class="test"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">2</td>
+                        <td class="note">Software Development</td>
+                        <td>IT</td>
+                        <td>Published</td>
+                        <td class="note" style="text-align: center;">22</td>
+                        <td style="text-align: center;">$177</td>
+                        <td>09-10-2020, 10:10</td>
+                        <td>09-10-2020, 10:10</td>
+                        <td>
+                            <div class="test"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">3</td>
+                        <td class="note">Software Development</td>
+                        <td>IT</td>
+                        <td>Published</td>
+                        <td class="note" style="text-align: center;">22</td>
+                        <td style="text-align: center;">$177</td>
+                        <td>09-10-2020, 10:10</td>
+                        <td>09-10-2020, 10:10</td>
+                        <td>
+                            <div class="test"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">3</td>
+                        <td class="note">Software Development</td>
+                        <td>IT</td>
+                        <td>Published</td>
+                        <td class="note" style="text-align: center;">22</td>
+                        <td style="text-align: center;">$177</td>
+                        <td>09-10-2020, 10:10</td>
+                        <td>09-10-2020, 10:10</td>
+                        <td>
+                            <div class="test"></div>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+        <div class="row paging">
+            <div class="col-md-12 text-center">
+                <div class="pagination ">
+                    <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Main Section End-->
+
+    <!--Footer Section-->
+    <footer id="footer2">
+        <div class="container-fluid">
+          <div class="col-md-12">
+            <div class="row">
+          <div class="col-md-4 col-sm-4 col-4">
+              <p>
+                version 1.1.24
+              </p>
+          </div>
+          <div class="col-md-8 col-sm-8 col-8">
+            <div style="float: right;">
+                <p>
+                    Copyright &copy; Tatvasoft All rights reserved.
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </footer>
+    <!--Footer Section End-->
+
+    <script src="js/jQuery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>
