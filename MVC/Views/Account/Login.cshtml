@@ -1,0 +1,118 @@
+﻿@model Notes_MarketPlace.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- important meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.min.css">
+
+    <!-- Title -->
+    <title>MarketPlace Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!--  Fonts Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--Css File -->
+    <link rel="stylesheet" href="~/Content/css/logins-type.css">
+
+    <!--Responsive File -->
+    <link rel="stylesheet" href="~/Content/css/logins-type-responsive.css">
+
+
+</head>
+<body class="bg" style="background-image: url('@Url.Content("~/Userimages/pre-login/banner-with-overlay.jpg")');">
+
+    <div class="container">
+        <center>
+            <div class="top-logo">
+                <img src="~/Userimages/pre-login/top-logo.png" width="200" height="30">
+            </div>
+        </center>
+
+        <div class="card">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { }))
+                    {
+                    <form class="box">
+                        <center><h1 class="pg"> Login </h1></center>
+                        <center>
+                            <h3 class="subtitle"> Enter your email address and password to login </h3>
+                        </center>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.EmailId, "Email", new { @class = "info" })
+                            @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger errormessage info" })
+                            @Html.TextBoxFor(x => x.EmailId, new { @class = "form-control", @id = "loginemail", @placeholder = "notesmarketplace92@gmail.com" })
+
+                        </div>
+                        <div class="form-group">
+                            <a href="/Account/ForgetPassword" id="forgetpassword">Forgot Password?</a>
+                            @Html.LabelFor(x => x.Password, "Password", new { @class = "info1" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger errormessage info1sign" })
+                            @Html.PasswordFor(x => x.Password, new { @class = "form-control password-field", @id = "loginpsw", @placeholder = "Enter your password" })
+                            <span toggle="#loginpsw" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+
+                        </div>
+                        <div class="form-group">
+                        @Html.CheckBoxFor(x => x.RememberMe, new { @class = "form-check-input" })
+                        @Html.LabelFor(x => x.RememberMe, "Remember Me", new { @class = "rem" })
+                            </div>
+
+                        <button type="submit" class="btn form-control" id="signupbtn"><b>LOGIN</b></button>
+
+                    </form>
+                    }
+                    <center>
+                        <p id="dnthvacc"> Don't have an account? <a href="/Account/Register">SignUp </a></p>
+                    </center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".toggle-password").click(function () {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    </script>
+
+    <!--Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <!-- Bootstrap JS -->
+    <script src="~/Scripts/js/bootstrap/bootstrap.min.js"></script>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>
+
