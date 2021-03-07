@@ -1,0 +1,231 @@
+﻿@model IEnumerable<Notes_MarketPlace.Models.SellerNotes>
+
+@{
+    ViewBag.Title = "SearchNotes";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!--Important meta tags-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <title>Search Notes - Notes MarketPlace</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="~/Content/css/form.css">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Content/css/responsive-form.css">
+</head>
+
+<body style="overflow-x: hidden;">
+    <section id="search-notes">
+
+        <!--Banner-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner-outer col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="banner-box">
+                        <img src="~/Userimages/search/banner-with-overlay.jpg" alt="bg-overlay" class="image-responsive">
+                        <h1>Search Notes</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- general box -->
+        <div class="general-box">
+            <div class="content-box-lg">
+
+                <div class="container">
+                    <div class="row">
+                        <p class="box-heading">Search and Filter Notes</p>
+                    </div>
+                </div>
+
+
+
+                <div class="container">
+                    <div class="row">
+                        @using (Html.BeginForm())
+                        {
+                         
+                            <div class="search-notes-input-box">
+
+                                <div class="form-group has-search-bar">
+                                    <span class="search-symbol"><img src="~/Userimages/Search/search-icon.png" alt=""></span>
+                                    <input type="text" class="form-control input-box-style search-notes-bar" id="example" placeholder="Search notes here...">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                            <select class="form-control input-box-style" id="exampleFormControlSelect1">
+                                                <option value="" disabled selected>Select type</option>
+                                                <option>A</option>
+                                                <option>B</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                            <select class="form-control input-box-style" id="exampleFormControlSelect1">
+                                                <option value="" disabled selected>Select category</option>
+                                                <option>A</option>
+                                                <option>B</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                            <select class="form-control input-box-style" id="exampleFormControlSelect1">
+                                                <option value="" disabled selected>Select university</option>
+                                                <option>A</option>
+                                                <option>B</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                            <select class="form-control input-box-style" id="exampleFormControlSelect1">
+                                                <option value="" disabled selected>Select course</option>
+                                                <option>A</option>
+                                                <option>B</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                            <select class="form-control input-box-style" id="exampleFormControlSelect1">
+                                                <option value="" disabled selected>Select country</option>
+                                                <option>A</option>
+                                                <option>B</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control input-box-style" id="exampleFormControlSelect1">
+                                                <option value="" disabled selected>Select rating</option>
+                                                <option>A</option>
+                                                <option>B</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        }
+                        </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- general-box -->
+        <!-- general box -->
+        <div class="general-box searched-notes-box">
+            <div class="content-box-lg">
+
+                <div class="container">
+                    <div class="row">
+                        <p class="box-heading">Total 18 Notes</p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        @foreach (var x in Model)
+                        {
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="note-details-box">
+
+
+                                    <img src="@Url.Content(x.DisplayPicture)" alt="dsf">
+
+                                    <div class="note-details">
+
+
+                                        <a href="/Front/NoteDetails/@x.ID">    <p class="note-name-title">@Html.DisplayFor(modelItem => x.NoteTitle) </p></a>
+                                            <p class="note-info-with-icon"><span><img src="~/Userimages/Search/university.png" alt=""></span>@Html.DisplayFor(modelItem => x.UniversityInformation)</p>
+                                            <p class="note-info-with-icon"><span><img src="~/Userimages/Search/pages.png" alt=""></span>@Html.DisplayFor(modelItem => x.NumberOfPages) Pages</p>
+                                            <p class="note-info-with-icon"><span><img src="~/Userimages/Search/date.png" alt=""></span>@Html.DisplayFor(modelItem => x.PublishedDate)</p>
+                                            <p class="note-info-with-icon red-text"><span><img src="~/Userimages/Search/flag.png" alt=""></span>5 Users marked this note as  inappropriate</p>
+
+                                            <div class="notes-rating">
+                                                <div class="col-md-7 col-sm-8 col-8">
+                                                    <div class="rate">
+                                                        <input type="radio" id="star5" name="rate" value="5" />
+                                                        <label for="star5" title="text">5 stars</label>
+                                                        <input type="radio" id="star4" name="rate" value="4" />
+                                                        <label for="star4" title="text">4 stars</label>
+                                                        <input type="radio" id="star3" name="rate" value="3" />
+                                                        <label for="star3" title="text">3 stars</label>
+                                                        <input type="radio" id="star2" name="rate" value="2" />
+                                                        <label for="star2" title="text">2 stars</label>
+                                                        <input type="radio" id="star1" name="rate" value="1" />
+                                                        <label for="star1" title="text">1 star</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-sm-4 col-4">
+                                                    <p class="review-count">100 reviews</p>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                      
+                        }
+                       
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- general box -->
+
+
+        <div class="row paging">
+            <div class="col-md-12 text-center">
+                <div class="pagination ">
+                    <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+    <!-- Custom JS -->
+    <script src="~/Scripts/js/script.js"></script>
+
+
+</body>
+
+</html>
