@@ -1,0 +1,330 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "DownloadedNotes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!--Important meta tags-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <!--Title-->
+    <title>Downloaded Notes</title>
+
+    <!--Custom css-->
+    <link href="~/Content/AdminCss/style.css" rel="stylesheet">
+
+    <!--Responsive css-->
+    <link href="~/Content/AdminCss/responsive.css" rel="stylesheet">
+
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="~/Content/AdminCss/font-awesome/css/all.css">
+
+</head>
+
+<body>
+
+
+
+    <section class="download_it">
+
+        <div class="container">
+            <form>
+
+                <p id="tit"> Downloaded Notes </p>
+
+                <div class="mid-head">
+
+                    <div class="drops">
+
+                        <div class="search_detail">
+                            <p>Note</p>
+                        </div>
+
+                        <div class="dropdown_tic">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span>Select Note   </span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <option class="dropdown-item">Link1</a>
+                                    <option class="dropdown-item">Link2</a>
+                                    <option class="dropdown-item">Link3</a>
+                                    <option class="dropdown-item">Link4</a>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="drops">
+
+                        <div class="search_detail">
+                            <p>Seller</p>
+                        </div>
+
+                        <div class="dropdown_tic">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span> Select Seller   </span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Link1</a>
+                                    <a class="dropdown-item" href="#">Link2</a>
+                                    <a class="dropdown-item" href="#">Link3</a>
+                                    <a class="dropdown-item" href="#">Link4</a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drops">
+                        <div class="search_detail">
+                            <p>Buyer</p>
+                        </div>
+
+                        <div class="dropdown_tic">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span>Rahul Shah   </span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Link1</a>
+                                    <a class="dropdown-item" href="#">Link2</a>
+                                    <a class="dropdown-item" href="#">Link3</a>
+                                    <a class="dropdown-item" href="#">Link4</a>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div style="display:flex; align-items:center;">
+                        <div class="search form-inline">
+                            <div class="searchContainer form-group">
+                                <i class="fas fa-search form-control-feedback "></i>
+                                <input type="text" class="form-control" placeholder="Search" />
+                            </div>
+
+                        </div>
+                        <div class="bttn">
+                            <button type="submit" class="btn allBtn">SEARCH</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+
+
+
+
+
+
+        <div class="row downloads-table">
+
+            <div class="col-md-12">
+                <div class="table-responsive{-sm|-md|-lg|-xl} data-table down_table">
+                    <table class="table table-bordered text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>SR NO.</th>
+                                <th>NOTE TITLE</th>
+                                <th>CATEGORY</th>
+                                <th>BUYER</th>
+                                <th></th>
+                                <th>SELLER</th>
+                                <th></th>
+                                <th>SELL TYPE</th>
+                                <th>PRICE</th>
+                                <th class="text-center">DOWNLOADED <br> DATE/TIME</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Software Engineer</td>
+                                <td>IT</td>
+                                <td>Rahul Shah</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Khyati Patel</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Paid</td>
+                                <td>$200</td>
+                                <td>25-11-2020, 11:08</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        </i>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                             aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Download Notes</a>
+                                            <a class="dropdown-item" href="#">View More Details</a>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Software Engineer</td>
+                                <td>IT</td>
+                                <td>Rahul Shah</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Khyati Patel</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Paid</td>
+                                <td>$200</td>
+                                <td>25-11-2020, 11:08</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        </i>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                             aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Download Notes</a>
+                                            <a class="dropdown-item" href="#">View More Details</a>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Software Engineer</td>
+                                <td>IT</td>
+                                <td>Rahul Shah</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Khyati Patel</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Paid</td>
+                                <td>$200</td>
+                                <td>25-11-2020, 11:08</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        </i>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                             aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Download Notes</a>
+                                            <a class="dropdown-item" href="#">View More Details</a>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Software Engineer</td>
+                                <td>IT</td>
+                                <td>Rahul Shah</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Khyati Patel</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Paid</td>
+                                <td>$200</td>
+                                <td>25-11-2020, 11:08</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        </i>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                             aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Download Notes</a>
+                                            <a class="dropdown-item" href="#">View More Details</a>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Software Engineer</td>
+                                <td>IT</td>
+                                <td>Rahul Shah</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Khyati Patel</td>
+                                <td><i class="far fa-eye"></i></td>
+                                <td>Paid</td>
+                                <td>$200</td>
+                                <td>25-11-2020, 11:08</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        </i>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                             aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Download Notes</a>
+                                            <a class="dropdown-item" href="#">View More Details</a>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row paging">
+            <div class="col-md-12 text-center">
+                <div class="pagination ">
+                    <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+
+
+    <script src="js/jQuery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>

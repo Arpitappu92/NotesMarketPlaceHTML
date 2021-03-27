@@ -1,0 +1,290 @@
+﻿
+
+@model Notes_MarketPlace.Models.UpdateFrontUserProfile
+
+@{
+    ViewBag.Title = "UpdateProfile";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!--Important meta tags-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <!--Title-->
+    <title>User Profile</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome/css/all.css">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="~/Content/datetimepicker/jquery.datetimepicker.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="~/Content/css/forms.css">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Content/css/responsive-forms.css">
+
+</head>
+
+<body>
+
+    <!-- User Profile -->
+    <section id="user-profile">
+
+        <!-- User Profile Banner -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 banner-outer">
+                    <div class="banner-box">
+                        <img src="~/Userimages/User-Profile/banner-with-overlay.jpg" alt="bg-overlay" class="image-responsive">
+                        <h1>User Profile</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--User Profile Form-->
+        <div class="container-fluid" id="uprofile-box">
+
+            @using (Html.BeginForm("UpdateProfile", "Front", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+
+                <h2>Basic Profile Details</h2>
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="hidden" id="exampleInput" name="UserID" value="@Model.ID">
+                            <label for="firstname">First Name *</label>
+                            @*                                <input type="text" class="form-control" id="firstname" placeholder="Enter your first name" required>
+                            *@
+
+                            @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", @value = "@Model.FirstName", @placeholder = "Enter Your FirstName" })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger errormessage" })
+
+
+
+                            @*
+                                @Html.LabelFor(x => x.FullName, "First Name *", new { })
+                                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @id = "fname", @type = "text", @placeholder = "Enter your first name", Required = "required" })
+                            *@
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="lastname">Last Name *</label>
+
+                            @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", @value = "@Model.LastName", @placeholder = "Enter Your LastName" })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger errormessage" })
+
+
+                            @*                                <input type="text" class="form-control" id="lastname" placeholder="Enter your last name" required>
+                            *@                                @*
+                                @Html.LabelFor(x => x.FullName, "Last Name *", new { })
+                                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @id = "lastname", @type = "text", @placeholder = "Enter your last name", Required = "required" })
+                            *@
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="email3">Email *</label>
+
+                            @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control", @value = "@Model.EmailID", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger errormessage" })
+
+
+                            @*                                <input type="email" class="form-control" id="email3" placeholder="Enter your email address" required>
+                            *@                                @*
+                                @Html.LabelFor(x => x.FullName, "Email *", new { })
+                                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @id = "email13", @type = "text", @placeholder = "Enter your email address", Required = "required" })
+                            *@
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+
+                            @Html.LabelFor(x => x.DateOfBirth, "Date of Birth", new { })
+                            @Html.TextBoxFor(x => x.DateOfBirth, new { type = "date", @class = "form-control", @value = "@Model.DateOfBirth", @id = "dob", @placeholder = "Enter Your BirthDate" })
+                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger errormessage" })
+
+
+                            @*                                @Html.TextBoxFor(x => x.DateOfBirth, new { @class = "form-control", @id = "dob", @type = "text", @placeholder = "Enter your date of birth", Required = "required" })
+                            *@                                <i id="cal-icon" class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Gender, "Gender", new { })
+                            @Html.DropDownList("Gender", ViewBag.Gender as SelectList, "Select Your Gender", new { name = "Gender", @class = "form-control", @id = "Gender" })
+
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger errormessage" })
+
+                            @*                                @Html.DropDownListFor(x => x.Gender, new SelectList(new string[] { "Male", "Female", "Other" }), new { @id = "gender", @name = "gender" })
+                            *@
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+
+                            @Html.LabelFor(x => x.PhoneCountryCode, "Phone Number", new { })
+                            @Html.DropDownList("PhoneCountryCode", ViewBag.PhoneCountryCode as SelectList, "select Country Code", htmlAttributes: new { @class = "form-control", name = "PhoneCountryCode" })
+                            @Html.ValidationMessageFor(model => model.PhoneCountryCode, "", new { @class = "text-danger errormessage" })
+
+                            @*                                @Html.DropDownListFor(x => x.PhoneCountryCode, new SelectList(new string[] { "(+91)India", "(+61) Australia", "(+86)China" }), new { @id = "ccode" })
+                            *@                                @Html.LabelFor(x => x.PhoneNumber, "", new { })
+                            @*                                @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", @id = "pnumber", @pattern = "[0-9]{10}", @type = "text", @placeholder = "Enter your phone number" })
+                            *@
+                            @Html.TextBoxFor(x => x.PhoneNumber, new { @value = "@Model.PhoneNumber", @class = "form-control phone-number-input", @placeholder = "Enter Your Phone Number" })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger errormessage" })
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="ppicture">Profile Picture</label><br>
+                            <a onClick="document.getElementById('ppicture').click()" class="btn" id="upload-btn">
+
+                                <img id="img-preview" src="" alt="Image Preview">
+
+                                <span id="default-text">
+                                    <img src="~/Userimages/user-profile/upload.png" alt="upload"><br>
+                                    Upload a picture
+                                </span>
+
+                            </a>
+                            @Html.ValidationMessageFor(x => x.ProfilePicture, "", new { @class = "text-danger" })
+
+                            <input type="file" class="form-control" style="display: none" id="ppicture" name="ProfilePicture" />
+                            @*
+                                @Html.TextBoxFor(x => x.ProfilePicture, new { @class = "form-control", style = "display: none", @id = "ppicture", name = "ProfilePicture", type = "file" })
+                            *@
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2>Address Details</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+
+                            <label>Address Line 1</label>
+                            @Html.TextBoxFor(x => x.AddressLine1, new { @class = "form-control", @value = "@Model.AddressLine1", @placeholder = "Enter Your AddressLine1" })
+                            @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger errormessage" })
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+
+                            <label>Address Line 2</label>
+                            @Html.TextBoxFor(x => x.AddressLine2, new { @class = "form-control", @value = "@Model.AddressLine2", @placeholder = "Enter Your AddressLine2" })
+                            @Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger errormessage" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>City</label>
+                            @Html.TextBoxFor(x => x.City, new { @class = "form-control", @value = "@Model.AddressLine2", @placeholder = "Enter Your City" })
+                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger errormessage" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>State</label>
+                            @Html.TextBoxFor(x => x.State, new { @class = "form-control", @value = "@Model.AddressLine2", @placeholder = "Enter Your City" })
+                            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger errormessage" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>ZipCode</label>
+                            @Html.TextBoxFor(x => x.ZipCode, new { @class = "form-control", @value = "@Model.AddressLine2", @placeholder = "Enter Your City" })
+                            @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger errormessage" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Country</label>
+                            @Html.DropDownList("Country", ViewBag.Country as SelectList, "Select Your Country", new { name = "Country", @class = "form-control", @id = "Country" })
+
+
+                            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger errormessage" })
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2>University and College Information</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>University</label>
+                            @Html.TextBoxFor(x => x.University, new { @class = "form-control", @value = "@Model.AddressLine2", @placeholder = "Enter Your City" })
+                            @Html.ValidationMessageFor(model => model.University, "", new { @class = "text-danger errormessage" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+
+                            <label>College</label>
+                            @Html.TextBoxFor(x => x.College, new { @class = "form-control", @value = "@Model.AddressLine2", @placeholder = "Enter Your City" })
+                            @Html.ValidationMessageFor(model => model.College, "", new { @class = "text-danger errormessage" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Submit Button-->
+                <button class="btn submit-btn" type="submit">SUBMIT</button>
+
+
+            }
+        </div>
+
+    </section>
+    <!-- User Profile Ends -->
+    <!-- JQuery -->
+    <script src="~/Scripts/js/jQuery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Scripts/js/bootstrap/bootstrap.min.js"></script>
+
+
+    <!-- Datetimepicker JS -->
+    <script src="~/Scripts/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+
+
+    <!-- External JS -->
+    <script src="~/Scripts/js/script.js"></script>
+
+</body>
+
+</html>

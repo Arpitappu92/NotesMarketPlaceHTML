@@ -1,0 +1,186 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <title>@ViewBag.Title</title>
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome/css/all.css">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.min.css">
+
+
+
+
+
+
+</head>
+<body>
+
+    <!-- FRONT HEADER LOGIN -->
+    <header>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="~/Content/css/front-header/header.css">
+
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="~/Content/css/front-header/header-responsive.css">
+
+        <nav class="navbar fixed-top navbar-inner navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("HomePage", "Home")">
+                    <img src="~/Userimages/headerimg/logo.png" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" style="border-color: #6255a5; outline:none" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars" style="color: #6255a5; border-color: #6255a5;"></i>
+                </button>
+
+                <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+                        <li class="menu-item">
+                            <a href="@Url.Action("SearchNotes", "Home")">Search Notes</a>
+
+                        </li>
+                        <li class="menu-item">
+                            <a href="@Url.Action("Dashboard", "Front")">Sell Your Notes</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="menu-item">
+                                <a href="@Url.Action("BuyerRequest", "Front")">Buyer Requests</a>
+                            </li>
+                        }
+                        <li class="menu-item">
+                            <a href="@Url.Action("FAQ", "Home")">FAQ</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="@Url.Action("ContactUs", "Home")">Contact Us </a>
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+
+
+                            <li>
+                                <div class="dropdown">
+                                    <a href="#" style="margin-right: 15px;" type="button" id="dropdownMenuButton"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="@Html.Action("GetPP", "Front")">
+                                    </a>
+                                    @*                                    https//demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg
+                                    *@
+
+                                    <div class="dropdown-menu dropdown-menu-center "
+                                         aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="@Url.Action("UpdateProfile", "Front")">My Profile </a>
+                                        <a class="dropdown-item" href="@Url.Action("MyDownloads", "Front")">My Downloads</a>
+                                        <a class="dropdown-item" href="@Url.Action("MySoldNotes", "Front")">My Sold Notes</a>
+                                        <a class="dropdown-item" href="@Url.Action("MyRejectedNote", "Front")">My Rejected Notes</a>
+                                        <a class="dropdown-item" href="@Url.Action("ChangePassword", "Front")">Change Password</a>
+                                        <a class="dropdown-item" href="@Url.Action("Logout", "Account")" style="color: #6255a5">LOGOUT</a>
+
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+
+                        @if (User.Identity.IsAuthenticated)
+                        { 
+
+
+                            <li>
+                              
+                                <form>
+
+                                    <button class="btn log_btn" type="submit" formaction='@Url.Action("Logout", "Account")'>Logout</button>
+
+                                </form>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li>
+                                <form style="margin-left: 15px;">
+
+                                    <button class="btn log_btn" type="submit" formaction='@Url.Action("Login", "Account")'>Login</button>
+
+                                </form>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FRONT HEADER LOGIN ENDS-->
+
+    @RenderBody()
+
+    <div>
+        <footer id="footer1">
+            <div class="container">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-8">
+                            <div class="row">
+                                <p>
+                                    Copyright &copy; Tatvasoft All rights reserved.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-4">
+                            <div class="row" style="float: right;">
+                                <div class="social">
+                                    <a>
+                                        <img src="~/Userimages/headerimg/facebook.png" alt="facebook">
+                                    </a>
+                                    <a>
+                                        <img src="~/Userimages/headerimg/twitter.png" alt="twitter">
+                                    </a>
+                                    <a>
+                                        <img src="~/Userimages/headerimg/linkedin.png" alt="linkedin">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+
+
+
+    <!-- JQuery -->
+    <script src="~/Scripts/js/jQuery.min.js"></script>
+
+
+    <!-- Bootstrap JS -->
+    <script src="~/Scripts/js/bootstrap/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/js/header.js"></script>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+</body>
+</html>

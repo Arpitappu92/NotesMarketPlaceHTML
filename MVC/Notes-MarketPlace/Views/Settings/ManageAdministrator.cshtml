@@ -1,0 +1,199 @@
+﻿
+@{
+    ViewBag.Title = "ManageAdministrator";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ManageAdministrator</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <!-- Title -->
+    <title>Manage-administrator</title>
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Responsive CSS-->
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+<body>
+
+
+    <!-- Main Body-->
+    <section id="mains">
+
+        <div class="container">
+
+
+            <p id="tit">Manage Administrator</p>
+
+            <div class="mid-head">
+                <div class="drops">
+
+
+                    <div class="large-bttn">
+                        <button type="submit" class="btn allBtn">ADD ADMINISTRATOR</button>
+                    </div>
+
+                </div>
+
+                <form>
+                    <div class="search form-inline">
+                        <div class="searchContainer form-group">
+                            <i class="fas fa-search form-control-feedback "></i>
+                            <input type="text" class="form-control" placeholder="Search" />
+                        </div>
+
+                    </div>
+                    <div class="bttn">
+                        <button type="submit" class="btn allBtn">SEARCH</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+            <div class="row manage-administrator-table">
+
+                <div class="col-md-12">
+                    <div class="table-responsive{-sm|-md|-lg|-xl} data-table administrator_table">
+                        <table class="table table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">SR NO.</th>
+                                    <th>FIRST NAME</th>
+                                    <th>LAST NAME</th>
+                                    <th>EMAIL</th>
+                                    <th>PHONE NO.</th>
+                                    <th>DATE ADDED</th>
+                                    <th class="text-center">ACTIVE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Khayati</td>
+                                    <td>Patel</td>
+                                    <td>khayatipatel@gmail.com</td>
+                                    <td>9897959512</td>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Rahul</td>
+                                    <td>Shah</td>
+                                    <td>rahulshah@gmail.com</td>
+                                    <td>9945321851</td>
+                                    <td>10-10-2020, 12:30</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Suman</td>
+                                    <td>Trivedi</td>
+                                    <td>sumantrivedi@gmail.com</td>
+                                    <td>7852189120</td>
+                                    <td>11-10-2020, 01:00</td>
+                                    <td>No</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Raj</td>
+                                    <td>Malhotra</td>
+                                    <td>rajmalhotra77@gmail.com</td>
+                                    <td>9825656874</td>
+                                    <td>12-10-2020, 10:10</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Niya</td>
+                                    <td>Patel</td>
+                                    <td>niyapatel12@gmail.com</td>
+                                    <td>8516794532</td>
+                                    <td>13-10-2020, 11:25</td>
+                                    <td>No</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row paging">
+                <div class="col-md-12 text-center">
+                    <div class="pagination ">
+                        <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+    <script src="../js/jQuery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap/popper.min.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

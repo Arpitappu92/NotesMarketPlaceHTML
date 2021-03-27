@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "AddAdministrator";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <!-- Title -->
+    <title>Add Administrator</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/form.css">
+
+    <link rel="stylesheet" href="../css/responsive.css">
+
+
+</head>
+
+<body>
+
+   
+    <!-- Main Body-->
+    <section id="main">
+
+        <div class="container" id="my-profile-box">
+
+            <form action="#" method="post">
+
+                <h2>Add Administrator</h2>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="mp-firstname">First Name *</label>
+                            <input type="text" class="form-control" id="mp-firstname" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mp-lastname">Last Name *</label>
+                            <input type="text" class="form-control" id="mp-lastname" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mp-email">Email *</label>
+                            <input type="email" class="form-control" id="mp-email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mp-pnumber mp-ccode">Phone Number</label><br>
+                            <select name="mp-ccode" id="mp-ccode">
+                                <option value="india">(+91)India</option>
+                                <option value="australia">(+61) Australia</option>
+                                <option value="brazil">(+55)Brazil</option>
+                                <option value="canada">(+1)Canada</option>
+                                <option value="china">(+86)China</option>
+                                <option value="france">(+33)France</option>
+                                <option value="germany">(+49)Germany</option>
+                                <option value="italy">(+39)Italy</option>
+                                <option value="japan">(+81)Japan</option>
+                                <option value="newzealand">(+64)New Zealand</option>
+                                <option value="russia">(+7)Russia</option>
+                                <option value="southafrica">(+27)South Africa</option>
+                                <option value="switzerland">(+41)Switzerland</option>
+                                <option value="unitedkingdom">(+44)United Kingdom</option>
+                                <option value="unitedstates">(+1)United States</option>
+                            </select>
+                            <input id="mp-pnumber" type="tel" class="form-control" placeholder="Enter your phone number" pattern="[0-9]{10}">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--Submit Button-->
+                <button class="submit-btn btn" type="submit">SUBMIT</button>
+
+            </form>
+
+
+
+
+        </div>
+
+    </section>
+
+    <script src="../js/jQuery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap/popper.min.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+
+</body>
+
+</html>

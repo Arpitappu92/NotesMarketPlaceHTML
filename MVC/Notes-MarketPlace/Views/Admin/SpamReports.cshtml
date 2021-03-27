@@ -1,0 +1,292 @@
+﻿
+@{
+    ViewBag.Title = "SpamReports";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>SpamReports</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <!-- Title -->
+    <title>Spam Reports</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/home/favicon.ico">
+
+    <!--Custom css-->
+    <link href="~/Content/AdminCss/style.css" rel="stylesheet">
+
+    <!--Responsive css-->
+    <link href="~/Content/AdminCss/responsive.css" rel="stylesheet">
+
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="~/Content/AdminCss/font-awesome/css/all.css">
+
+</head>
+
+<body>
+
+    <!-- Admin logout Header -->
+    <header>
+        <link rel="stylesheet" href="../admin-header1/css/header1.css">
+        <link rel="stylesheet" href="../admin-header1/css/header-responsive.css">
+
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="../images/home/logo.png" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" style="border-color: #6255a5; outline:none" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars" style="color: #6255a5; border-color: #6255a5;"></i>
+                </button>
+
+                <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+                        <li class="menu-item">
+                            <div class="dropdown">
+                                <a href="#" type="button" id="dropdownMenuButton"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dashboard
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-left "
+                                     aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Notes Under Review</a>
+                                    <a class="dropdown-item" href="#">Published Notes</a>
+                                    <a class="dropdown-item" href="#">Downloaded Notes</a>
+                                    <a class="dropdown-item" href="#">Rejected Notes</a>
+
+                                </div>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">Notes</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">Members</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">Reports</a>
+                        </li>
+                        <li class="menu-item">
+                            <div class="dropdown">
+                                <a href="#" type="button" id="dropdownMenuButton"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Settings
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-center "
+                                     aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Manage System Configuration</a>
+                                    <a class="dropdown-item" href="#">Manage Administrator</a>
+                                    <a class="dropdown-item" href="#">Manage Category</a>
+                                    <a class="dropdown-item" href="#">Manage Type</a>
+                                    <a class="dropdown-item" href="#">Manage Countries</a>
+
+                                </div>
+                        </li>
+                        <li>
+
+                            <div class="dropdown">
+                                <a href="#" type="button" id="dropdownMenuButton"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-center"
+                                     aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Update Profile</a>
+                                    <a class="dropdown-item" href="#">Change Password</a>
+                                    <a class="dropdown-item" href="#" style="color: #6255a5">LOGOUT</a>
+
+                                </div>
+
+
+                        </li>
+                        <li>
+                            <button class="btn log_btn" type="submit">Logout</button>
+                        </li>
+
+                    </ul>
+                </div>
+        </nav>
+    </header>
+    <!-- Admin logout Header ends -->
+    <!-- Main Body-->
+    <section id="main">
+
+        <div class="container">
+            <div class="middle-head">
+                <p> Spam Reports </p>
+
+                <form>
+                    <div class="search form-inline">
+                        <div class="searchContainer form-group">
+                            <i class="fas fa-search form-control-feedback "></i>
+                            <input type="text" class="form-control" placeholder="Search" />
+                        </div>
+                    </div>
+                    <div class="bttn">
+                        <button type="submit" class="btn allBtn">SEARCH</button>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <div class="row spam-reports-table">
+
+                <div class="col-md-12">
+                    <div class="table-responsive{-sm|-md|-lg|-xl} data-table  spam_table">
+                        <table class="table table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">SR NO.</th>
+                                    <th>REPORTED BY</th>
+                                    <th>NOTE TITLE</th>
+                                    <th>CATEGORY</th>
+                                    <th>DATE EDITED</th>
+                                    <th>REMARK</th>
+                                    <th class="text-center">ACTION</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Khayati Patel</td>
+                                    <td>Software Development</td>
+                                    <td>IT</td>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Lorem ipsum is simple dummy text</td>
+                                    <td><i class="fas fa-trash"></i></td>
+                                    <td>
+                                        <span>
+                                            <i class="fas fa-ellipsis-v fa-lg"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Rahul Shah</td>
+                                    <td>Computer Basic</td>
+                                    <td>Computer</td>
+                                    <td>10-10-2020, 11:25</td>
+                                    <td>Lorem ipsum is simple dummy text</td>
+                                    <td><i class="fas fa-trash"></i></td>
+                                    <td>
+                                        <span>
+                                            <i class="fas fa-ellipsis-v fa-lg"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Suman Trivedi</td>
+                                    <td>Human Body</td>
+                                    <td>Science</td>
+                                    <td>11-10-2020, 01:00</td>
+                                    <td>Lorem ipsum is simple dummy text</td>
+                                    <td><i class="fas fa-trash"></i></td>
+                                    <td>
+                                        <span>
+                                            <i class="fas fa-ellipsis-v fa-lg"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Raj Malhotra</td>
+                                    <td>world war 2</td>
+                                    <td>History</td>
+                                    <td>12-10-2020, 10:10</td>
+                                    <td>Lorem ipsum is simple dummy text</td>
+                                    <td><i class="fas fa-trash"></i></td>
+                                    <td>
+                                        <span>
+                                            <i class="fas fa-ellipsis-v fa-lg"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Niya Patel</td>
+                                    <td>Accounting</td>
+                                    <td>Account</td>
+                                    <td>13-10-2020, 11;25</td>
+                                    <td>Lorem ipsum is simple dummy text</td>
+                                    <td><i class="fas fa-trash"></i></td>
+                                    <td>
+                                        <span>
+                                            <i class="fas fa-ellipsis-v fa-lg"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row paging">
+                <div class="col-md-12 text-center">
+                    <div class="pagination ">
+                        <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer2">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-4">
+                        <p>
+                            version 1.1.24
+                        </p>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-8">
+                        <div style="float: right;">
+                            <p>
+                                Copyright &copy; Tatvasoft All rights reserved.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Footer ends-->
+
+
+
+    <script src="../js/jQuery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap/popper.min.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
