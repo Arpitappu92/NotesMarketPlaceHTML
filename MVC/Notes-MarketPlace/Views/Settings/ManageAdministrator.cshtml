@@ -1,0 +1,158 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<Notes_MarketPlace.Models.Users>
+
+@{ IEnumerable<Notes_MarketPlace.Models.UserProfile> adminnumber = ViewBag.UsersProfiles; }
+
+@{
+    ViewBag.Title = "ManageAdministrator";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <title>Manage-administrator</title>
+
+
+
+    <link rel="stylesheet" href="~/Content/AdminCss/style.css">
+
+    <link rel="stylesheet" href="~/Content/AdminCss/responsive.css">
+
+</head>
+
+<body>
+
+
+    <section id="mains">
+
+        <div class="container">
+
+
+            <p id="tit">Manage Administrator</p>
+
+            <div class="mid-head">
+                <div class="drops">
+
+
+                    <div class="large-bttn">
+                        <button type="submit" class="btn allBtn" onclick='window.location.href = "@Url.Action("AddAdministrator", "Settings", routeValues: null)"'>ADD ADMINISTRATOR</button>
+                    </div>
+
+                </div>
+
+                @using (Html.BeginForm("ManageAdministrator", "Settings", FormMethod.Get))
+                {
+
+                    <div style="display:flex; flex-direction:row; align-content: center;">
+                        <div class="search form-inline" style="margin-top: 10px;">
+        
+        <div class="searchContainer form-group" >
+            <i class="fas fa-search form-control-feedback "></i>
+            <input name="Search" type="text" class="form-control" placeholder="Search" />
+        </div>
+
+    </div>
+                    <div class="bttn">
+                        <button type="submit" class="btn allBtn">SEARCH</button>
+                    </div>
+
+                        </div>
+                    }
+            </div>
+
+
+
+
+            <div class="row manage-administrator-table ">
+
+                <div class="col-md-12">
+                    <div class="table-responsive{-sm|-md|-lg|-xl} data-table administrator_table">
+                        <table class="table table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">SR NO.</th>
+                                    <th>@Html.ActionLink("FIRST NAME", "ManageAdministrator", new { SortOrder = ViewBag.FirstNameSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("LAST NAME", "ManageAdministrator", new { SortOrder = ViewBag.LastNameSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("EMAIL", "ManageAdministrator", new { SortOrder = ViewBag.EmailIDSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("PHONE NO.", "ManageAdministrator", new { SortOrder = ViewBag.DateSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("DATE ADDED", "ManageAdministrator", new { SortOrder = ViewBag.DateSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th class="text-center">@Html.ActionLink("ACTIVE", "ManageAdministrator", new { SortOrder = ViewBag.ActiveSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th scope="col">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ var count = 0;
+                                    if (Model.Count == 0)
+                                    {
+                        <tr>
+                            <td colspan="8" class="text-center NoRecord">No Records Found</td>
+                        </tr>
+ } }
+                                @foreach (var item in Model)
+                                {
+                    <tr>
+                        <td>@(count + ((Model.PageNumber - 1) * Model.PageSize) + 1)</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.EmailId</td>
+                        <td>@adminnumber.Where(x => x.UserID == @item.ID).Select(y => y.PhoneCountryCode + " " + y.PhoneNumber).FirstOrDefault()</td>
+                        <td>
+                            @item.ModifiedDate.Value.ToString("dd-MM-yyyy, HH:mm")
+                        </td>
+                        <td>
+                            @if (@item.IsActive == true)
+                            {
+            <text>YES</text> }
+        else
+        {
+<text>NO</text>}
+                        </td>
+
+                        <td>
+                            <a onclick="return confirm('Are you sure you want to make this Admin Edit?')" href="/Settings/EditAdministrator/@item.ID"> <i class="fas fa-pen"></i> </a>
+
+                            <a onclick="return confirm('Are you sure you want to make this Admin inactive?')" href="/Settings/DeleteAdministrator/@item.ID">
+                                <span style="margin-left:10px;">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                            </a>
+                        </td>
+                    </tr>{ count = count + 1; }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row paging">
+                <div class="col-md-12 text-center">
+                    @Html.PagedListPager(Model, page => Url.Action("Administrators", new
+                    {
+                        page,
+                        Search = Request.QueryString["Search"],
+                        SortOrder = Request.QueryString["SortOrder"]
+                    })
+                         , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = false, MaximumPageNumbersToDisplay = 5 }
+                         )
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <script src="~/Scripts/js/bootstrap/popper.min.js"></script>
+</body>
+
+</html>

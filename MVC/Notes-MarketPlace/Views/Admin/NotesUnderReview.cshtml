@@ -1,0 +1,234 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "NotesUnderReview";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <title>Notes Under Review</title>
+
+    <link rel="shortcut icon" href="images/home/favicon.ico">
+
+    <link href="~/Content/AdminCss/style.css" rel="stylesheet">
+
+    <link href="~/Content/AdminCss/responsive.css" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/AdminCss/font-awesome/css/all.css">
+
+</head>
+
+<body>
+
+
+
+    <section class="notes_review">
+
+        <div class="container" style="margin-bottom : 50px;">
+
+
+            <p id="tit">Notes Under Review </p>
+            @using (Html.BeginForm("NotesUnderReview", "Admin", FormMethod.Get, new { id = "AllSeachNote" }))
+            {
+<div class="mid-head">
+
+    <div class="drops">
+
+        <div class="search_detail">
+            <p>Seller</p>
+        </div>
+
+        <div class="dropdown_tic">
+            <div class="dropdown">
+                @Html.DropDownList("SellerName", (SelectList)ViewBag.SellerName, "Select Seller", new { id = "SellerName", name = "SellerName", @class = "form-control", onchange = "NoteFunction();" })
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="set">
+        <div class="search form-inline">
+            <div class="searchContainer form-group">
+                <i class="fas fa-search form-control-feedback "></i>
+                <input type="text" class="form-control" placeholder="Search" />
+            </div>
+
+        </div>
+        <div class="bttn">
+            <button type="submit" class="btn allBtn">SEARCH</button>
+        </div>
+    </div>
+
+</div>}
+
+
+
+
+            <div class="row notes_reviews">
+
+                <div class="col-md-12">
+                    <div class="table-responsive{-sm|-md|-lg|-xl} data-table notes_under">
+                        <table class="table table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>SR NO.</th>
+                                   
+                                    <th>@Html.ActionLink("NOTE TITLE", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.TitleSortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
+                                    <th>@Html.ActionLink("CATEGORY", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.CategorySortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
+                                    <th>@Html.ActionLink("SELLER", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.SellerSortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
+                                    <th></th>
+                                    <th>@Html.ActionLink("DATE ADDED", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.DateSortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
+                                    <th>@Html.ActionLink("STATUS", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.StatusSortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
+
+                                    <th class="text-center"> ACTION </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @{ IPagedList<Notes_MarketPlace.Models.NotesUnderReviewsNote> UnderReview = ViewBag.NotesUnderReview; }
+
+                                @{ var count = 0;
+                                    if (UnderReview.Count == 0)
+                                    {
+                        <tr>
+                            <td colspan="9" class="text-center NoRecord">No Records Found</td>
+                        </tr> } }
+                                @foreach (var item in UnderReview)
+                                {
+
+
+                                                <tr>
+
+                                                    <td>@(count + ((UnderReview.PageNumber - 1) * UnderReview.PageSize) + 1)</td>
+                                                    <td>
+                                                        <a style="color:#6255a5" href="/Admin/NoteDetails_admin/@item.NoteDetails.ID"> @item.NoteDetails.NoteTitle</a>
+                                                    </td>
+                                                    <td>
+                                                        @item.Category.CategoryName
+                                                    </td>
+                                                    <td>@item.user.FirstName @item.user.LastName</td>
+                                                    <td><a  href="/AdminMember/MemberDetails/@item.NoteDetails.SellerID"> <i class="far fa-eye"></i></a> </td>
+                                                    <td>
+                                                        @item.NoteDetails.ModifiedDate
+                                                    </td>
+                                                    <td>@item.status.Value</td>
+
+
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="x_@item.NoteDetails.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header border-0">
+                                                                    <div class="modal-header_container">
+                                                                        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 600;">@item.NoteDetails.ID @item.NoteDetails.NoteTitle</h5>
+                                                                    </div>
+                                                                    <button type="button" style="outline-width: 0px;" class="close" data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                                                                    </button>
+                                                                </div>
+
+                                                                @using (Html.BeginForm("RejectedNote/" + @item.NoteDetails.ID, "Admin", FormMethod.Get, new { id = "AllSeachNote" }))
+                                                                {
+                                                <p style="margin-left: 50px; margin-bottom: 10px;">Remarks</p>
+                                                                    <textarea id="input" name="Remarks" type="text" placeholder="Write remarks"> </textarea>
+
+                                                                                        <div class="modal-footer border-0" style="margin-top:10px;">
+                                                                                            <button type="submit" class="btn btn-top btn-reject">Reject</button>
+                                                                                            <button class="btn btn-top btn-inreview" data-dismiss="modal">Cancel</button>
+                                                                                        </div>}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <td class="menu-button">
+
+                                                        @using (Html.BeginForm("Approve/" + @item.NoteDetails.ID, "Admin", FormMethod.Get, new { id = "AllSeachNote" }))
+                                                        {
+                                        <button onclick="return confirm('Are You Sure for Approve !!')" type="submit" class="btn btn-top btn-approve"> Approve </button>}
+                                                        <button class="btn btn-top btn-reject" data-toggle="modal" data-target="#x_@item.NoteDetails.ID"> Reject </button>
+
+                                                        @using (Html.BeginForm("InReview/" + @item.NoteDetails.ID, "Admin", FormMethod.Get, new { id = "AllSeachNote" }))
+                                                        {
+                                        <button onclick="return confirm('Are You Sure for InReview !!')" type="submit" class="btn btn-top btn-inreview" id="">
+                                            InReview
+                                        </button>}
+                                                    </td>
+
+
+                                                    <td><div class="dropdown">
+                                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                </i>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                                     aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="/Front/DownloadAttechedFile/@item.NoteDetails.ID">Download Notes</a>
+                                                    <a class="dropdown-item" href="/Admin/NoteDetails_Admin/@item.NoteDetails.ID">View More Details</a>
+                                                    <a class="dropdown-item" href="#">Unpublish</a>
+                                                </div>
+                                            </div></td>
+                                                </tr>
+{ count = count + 1; }
+
+                                            }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row paging">
+                <div class="col-md-12 text-center">
+                    
+
+                        @Html.PagedListPager(UnderReview, NotesUnderReviewspage => Url.Action("NotesUnderReview", new
+                   {
+                       NotesUnderReviewspage,
+                       SearchUnderReview = Request.QueryString["SearchUnderReview"],
+                       SortOrderUnderReview = Request.QueryString["SearchUnderReview"]
+                   })
+                                    , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+                                        DisplayPageCountAndCurrentLocation = false,
+                                        MaximumPageNumbersToDisplay = 5,
+                                        LiElementClasses = new string[] { "pagination" },
+                                    }
+                                    )
+
+                  
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <script src="~/Scripts/AdminJs/bootstrap/popper.min.js"></script>
+
+    <script src="~/Scripts/AdminJs/script.js"></script>
+
+
+</body>
+
+</html>
