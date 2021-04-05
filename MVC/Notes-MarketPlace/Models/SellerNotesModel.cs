@@ -19,9 +19,13 @@ namespace Notes_MarketPlace.Models
         [StringLength(100, MinimumLength=3, ErrorMessage = "Enter NoteTitle between 3 to 100")]
         [Required(ErrorMessage ="Please Enter Note Title")]
         public string NoteTitle { get; set; }
+
+
+        [Required(ErrorMessage = "Please Select Note Category")]
         public int NoteCategory { get; set; }
 
-       
+        [Required(ErrorMessage = "Please Select A file to upload")]
+
         public HttpPostedFileBase DisplayPicture { get; set; }
         public int NoteType { get; set; }
         public Nullable<int> NumberOfPages { get; set; }

@@ -85,3 +85,34 @@ $(function () {
     });
 });
 
+/*==================================================
+                    add and remove active class in navbar
+==================================================*/
+/*$(".navbar ul.navbar-nav li a").on("click", function() {
+  $(".navbar .navbar-nav").find("a.nav-link");
+  $(this).addClass("active");
+});*/
+
+
+$(document).ready(function () {
+    var url2 = window.location.href.split('/');
+    var url4 = url2[4].split('?');
+    var url5 = url4[0];
+    var url = url2.slice(0, 4).join('/') + '/' + url5;
+    var url3 = window.location.href;
+    $('.navbar .navbar-nav a[href="' + url + '"]').addClass('active');
+    $('.menu-item a').filter(function () {
+        return this.href == url;
+    }).addClass('active');
+});
+
+$(document).ready(function () {
+    var url2 = window.location.href.split('/');
+    var url4 = url2[4].split('?');
+    var url5 = url4[0];
+    var url = url2.slice(0, 4).join('/') + '/' + url5;
+    $('.navbar .navbar-nav .dropdown-content-profile a[href="' + url + '"]').parent().parent().addClass('active');
+    $('.navbar .navbar-nav .dropdown-content-profile a').filter(function () {
+        return this.href == url;
+    }).parent().parent().addClass('active');
+});

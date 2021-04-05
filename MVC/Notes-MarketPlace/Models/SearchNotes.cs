@@ -19,6 +19,7 @@ namespace Notes_MarketPlace.Models
             public SellerNotesReviews Reviews { get; set; }
 
             public SellerNotesReportedIssues Reports { get; set; }
+ 
         }
 
 

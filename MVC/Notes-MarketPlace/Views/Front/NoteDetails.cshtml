@@ -7,38 +7,27 @@
 <html>
 
 <head>
-    <!-- important meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--JQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!--Favicon-->
     <link rel="shortcut icon" href="images/home/favicon.ico">
 
-    <!--Font-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap">
-
-    <!--Custom css-->
     <link rel="stylesheet" type="text/css" href="~/Content/css/details.css">
 
-    <!--Custom Js-->
     <script type="text/javascript" scr="~/Script/js/style.js"></script>
 
 
-    <!--Responsive Css-->
     <link rel="stylesheet" href="~/Content/css/details-responsive.css">
 
-    <!--Site Title-->
     <title>Note Details</title>
 </head>
 
 <body>
-    <!-- Main Container-->
     <div class="container nd-main-container">
-        <!--Note Details Section-->
         <div class="row note-section">
             <div class="col-md-6">
                 <div class="row">
@@ -55,10 +44,6 @@
 
 
                         <h1>@Url.RequestContext.RouteData.Values["id"]</h1>
-
-
-                        @*                        @using (Html.BeginForm("DownloadNote", "Front", FormMethod.Post, new { }))
-        {*@
 
                         @if (Model.isPaid == false)
                         {
@@ -151,15 +136,7 @@
                     <tr>
                         <td class="column-name">Rating:</td>
                         <td class="column-data">
-                            @*<span>
-                                    <i class="fa fa-star checked"></i>
-                                    <i class="fa fa-star checked"></i>
-                                    <i class="fa fa-star checked"></i>
-                                    <i class="fa fa-star checked"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    100 Reviews
-                                </span>*@
-
+                         
 
                             @{ var ratingSum = @Model.SellerNotesReviews.Where(x => x.NoteID == @Model.ID).Select(x => x.Ratings).Sum();
                                 var ratingCount = @Model.SellerNotesReviews.Where(x => x.NoteID == @Model.ID).Count(); }
@@ -170,10 +147,10 @@
 
                                 for (int i = 1; i <= Math.Round(ratingSum / ratingCount); i++)
                                 {
-                                    <i class="text-warning fa fa-star"></i> }
+                                    <i class="text-warning fas fa-star"></i> }
                                 for (int i = 1; i <= 5 - Math.Round(ratingSum / ratingCount); i++)
                                 {
-                                    <i class="text-muted fa fa-star"></i>}
+                                    <i class="text-muted far fa-star"></i>}
                             }
                             @if (ratingCount == 0)
                             {
@@ -181,7 +158,8 @@
                                 {
                                     <i class="text-muted fa fa-star"></i>}
                             }
-                            <span>@Model.SellerNotesReviews.Where(x => x.NoteID == @Model.ID).Count() Reviews</span>
+                         
+                             @Model.SellerNotesReviews.Where(x => x.NoteID == @Model.ID).Count() Reviews
 
 
                         </td>
@@ -194,8 +172,7 @@
 
             </div>
         </div>
-        <!--Note Details Section End-->
-        <!--Note Preview & Customer Review Section-->
+
         <div class="row note-preview">
             <div class="col-md-5">
                 <div class="row">
@@ -266,9 +243,7 @@
 
             </div>
         </div>
-        <!--Note Preview & Customer Review Section End-->
     </div>
-    <!-- Main Container-->
 
 </body>
 

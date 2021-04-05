@@ -8,23 +8,41 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using Notes_MarketPlace.Helpers;
 
 namespace Notes_MarketPlace.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator,SuperAdmin")]
     [RoutePrefix("Admin")]
     public class AdminController : Controller
     {
 
         private NotesEntities objNotesEntities = new NotesEntities();
 
-
-        // GET: Admin
         [Route("Dashboard")]
         public ActionResult Dashboard(string SearchPublished, int? PublishedNotespage, string SortOrderPublished)
         {
             var EmailID = User.Identity.Name.ToString();
             Users userObj = objNotesEntities.Users.Where(x => x.EmailId == EmailID).FirstOrDefault();
+
+
+            DateTime dtNow = DateTime.Now;
+
+            var dt = DateTime.Now.AddDays(-7);
+
+            var SpamReport = objNotesEntities.SellerNotesReportedIssues.Count();
+            TempData["SpamReportsCount"] = SpamReport;
+            TempData.Keep("SpamReportsCount");
+
+            var Downloads = objNotesEntities.Downloads.Where(x => x.IsSellerHasAllowedDownload == true && x.AttachmentPath != null && x.IsAttachedDownloaded == true && x.CreatedDate > dt).Count();
+            TempData["7DayDownloads"] = Downloads;
+
+            var Registration = objNotesEntities.Users.Where(x => x.RoleID == (objNotesEntities.UserRole.Where(y => y.Name.ToLower() == "member").Select(y => y.ID).FirstOrDefault()) && x.CreateDate > dt).Count();
+            TempData["7DayRegistrations"] = Registration;
+
+            var UnderReviewNotes = objNotesEntities.SellerNotes.Where(x => x.Status == objNotesEntities.ReferenceData.Where(z => z.Value.ToLower() == "submitted for review").Select(y => y.ID).FirstOrDefault() ||
+            x.Status == objNotesEntities.ReferenceData.Where(z => z.Value.ToLower() == "in review").Select(y => y.ID).FirstOrDefault()).Count();
+            TempData["UnderReviewNotes"] = UnderReviewNotes;
 
 
             List<SellerNotes> NoteTitlePublished = objNotesEntities.SellerNotes.Where(x => x.IsActive == true && (x.NoteTitle.Contains(SearchPublished) || SearchPublished == null)).ToList();
@@ -92,12 +110,6 @@ namespace Notes_MarketPlace.Controllers
                 case "Price":
                     PublishedNote = PublishedNote.OrderBy(x => x.NoteDetails.SellPrice);
                     break;
-/*                case "Size_desc":
-                    PublishedNote = PublishedNote.OrderByDescending(x => x.attachment.AttachmentSize);
-                    break;
-                case "Size":
-                    PublishedNote = PublishedNote.OrderBy(x => x.attachment.AttachmentSize);
-                    break;*/
                 case "Publisher_desc":
                     PublishedNote = PublishedNote.OrderByDescending(x => x.user.FirstName);
                     break;
@@ -198,9 +210,7 @@ namespace Notes_MarketPlace.Controllers
 
             ViewBag.SellerName = new SelectList(Seller, "Text", "Text");
 
-            /*ViewBag.SellerName = objNotesEntities.Users.Select(x => new { x.FirstName }).Distinct().Where(x => x.FirstName != null).ToList();*/
-            /* ViewBag.SellerName = objNotesEntities.Users.Where(x => x.IsEmailVerified == true && x.RoleID == 1).Select(x =>x.FirstName + x.LastName).Distinct().ToList();*/
-            ViewBag.NotesUnderReview = NotesUnderReview.ToList().ToPagedList(NotesUnderReviewspage ?? 1, 4);
+           ViewBag.NotesUnderReview = NotesUnderReview.ToList().ToPagedList(NotesUnderReviewspage ?? 1, 4);
             return View();
         }
 
@@ -483,21 +493,18 @@ namespace Notes_MarketPlace.Controllers
     }).Distinct().ToList();
 
             ViewBag.SellerName = new SelectList(Seller, "Text", "Text");
-            /*ViewBag.SellerName = objNotesEntities.Users.Select(x => new { x.FirstName }).Distinct().Where(x => x.FirstName != null).ToList();*/
-            /* ViewBag.SellerName = objNotesEntities.Users.Where(x => x.IsEmailVerified == true && x.RoleID == 1).Select(x =>x.FirstName + x.LastName).Distinct().ToList();*/
-            ViewBag.NotesPublished = NotesPublished.ToList().ToPagedList(page ?? 1, 4);
+           ViewBag.NotesPublished = NotesPublished.ToList().ToPagedList(page ?? 1, 4);
             return View();
         }
 
 
         [Route("DownloadedNotes")]
-        // GET: DownloadedNotesAdmin
         public ActionResult DownloadedNotes(int? page, string SellerName, string BuyerName, string Search, string AllNotes, string SortOrder)
         {
             List<Downloads> downloads = objNotesEntities.Downloads.Where(x => x.IsActive == true && x.IsSellerHasAllowedDownload == true && x.AttachmentPath != null && x.IsAttachedDownloaded == true && (x.NoteTitle.Contains(Search) || x.NoteCategory.Contains(Search) || x.PurchasedPrice.ToString().StartsWith(Search) || x.Users.FirstName.Contains(Search) || x.Users.LastName.Contains(Search)
             || (x.AttachmentDownloadedDate.Value.Day + "-" + x.AttachmentDownloadedDate.Value.Month + "-" + x.AttachmentDownloadedDate.Value.Year).Contains(Search)
             || Search == null)).ToList();
-            List<Users> users = objNotesEntities.Users.Where(x => x.RoleID == objNotesEntities.UserRole.Where(y => y.Name.ToLower() == "member").Select(y => y.ID).FirstOrDefault() && x.IsEmailVerified == true && x.IsActive == true).ToList();
+            List<Users> users = objNotesEntities.Users.Where(x => x.RoleID == objNotesEntities.UserRole.Where(y => y.Name.ToLower() == "Member").Select(y => y.ID).FirstOrDefault() && x.IsEmailVerified == true && x.IsActive == true).ToList();
 
             ViewBag.DateSortParam = string.IsNullOrEmpty(SortOrder) ? "CreatedDate_asc" : "";
             ViewBag.TitleSortParam = SortOrder == "Title" ? "Title_desc" : "Title";
@@ -523,7 +530,7 @@ namespace Notes_MarketPlace.Controllers
                                       buyer = down,
                                   }).AsQueryable();
 
-            var Seller = objNotesEntities.Users.Where(x => x.IsEmailVerified == true && x.RoleID == 1 && x.IsActive == true)
+            var Seller = objNotesEntities.Users.Where(x => x.IsEmailVerified == true && x.RoleID == 3 && x.IsActive == true)
    .Select(s => new
    {
        Text = s.FirstName + "" + s.LastName,
@@ -593,7 +600,6 @@ namespace Notes_MarketPlace.Controllers
 
 
         [Route("RejectedNotes")]
-        // GET: RejectedNotesAdmin
         public ActionResult RejectedNotes(string Search, int? page, string SortOrder, string SellerName)
         {
             List<SellerNotes> NoteTitlePublished = objNotesEntities.SellerNotes.Where(x => x.IsActive == true && (x.NoteTitle.Contains(Search) || x.NoteCategories.CategoryName.Contains(Search) || x.Users.FirstName.Contains(Search)
@@ -672,9 +678,7 @@ namespace Notes_MarketPlace.Controllers
     }).Distinct().ToList();
 
             ViewBag.SellerName = new SelectList(Seller, "Text", "Text");
-            /*ViewBag.SellerName = objNotesEntities.Users.Select(x => new { x.FirstName }).Distinct().Where(x => x.FirstName != null).ToList();*/
-            /* ViewBag.SellerName = objNotesEntities.Users.Where(x => x.IsEmailVerified == true && x.RoleID == 1).Select(x =>x.FirstName + x.LastName).Distinct().ToList();*/
-            ViewBag.NotesRejected = NotesRejected.ToList().ToPagedList(page ?? 1, 5);
+          ViewBag.NotesRejected = NotesRejected.ToList().ToPagedList(page ?? 1, 5);
             return View();
         }
 
@@ -746,10 +750,101 @@ namespace Notes_MarketPlace.Controllers
 
 
 
-        public ActionResult SpamReports()
+        [Route("SpamReports")]
+        public ActionResult SpamReports(string Search, int? page, string SortOrder)
         {
+            var name = objNotesEntities.Users.Select(x => x.FirstName).ToList();
+
+            List<SellerNotesReportedIssues> reports = objNotesEntities.SellerNotesReportedIssues.Where(x => (x.Users.FirstName.Contains(Search) || x.Users.LastName.Contains(Search) || x.Remarks.Contains(Search)
+            || x.SellerNotes.NoteTitle.Contains(Search) || x.SellerNotes.NoteCategories.CategoryName.Contains(Search)
+           || (x.ModifiedDate.Value.Day + "-" + x.ModifiedDate.Value.Month + "-" + x.ModifiedDate.Value.Year).Contains(Search)
+            || Search == null)).ToList();
+            List<SellerNotes> NoteTitlePublished = objNotesEntities.SellerNotes.Where(x => x.IsActive == true).ToList();
+            List<NoteCategories> CategoryNamePublished = objNotesEntities.NoteCategories.ToList();
+            List<Users> UserDetails = objNotesEntities.Users.ToList();
+
+            var SpamReport = objNotesEntities.SellerNotesReportedIssues.Count();
+            TempData["SpamReportsCount"] = SpamReport;
+            TempData.Keep("SpamReportsCount");
+
+            ViewBag.DateSortParam = string.IsNullOrEmpty(SortOrder) ? "CreatedDate_asc" : "";
+            ViewBag.TitleSortParam = SortOrder == "Title" ? "Title_desc" : "Title";
+            ViewBag.CategorySortParam = SortOrder == "Category" ? "Category_desc" : "Category";
+            ViewBag.ReportedBySortParam = SortOrder == "ReportedBy" ? "ReportedBy_desc" : "ReportedBy";
+
+            var NotesSpamReport = (from sr in reports
+                                   join nt in NoteTitlePublished on sr.NoteID equals nt.ID into table1
+                                   from nt in table1.ToList()
+                                   join cn in CategoryNamePublished on nt.NoteCategory equals cn.ID into table2
+                                   from cn in table2.ToList()
+                                   join us in UserDetails on sr.ReportedByID equals us.ID into table3
+                                   from us in table3.ToList()
+                                   select new SpamReportsmodel
+                                   {
+                                       Reports = sr,
+                                       NoteDetails = nt,
+                                       Category = cn,
+                                       user = us
+                                   }).AsQueryable();
+
+
+            switch (SortOrder)
+            {
+                case "CreatedDate_asc":
+                    NotesSpamReport = NotesSpamReport.OrderBy(x => x.Reports.ModifiedDate);
+                    break;
+                case "Title_desc":
+                    NotesSpamReport = NotesSpamReport.OrderByDescending(x => x.NoteDetails.NoteTitle);
+                    break;
+                case "Title":
+                    NotesSpamReport = NotesSpamReport.OrderBy(x => x.NoteDetails.NoteTitle);
+                    break;
+                case "Category_desc":
+                    NotesSpamReport = NotesSpamReport.OrderByDescending(x => x.Category.CategoryName);
+                    break;
+                case "Category":
+                    NotesSpamReport = NotesSpamReport.OrderBy(x => x.Category.CategoryName);
+                    break;
+                case "ReportedBy_desc":
+                    NotesSpamReport = NotesSpamReport.OrderByDescending(x => x.user.FirstName);
+                    break;
+                case "ReportedBy":
+                    NotesSpamReport = NotesSpamReport.OrderBy(x => x.user.FirstName);
+                    break;
+                default:
+                    NotesSpamReport = NotesSpamReport.OrderByDescending(x => x.Reports.ModifiedDate);
+                    break;
+            }
+
+            ViewBag.NotesSpamReport = NotesSpamReport.ToList().ToPagedList(page ?? 1, 5);
             return View();
         }
+
+        [Route("DeleteSpamReport/{id}")]
+        public ActionResult DeleteSpamReport(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            SellerNotesReportedIssues report = objNotesEntities.SellerNotesReportedIssues.Find(id);
+            if (report == null)
+            {
+                return RedirectToAction("Error", "HomePage");
+            }
+            objNotesEntities.SellerNotesReportedIssues.Remove(report);
+            objNotesEntities.SaveChanges();
+
+            var Emailid = User.Identity.Name.ToString();
+            Users user = objNotesEntities.Users.Where(x => x.EmailId == Emailid).FirstOrDefault();
+            TempData["SpamReport"] = user.FirstName + " " + user.LastName;
+
+            TempData["Message"] = ",Deleted Successfully !";
+
+            return RedirectToAction("SpamReports", "Admin");
+        }
+
 
 
 
@@ -792,30 +887,15 @@ namespace Notes_MarketPlace.Controllers
                     profile.SecondaryEmail = ud.SecondaryEmail;
                     profile.PhoneCountryCode = ud.PhoneCountryCode;
                     profile.PhoneNumber = ud.PhoneNumber;
-                    /*profile.ProfilePicture = ud.ProfilePicture;*/
                     ViewBag.ProfilePicture = ud.ProfilePicture;
 
-                    /*
-                                        ViewBag.Country = objNotesEntities.Country.Where(x => x.IsActive == true);
-                                        ViewBag.NoteType = objNotesEntities.NoteTypes.Where(x => x.IsActive == true);
-                                        ViewBag.NoteCategory = objNotesEntities.NoteCategories.Where(x => x.IsActive == true);
-
-                    */
-                    /*ViewBag.ProfilePicture = Path.Combine("/SystemConfiguration/DefaultImage/", "DefaultUserImage.jpg");*/
-                    /*                    ViewBag.Country = new SelectList(objNotesEntities.Country.Distinct().Where(x => x.IsActive == true), "Name", "Name", profile.Country);
-                                        ViewBag.PhoneCountryCode = new SelectList(objNotesEntities.Country.Distinct().Where(x => x.IsActive == true), "CountryCode", "CountryCode", profile.PhoneCountryCode);
-                                        ViewBag.PhoneCountryCode = new SelectList(objNotesEntities.Country.Distinct().Where(x => x.IsActive == true), "CountryCode", "CountryCode", profile.PhoneCountryCode);
-                     */
-
-                    /*                    ViewBag.Country = objNotesEntities.Country.Where(x => x.IsActive == true);
-                    */
+                  
                     ViewBag.PhoneCountryCode = new SelectList(objNotesEntities.Country.Distinct().Where(x => x.IsActive == true), "CountryCode", "CountryCode", profile.PhoneCountryCode);
 
                     return View(profile);
                 }
                 else
                 {
-                    /*ViewBag.ProfilePicture = Path.Combine("/SystemConfiguration/DefaultImage/", "DefaultUserImage.jpg");*/
                     ViewBag.Country = new SelectList(objNotesEntities.Country.Distinct().Where(x => x.IsActive == true), "Name", "Name");
                     ViewBag.PhoneCountryCode = new SelectList(objNotesEntities.Country.Distinct().Where(x => x.IsActive == true), "CountryCode", "CountryCode");
                     return View(profile);
@@ -843,11 +923,9 @@ namespace Notes_MarketPlace.Controllers
 
                 var id = objNotesEntities.UserProfile.Where(x => x.UserID == userdetails.UserID).FirstOrDefault();
 
-                /* var ud = objNotesEntities.UserProfile.Where(x => x.UserID == user.UserID).FirstOrDefault();*/
                 if (id != null)
                 {
                     UserProfile updatedetail = objNotesEntities.UserProfile.Where(x => x.UserID == userdetails.UserID).FirstOrDefault();
-                    /*Convert.ToDateTime(userdetails.DateOfBirth).ToString("yyyy-MM-dd")*/
                     
                     updatedetail.ModifiedBy = userdetails.UserID;
                     updatedetail.ModifiedDate = DateTime.Now;
@@ -855,22 +933,12 @@ namespace Notes_MarketPlace.Controllers
                     string storepath = Path.Combine(Server.MapPath("~/Members/"), user.ID.ToString());
                     System.IO.DirectoryInfo di = new DirectoryInfo(storepath);
 
-                    /* FileInfo file = new FileInfo(updatedetail.ProfilePicture);
-                     if (file.Exists)//check file exsit or not  
-                     {
-                         file.Delete();
-
-                     }*/
+                   
                     foreach (FileInfo file in di.GetFiles())
                     {
                         file.Delete();
                     }
-                    /*foreach (DirectoryInfo dir in di.GetDirectories())
-                    {
-                        dir.Delete(true);
-                    }*/
-
-                    // Check for Directory, If not exist, then create it  
+                     
                     if (!Directory.Exists(storepath))
                     {
                         Directory.CreateDirectory(storepath);
@@ -916,7 +984,6 @@ namespace Notes_MarketPlace.Controllers
 
                     string storepath = Path.Combine(Server.MapPath("~/Members/"), user.ID.ToString());
 
-                    // Check for Directory, If not exist, then create it  
                     if (!Directory.Exists(storepath))
                     {
                         Directory.CreateDirectory(storepath);
@@ -947,6 +1014,51 @@ namespace Notes_MarketPlace.Controllers
                 return RedirectToAction("Dashboard", "Admin");
             }
             return View();
+        }
+
+
+
+
+
+
+
+
+        [Route("Unpublished/{id}")]
+        [HttpGet]
+        public ActionResult Unpublished(int? id, UnpublishedNote unpublished)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            bool internet = InternetConnection.IsConnectedToInternet();
+            if (internet != true)
+            {
+                var Emailid = User.Identity.Name.ToString();
+                Users user2 = objNotesEntities.Users.Where(x => x.EmailId == Emailid).FirstOrDefault();
+                TempData["internetnotconnected"] = user2.FirstName + " " + user2.LastName;
+                return RedirectToAction("Dashboard", "Member");
+            }
+
+            SellerNotes note = objNotesEntities.SellerNotes.Where(x => x.ID == id).FirstOrDefault();
+
+            Users user = objNotesEntities.Users.Find(note.SellerID);
+
+            note.Status = objNotesEntities.ReferenceData.Where(x => x.RefCategory == "Note Status" && x.Value.ToLower() == "removed").Select(x => x.ID).FirstOrDefault();
+            note.ModifiedBy = user.ID;
+            note.ModifiedDate = DateTime.Now;
+            objNotesEntities.Entry(note).State = EntityState.Modified;
+            objNotesEntities.SaveChanges();
+
+            string Remarks = unpublished.Remarks;
+
+
+            TempData["AdminDashboard"] = user.FirstName + " " + user.LastName;
+            TempData["Message"] = "Your Email has been Successfully Sent For UnPublished Note.";
+
+            return RedirectToAction("Dashboard", "Admin");
         }
 
 

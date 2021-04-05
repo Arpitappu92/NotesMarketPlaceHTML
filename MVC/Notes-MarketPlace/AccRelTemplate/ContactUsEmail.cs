@@ -13,7 +13,7 @@ namespace Notes_MarketPlace.AccRelTemplate
         {
             var fromEmail = new MailAddress("arpitprajapati92.am@gmail.com", "Notes Marketplace"); //need system email
             var toEmail = new MailAddress("arpitappu92.am@gmail.com");
-            var fromEmailPassword = "10032000@appu"; // Replace with actual password
+            var fromEmailPassword = "2012@Appu"; // Replace with actual password
             string subject = name + " - " + usersubject;
             string msg = "Hello,<br/>";
             msg += comment;

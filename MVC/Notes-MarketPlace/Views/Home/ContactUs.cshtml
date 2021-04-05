@@ -9,24 +9,17 @@
 <head>
 
 
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
-    <!--Title-->
     <title>Contact Us</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Fontawesome -->
-    <link rel="stylesheet" href="~/Content/css/font-awesome/css/all.css">
 
-    <!-- External CSS -->
     <link rel="stylesheet" href="~/Content/css/forms.css">
 
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/Content/css/responsive-forms.css">
 
 </head>
@@ -35,10 +28,8 @@
 
 
 
-    <!--Contact Us-->
     <section id="contact-us">
 
-        <!--Contact Banner-->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 banner-outer">
@@ -50,7 +41,6 @@
             </div>
         </div>
 
-        <!--Contact Us Form-->
         <div class="container-fluid" id="contactus-box">
             @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post, new { }))
             {
@@ -62,7 +52,6 @@
                     <p>Let us know how to get back to you</p>
 
                     <div class="row">
-                        <!--Left Side-->
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.FullName, "Full Name*", new { })
@@ -81,7 +70,6 @@
 
                         </div>
 
-                        <!--Right Side-->
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
                                 @Html.LabelFor(x => x.Question, "Comments/Questions *", new { })
@@ -92,7 +80,6 @@
 
                     </div>
 
-                    <!--Submit Button-->
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
 
@@ -106,14 +93,11 @@
             </div>
 
     </section>
-    <!--Contact Us Ends-->
-    <!-- JQuery -->
+  
     <script src="~/Scripts/jquery.min.js"></script>
 
-    <!-- Bootstrap JS -->
     <script src="~/Scripts/bootstrap/bootstrap.min.js"></script>
 
-    <!-- External JS -->
     <script src="~/Scripts/script.js"></script>
 
 

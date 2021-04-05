@@ -135,6 +135,7 @@
           <ScalarProperty Name="NoteID" ColumnName="NoteID" />
           <ScalarProperty Name="FileName" ColumnName="FileName" />
           <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
@@ -205,6 +206,8 @@
       <EntityTypeMapping TypeName="Model.SystemConfigurations">
         <MappingFragment StoreEntitySet="SystemConfigurations">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="keys" ColumnName="keys" />
+          <ScalarProperty Name="value" ColumnName="value" />
           <ScalarProperty Name="SupportEmail" ColumnName="SupportEmail" />
           <ScalarProperty Name="SupportContactNumber" ColumnName="SupportContactNumber" />
           <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />

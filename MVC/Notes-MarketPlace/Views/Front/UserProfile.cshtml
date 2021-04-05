@@ -8,37 +8,28 @@
 
 <head>
 
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
-    <!--Title-->
     <title>User Profile</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Fontawesome -->
     <link rel="stylesheet" href="~/Content/css/font-awesome/css/all.css">
 
-    <!-- Datetimepicker CSS -->
     <link rel="stylesheet" href="~/Content/css/datetimepicker/jquery.datetimepicker.css">
 
-    <!-- External CSS -->
     <link rel="stylesheet" href="~/Content/css/forms.css">
 
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/Content/css/responsive-forms.css">
 
 </head>
 
 <body>
 
-    <!-- User Profile -->
     <section id="user-profile">
 
-        <!-- User Profile Banner -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 banner-outer">
@@ -50,7 +41,6 @@
             </div>
         </div>
 
-        <!--User Profile Form-->
         <div class="container-fluid" id="uprofile-box">
 
             @using (Html.BeginForm("UserProfile", "Front", FormMethod.Post, new { @enctype = "multipart/form-data" }))
@@ -65,10 +55,7 @@
                             <div class="form-group">
                                 <label for="firstname">First Name *</label>
                                 <input type="text" class="form-control" id="firstname" placeholder="Enter your first name" required>
-                                @*
-                                    @Html.LabelFor(x => x.FullName, "First Name *", new { })
-                                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @id = "fname", @type = "text", @placeholder = "Enter your first name", Required = "required" })
-                                *@
+                               
                             </div>
                         </div>
 
@@ -76,10 +63,7 @@
                             <div class="form-group">
                                 <label for="lastname">Last Name *</label>
                                 <input type="text" class="form-control" id="lastname" placeholder="Enter your last name" required>
-                                @*
-                                    @Html.LabelFor(x => x.FullName, "Last Name *", new { })
-                                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @id = "lastname", @type = "text", @placeholder = "Enter your last name", Required = "required" })
-                                *@
+                              
                             </div>
                         </div>
 
@@ -87,10 +71,7 @@
                             <div class="form-group">
                                 <label for="email3">Email *</label>
                                 <input type="email" class="form-control" id="email3" placeholder="Enter your email address" required>
-                                @*
-                                    @Html.LabelFor(x => x.FullName, "Email *", new { })
-                                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @id = "email13", @type = "text", @placeholder = "Enter your email address", Required = "required" })
-                                *@
+                               
                             </div>
                         </div>
 
@@ -134,9 +115,7 @@
 
                                 </a>
                                 <input type="file" class="form-control" style="display: none" id="ppicture" name="ProfilePicture" />
-                                @*
-                                    @Html.TextBoxFor(x => x.ProfilePicture, new { @class = "form-control", style = "display: none", @id = "ppicture", name = "ProfilePicture", type = "file" })
-                                *@
+                               
                             </div>
                         </div>
 
@@ -220,7 +199,6 @@
 
                     </div>
 
-                    <!--Submit Button-->
                     <button class="btn submit-btn" type="submit">SUBMIT</button>
 
                 </form>
@@ -228,15 +206,12 @@
         </div>
 
     </section>
-    <!-- User Profile Ends -->
-    <!-- JQuery -->
+
     <script src="~/Scripts/jquery.min.js"></script>
 
 
-    <!-- Datetimepicker JS -->
     <script src="~/Scripts/datetimepicker/jquery.datetimepicker.full.min.js"></script>
 
-    <!-- External JS -->
     <script src="~/Scripts/js/script.js"></script>
 
 </body>

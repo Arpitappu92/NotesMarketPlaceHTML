@@ -9,40 +9,32 @@
 
 <head>
 
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
-    <!--Title-->
     <title>My Profile</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Fontawesome -->
     <link rel="stylesheet" href="~/Content/AdminCss/font-awesome/css/all.css">
 
-    <!-- External CSS -->
     <link rel="stylesheet" href="~/Content/css/forms.css">
 
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/Content/css/responsive-forms.css">
 
 </head>
 
 <body>
 
-    <!-- My Profile -->
     <section id="my-profile">
 
-        <!--My Profile Form-->
         <div class="container" id="my-profile-box">
 
 
             <h2 style="padding-bottom: 20px; color: #6255a5; font-weight: 600;">My Profile</h2>
 
-            @using (Html.BeginForm("UpdateProfile", "Front", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("MyProfile", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
             {
 
                 <div class="row">
@@ -50,9 +42,7 @@
                         <div class="form-group">
                             <input type="hidden" id="exampleInput" name="UserID" value="@Model.ID">
                             <label for="mp-firstname">First Name *</label>
-                            @*                            <input type="text" class="form-control" id="mp-firstname" placeholder="Enter your first name" required>
-                            *@
-
+                          
                             @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", @value = "@Model.FirstName", @placeholder = "Enter Your FirstName" })
                             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger errormessage" })
 
@@ -60,8 +50,7 @@
                         </div>
                         <div class="form-group">
                             <label for="mp-lastname">Last Name *</label>
-                            @*                            <input type="text" class="form-control" id="mp-lastname" placeholder="Enter your email address" required>
-                            *@
+                           
                             @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", @value = "@Model.LastName", @placeholder = "Enter Your LastName" })
                             @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger errormessage" })
 
@@ -70,8 +59,7 @@
                         </div>
                         <div class="form-group">
                             <label for="mp-email">Email *</label>
-                            @*                            <input type="email" class="form-control" id="mp-email" placeholder="Enter your email address" required>
-                            *@
+                          
 
                             @Html.TextBoxFor(x => x.EmailID, new { @class = "form-control", @value = "@Model.EmailID", @readonly = "readonly" })
                             @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger errormessage" })
@@ -79,9 +67,7 @@
                         </div>
                         <div class="form-group">
                             <label for="mp-secemail">Secondary Email</label>
-                            @*                            <input type="email" class="form-control" id="mp-secemail" placeholder="Enter your email address">
-                            *@
-
+                          
                             @Html.TextBoxFor(x => x.SecondaryEmail, new { @value = "@Model.SecondaryEmail", @class = "form-control", @placeholder = "Enter Your Secondary Email" })
                             @Html.ValidationMessageFor(model => model.SecondaryEmail, "", new { @class = "text-danger errormessage" })
 
@@ -95,47 +81,13 @@
 
 
 
-                            @* <label for="mp-pnumber mp-ccode">Phone Number</label><br>*@
-                            @*                            <select name="mp-ccode" id="mp-ccode">
-            <option value="india">(+91)India</option>
-            <option value="australia">(+61) Australia</option>
-            <option value="brazil">(+55)Brazil</option>
-            <option value="canada">(+1)Canada</option>
-            <option value="china">(+86)China</option>
-            <option value="france">(+33)France</option>
-            <option value="germany">(+49)Germany</option>
-            <option value="italy">(+39)Italy</option>
-            <option value="japan">(+81)Japan</option>
-            <option value="newzealand">(+64)New Zealand</option>
-            <option value="russia">(+7)Russia</option>
-            <option value="southafrica">(+27)South Africa</option>
-            <option value="switzerland">(+41)Switzerland</option>
-            <option value="unitedkingdom">(+44)United Kingdom</option>
-            <option value="unitedstates">(+1)United States</option>
-        </select>*@
-                            @*                            <input id="mp-pnumber" type="tel" class="form-control" placeholder="Enter your phone number" pattern="[0-9]{10}">
-                            *@
 
-    
-                                @Html.TextBoxFor(x => x.PhoneNumber, new { @value = "@Model.PhoneNumber", @class = "form-control phone-number-input", @placeholder = "Enter Your Phone Number" })
-                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger errormessage" })
+                            @Html.TextBoxFor(x => x.PhoneNumber, new { @value = "@Model.PhoneNumber", @class = "form-control phone-number-input", @placeholder = "Enter Your Phone Number" })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger errormessage" })
 
 
                         </div>
-                        @*                       <div class="form-group">
-                        <label for="=ppicture">Profile Picture</label><br>
-                        <button onClick="document.getElementById('ppicture').click()" class="btn" id="upload-btn">
-
-                            <img id="mp-img-preview" src="" alt="Image Preview">
-
-                            <span id="mp-default-text">
-                                <img src="images/assets/upload.png" alt="upload"><br>
-                                <p>Upload a picture </p>
-                            </span>
-
-                        </button>
-                        <input type="file" style="display: none" class="form-control" id="mp_ppicture" name="mp-ppicture">
-                    </div>*@
+                        
 
                         <div class="form-group">
                             <label for="ppicture">Profile Picture</label><br>
@@ -152,15 +104,12 @@
                             @Html.ValidationMessageFor(x => x.ProfilePicture, "", new { @class = "text-danger" })
 
                             <input type="file" class="form-control" style="display: none" id="ppicture" name="ProfilePicture" />
-                            @*
-                        @Html.TextBoxFor(x => x.ProfilePicture, new { @class = "form-control", style = "display: none", @id = "ppicture", name = "ProfilePicture", type = "file" })
-                            *@
+                      
                         </div>
                     </div>
 
                 </div>
 
-                <!--Submit Button-->
                 <button class="submit-btn btn" type="submit">SUBMIT</button>
 
             }
@@ -172,13 +121,11 @@
 
 
 
-    <!-- My Profilr Ends -->
-    <script src="~/Scripts/js/jQuery.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="~/Scripts/js/bootstrap/bootstrap.min.js"></script>
 
-    <!-- External JS -->
-    <script src="~/Scripts/js/script.js"></script>
+    <script src="~/Scripts/AdminJs/bootstrap/popper.min.js"></script>
+
+    <script src="~/Scripts/AdminJs/script.js"></script>
+
 
 
 </body>

@@ -11,24 +11,19 @@
 
 <head>
 
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
 
-    <!--Custom css-->
     <link href="~/Content/AdminCss/style.css" rel="stylesheet">
 
-    <!--Responsive css-->
     <link href="~/Content/AdminCss/responsive.css" rel="stylesheet">
 
 
-    <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
           rel="stylesheet">
 
-    <!-- Fontawesome -->
     <link rel="stylesheet" href="~/Content/AdminCss/font-awesome/css/all.css">
 
 </head>
@@ -45,48 +40,34 @@
 
             @using (Html.BeginForm("PublishedNotes", "Admin", FormMethod.Get, new { id = "AllSeachNote" }))
             {
-        <div class="mid-head">
-            <div class="drops">
-                <div class="search_detail">
-                    <p>Seller</p>
-                </div>
+                <div class="mid-head">
+                    <div class="drops">
+                        <div class="search_detail">
+                            <p>Seller</p>
+                        </div>
 
-                <div class="dropdown_tic">
-                    @*                           <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span>Khyati   </span>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Link1</a>
-                        <a class="dropdown-item" href="#">Link2</a>
-                        <a class="dropdown-item" href="#">Link3</a>
-                        <a class="dropdown-item" href="#">Link4</a>
+                        <div class="dropdown_tic">
+                           
+                            @Html.DropDownList("SellerName", (SelectList)ViewBag.SellerName, "Select Seller", new { id = "SellerName", name = "SellerName", @class = "form-control", onchange = "NoteFunction();" })
+
+                        </div>
 
                     </div>
 
-                </div>
-                    *@
-                    @Html.DropDownList("SellerName", (SelectList)ViewBag.SellerName, "Select Seller", new { id = "SellerName", name = "SellerName", @class = "form-control", onchange = "NoteFunction();" })
+                    <div style="display:flex; align-items:center;">
+                        <div class="search form-inline">
+                            <div class="searchContainer form-group">
+                                <i class="fas fa-search form-control-feedback "></i>
+                                <input type="text" name="Search" class="form-control" placeholder="Search" />
+                            </div>
 
-                </div>
-
-            </div>
-
-            <div style="display:flex; align-items:center;">
-                <div class="search form-inline">
-                    <div class="searchContainer form-group">
-                        <i class="fas fa-search form-control-feedback "></i>
-                        <input type="text" name="Search" class="form-control" placeholder="Search" />
+                        </div>
+                        <div class="bttn">
+                            <button type="submit" class="btn allBtn">SEARCH</button>
+                        </div>
                     </div>
 
                 </div>
-                <div class="bttn">
-                    <button type="submit" class="btn allBtn">SEARCH</button>
-                </div>
-            </div>
-            
-        </div>
             }
 
 
@@ -101,27 +82,16 @@
                         <table class="table table-bordered text-nowrap">
                             <thead>
                                 <tr>
-                                    @*<th>SR NO.</th>
-        <th>NOTE TITLE</th>
-        <th>CATEGORY</th>
-        <th class="text-center">SELL <br> TYPE</th>
-        <th>PRICE</th>
-        <th>SELLER</th>
-        <th></th>
-        <th>PUBLISHED DATE</th>
-        <th class="text-center">APPROVED <br> BY</th>
-        <th class="text-center">NUMBER OF<br> DOWNLOADS</th>
-        <th></th>*@
-
+                                  
 
                                     <th class="text-center">SR NO.</th>
-                                    <th >@Html.ActionLink("TITLE", "PublishedNotes", new { SortOrder = ViewBag.TitleSortParam, Search = Request.QueryString["Search"] })</th>
-                                    <th >@Html.ActionLink("CATEGORY", "PublishedNotes", new { SortOrder = ViewBag.CategorySortParam, Search = Request.QueryString["Search"] })</th>
-                                    <th >@Html.ActionLink("SELL TYPE", "PublishedNotes", new { SortOrder = ViewBag.SellTypeSortParam, Search = Request.QueryString["Search"] }) </th>
-                                    <th >@Html.ActionLink("PRICE", "PublishedNotes", new { SortOrder = ViewBag.PriceSortParam, Search = Request.QueryString["Search"] }) </th>
-                                    <th >@Html.ActionLink("SELLER", "PublishedNotes", new { SortOrder = ViewBag.SellerSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("TITLE", "PublishedNotes", new { SortOrder = ViewBag.TitleSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("CATEGORY", "PublishedNotes", new { SortOrder = ViewBag.CategorySortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("SELL TYPE", "PublishedNotes", new { SortOrder = ViewBag.SellTypeSortParam, Search = Request.QueryString["Search"] }) </th>
+                                    <th>@Html.ActionLink("PRICE", "PublishedNotes", new { SortOrder = ViewBag.PriceSortParam, Search = Request.QueryString["Search"] }) </th>
+                                    <th>@Html.ActionLink("SELLER", "PublishedNotes", new { SortOrder = ViewBag.SellerSortParam, Search = Request.QueryString["Search"] })</th>
                                     <th></th>
-                                    <th >@Html.ActionLink("PUBLISHED DATE", "PublishedNotes", new { SortOrder = ViewBag.DateSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("PUBLISHED DATE", "PublishedNotes", new { SortOrder = ViewBag.DateSortParam, Search = Request.QueryString["Search"] })</th>
                                     <th class="text-center">@Html.ActionLink("APPROVED BY", "PublishedNotes", new { SortOrder = ViewBag.ApprovedBySortParam, Search = Request.QueryString["Search"] })</th>
                                     <th class="text-center">NUMBER OF DOWNLOADS</th>
                                     <th></th>
@@ -131,173 +101,76 @@
                                 @{ IPagedList<Notes_MarketPlace.Models.PublishedNoteAdmin> PublishedNotes = ViewBag.NotesPublished; }
 
                                 @{ var count = 0;
-                                                if (PublishedNotes.Count == 0)
-                                                {
-                                    <tr>
-                                        <td colspan="11" class="text-center NoRecord">No Records Found</td>
-                                    </tr> } }
+                                    if (PublishedNotes.Count == 0)
+                                    {
+                                        <tr>
+                                            <td colspan="11" class="text-center NoRecord">No Records Found</td>
+                                        </tr>
+ } }
                                 @foreach (var item in PublishedNotes)
                                 {
-                            <tr>
-                                <td>@(count + ((PublishedNotes.PageNumber - 1) * PublishedNotes.PageSize) + 1)</td>
-                                <td>
-                                    <a href="/Admin/NoteDetailsAdmin/@item.NoteDetails.ID">  @item.NoteDetails.NoteTitle</a>
-                                </td>
-                                <td>
-                                    @item.Category.CategoryName
-                                </td>
-                                <td>
-                                    @if (@item.NoteDetails.isPaid == true)
-                                    {
-                            <p>Paid</p> }
-                        else
-                        {
-                            <p>Free</p>}
-                                </td>
-                                <td>
+                                    <tr>
+                                        <td>@(count + ((PublishedNotes.PageNumber - 1) * PublishedNotes.PageSize) + 1)</td>
+                                        <td>
+                                            <a style="color:#6255a5" href="/Admin/NoteDetails_Admin/@item.NoteDetails.ID">  @item.NoteDetails.NoteTitle</a>
+                                        </td>
+                                        <td>
+                                            @item.Category.CategoryName
+                                        </td>
+                                        <td>
+                                            @if (@item.NoteDetails.isPaid == true)
+                                            {
+                                                <p>Paid</p> }
+                                            else
+                                            {
+                                                <p>Free</p>}
+                                        </td>
+                                        <td>
 
-                                    @if (@item.NoteDetails.isPaid == true)
-                                    {
-                            <p> $ <span class="count"> @item.NoteDetails.SellPrice</span></p> }
-                        else
-                        {
-                            <p>$0</p>}
+                                            @if (@item.NoteDetails.isPaid == true)
+                                            {
+                                                <p> $ <span class="count"> @item.NoteDetails.SellPrice</span></p> }
+                                            else
+                                            {
+                                                <p>$0</p>}
 
-                                </td>
-                                <td>@item.user.FirstName @item.user.LastName</td>
-                                <td>
+                                        </td>
+                                        <td>@item.user.FirstName @item.user.LastName</td>
+                                        <td>
 
 
-                                    <a href="/Admin/MemberDetails/@item.NoteDetails.SellerID"><i class="far fa-eye"></i></a>
+                                            <a style="color:#6255a5" href="/Admin/MemberDetails/@item.NoteDetails.SellerID"><i class="far fa-eye"></i></a>
 
-                                </td>
-                                <td>
-                                    @item.NoteDetails.PublishedDate.Value.ToString("dd-MM-yyyy, HH:mm")
-                                </td>
-                                <td>@item.admin.FirstName @item.admin.LastName</td>
+                                        </td>
+                                        <td>
+                                            @item.NoteDetails.PublishedDate.Value.ToString("dd-MM-yyyy, HH:mm")
+                                        </td>
+                                        <td>@item.admin.FirstName @item.admin.LastName</td>
 
-                                <td class="text-center"><a href="/Admin/DownloadNotes?Search=@item.NoteDetails.NoteTitle" class="count">@item.NoteDetails.Downloads.Where(x => x.NoteID == @item.NoteDetails.ID && x.IsSellerHasAllowedDownload == true && x.AttachmentPath != null && x.IsAttachedDownloaded == true).Count()</a></td>
+                                        <td class="text-center"><a href="/Admin/DownloadNotes?Search=@item.NoteDetails.NoteTitle" class="count">@item.NoteDetails.Downloads.Where(x => x.NoteID == @item.NoteDetails.ID && x.IsSellerHasAllowedDownload == true && x.AttachmentPath != null && x.IsAttachedDownloaded == true).Count()</a></td>
 
-                                <td>
-                                    <div class="dropdown">
-                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        </i>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                             aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="/Admin/DownloadAttechedFile/@item.NoteDetails.ID">Download Notes</a>
-                                            <a class="dropdown-item" href="/Admin/NoteDetailsAdmin/@item.NoteDetails.ID">View More Details</a>
-                                            <a class="dropdown-item" href="#">Unpublish</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr> @*  <tr>
-                        <td>2</td>
-                        <td>Software Development</td>
-                        <td>IT</td>
-                        <td>Paid</td>
-                        <td>$195</td>
-                        <td>Rahul Shah</td>
-                        <td><i class="far fa-eye"></i></td>
-                        <td>25-11-2020, 11:08</td>
-                        <td>Raj Sheth</td>
-                        <td>75</td>
-                        <td>
-                            <div class="dropdown">
-                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                </i>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                     aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Download Notes</a>
-                                    <a class="dropdown-item" href="#">View More Details</a>
-                                    <a class="dropdown-item" href="#">Unpublish</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Software Development</td>
-                        <td>IT</td>
-                        <td>Paid</td>
-                        <td>$195</td>
-                        <td>Rahul Shah</td>
-                        <td><i class="far fa-eye"></i></td>
-                        <td>25-11-2020, 11:08</td>
-                        <td>Raj Sheth</td>
-                        <td>75</td>
-                        <td>
-                            <div class="dropdown">
-                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                </i>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                     aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Download Notes</a>
-                                    <a class="dropdown-item" href="#">View More Details</a>
-                                    <a class="dropdown-item" href="#">Unpublish</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Software Development</td>
-                        <td>IT</td>
-                        <td>Paid</td>
-                        <td>$195</td>
-                        <td>Rahul Shah</td>
-                        <td><i class="far fa-eye"></i></td>
-                        <td>25-11-2020, 11:08</td>
-                        <td>Raj Sheth</td>
-                        <td>75</td>
-                        <td>
-                            <div class="dropdown">
-                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                </i>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                     aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Download Notes</a>
-                                    <a class="dropdown-item" href="#">View More Details</a>
-                                    <a class="dropdown-item" href="#">Unpublish</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Software Development</td>
-                        <td>IT</td>
-                        <td>Paid</td>
-                        <td>$195</td>
-                        <td>Rahul Shah</td>
-                        <td><i class="far fa-eye"></i></td>
-                        <td>25-11-2020, 11:08</td>
-                        <td>Raj Sheth</td>
-                        <td>75</td>
-                        <td>
-                            <div class="dropdown">
-                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                </i>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                     aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Download Notes</a>
-                                    <a class="dropdown-item" href="#">View More Details</a>
-                                    <a class="dropdown-item" href="#">Unpublish</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>*@
+                                        <td>
+                                            <div class="dropdown">
+                                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                </i>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                                     aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="/Front/DownloadAttechedFile/@item.NoteDetails.ID">Download Notes</a>
+                                                    <a class="dropdown-item" href="/Admin/NoteDetails_Admin/@item.NoteDetails.ID">View More Details</a>
+                                                    <a class="dropdown-item" href="#">Unpublish</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                   
 
 
 
                                     { count = count + 1; }
 
                                 }
-                                        </tbody>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -308,24 +181,20 @@
             <div class="row paging">
                 <div class="col-md-12 text-center">
                     <div class="pagination ">
-                        @*<a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>*@
-
-
+                       
 
                         @Html.PagedListPager(PublishedNotes, page => Url.Action("PublishedNotes", new
-                        {
-                            page,
-                            Search = Request.QueryString["Search"],
-                            SortOrder = Request.QueryString["SortOrder"],
-                            SellerName = Request.QueryString["SellerName"]
-                        })
-, new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, MaximumPageNumbersToDisplay = 5 }
+                   {
+                       page,
+                       Search = Request.QueryString["Search"],
+                       SortOrder = Request.QueryString["SortOrder"],
+                       SellerName = Request.QueryString["SellerName"]
+                   })
+, new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+    DisplayPageCountAndCurrentLocation = false,
+    MaximumPageNumbersToDisplay = 5,
+    LiElementClasses = new string[] { "pagination" },
+}
 )
                     </div>
                 </div>
@@ -335,9 +204,10 @@
     </section>
 
 
-    <script src="js/jQuery.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap/popper.min.js"></script>
+
+    <script src="~/Scripts/AdminJs/bootstrap/popper.min.js"></script>
+
+    <script src="~/Scripts/AdminJs/script.js"></script>
 
 
 

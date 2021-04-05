@@ -10,21 +10,16 @@
 <head>
 
 
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
-    <!--Title-->
     <title>Add Notes</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- External CSS -->
     <link rel="stylesheet" href="~/Content/css/forms.css" type="text/css"/>
 
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/Content/css/responsive-forms.css" type="text/css"/>
 
 </head>
@@ -32,10 +27,7 @@
 <body>
 
 
-    <!--Add Notes-->
     <section id="add-notes">
-
-        <!--Banner-->
         <div class="container-fluid">
             <div class="row">
                 <div class="banner-outer col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -47,7 +39,6 @@
             </div>
         </div>
 
-        <!--Add Notes Form-->
         <div class="container-fluid" id="add-notes-box">
 
             @using (Html.BeginForm("AddNotes", "Front", FormMethod.Post, new { @enctype = "multipart/form-data" }))
@@ -97,8 +88,6 @@
                                 </a>
                                 <input type="file" style="display: none" class="form-control" id="an-dpicture" name="DisplayPicture" />
 
-@*                                @Html.TextBoxFor(x => x.DisplayPicture, new { @style = "display: none", @class = "form-control", @id = "an-dpicture", @Type = "file" })
-*@
                             </div>
                         </div>
 
@@ -117,7 +106,6 @@
                                 </a>
                             <input type="file" style = "display: none" class="form-control" id="an-unote" name="UploadNote" />
                                 
-                               @* @Html.TextBoxFor(x => x.FilePath, new { @style = "display: none", @class = "form-control", @id = "an-unote", @Type = "file", @required = "required" })*@
                             </div>
                         </div>
                     </div>
@@ -215,18 +203,14 @@
                             <div class="radio-group">
 
                                 <label for="free" class="radio-btn">
-@*                                    @Html.TextBoxFor(x => x.isPaid, new {@id = "free", @Type = "radio",value="false" ,name = "radio"})
-*@                                    @Html.RadioButtonFor(m => m.isPaid, "false", new { @id = "free", @Type = "radio", name = "radio" })
-                                   @* <input type="radio" name="radio" id="free" value="flase">*@
+                                   @Html.RadioButtonFor(m => m.isPaid, "false", new { @id = "free", @Type = "radio", name = "radio" })
                                     Free
                                     <span></span><span class="border-span"></span>
                                 </label>
 
                                 <label for="paid" class="radio-btn">
 
-@*                                   @Html.TextBoxFor(x => x.isPaid, new { @id = "paid", @Type = "radio", value = "true", name = "radio" })
-*@                                   @Html.RadioButtonFor(m => m.isPaid, "true", new { @id = "paid", @Type = "radio", name = "radio" })
-                                    @*<input type="radio" name="radio" id="paid"value="true">*@
+                                  @Html.RadioButtonFor(m => m.isPaid, "true", new { @id = "paid", @Type = "radio", name = "radio" })
                                     Paid
                                     <span></span><span class="border-span"></span>
                                 </label>
@@ -255,14 +239,12 @@
 
                                 </a>
                                 <input type="file" style="display: none" class="form-control" id="an-notepreview" name="PreviewUpload" />
-@*                                @Html.TextBoxFor(x => x.PreviewUpload, new { @style = "display: none", @class = "form-control", @id = "an-notepreview", @Type = "file", @required = "required" })
-*@                            </div>
+                           </div>
 
                         </div>
 
                     </div>
 
-                    <!--Buttons-->
                     <button class="btn submit-btn" id="an-save-btn">SAVE</button>
 
                     <button class="btn submit-btn" type="submit" value="submit" id="an-publish-btn">PUBLISH</button>
@@ -272,13 +254,11 @@
         </div>
 
     </section>
-    <!--Add Notes Ends-->
-    <!-- JQuery -->
+
     <script src="~/Scripts/jquery.min.js"></script>
 
     <script src="~/Scripts/js/forms.js"></script>
 
-    <!-- External JS -->
     <script src="~/Scripts/js/forms.js"></script>
 
 </body>

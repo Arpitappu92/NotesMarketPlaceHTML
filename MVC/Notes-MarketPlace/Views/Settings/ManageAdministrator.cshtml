@@ -1,38 +1,37 @@
-﻿
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<Notes_MarketPlace.Models.Users>
+
+@{ IEnumerable<Notes_MarketPlace.Models.UserProfile> adminnumber = ViewBag.UsersProfiles; }
+
 @{
     ViewBag.Title = "ManageAdministrator";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>ManageAdministrator</h2>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <!-- Important meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
 
-    <!-- Title -->
     <title>Manage-administrator</title>
 
 
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="~/Content/AdminCss/style.css">
 
-    <!-- Responsive CSS-->
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="~/Content/AdminCss/responsive.css">
 
 </head>
 
 <body>
 
 
-    <!-- Main Body-->
     <section id="mains">
 
         <div class="container">
@@ -45,29 +44,35 @@
 
 
                     <div class="large-bttn">
-                        <button type="submit" class="btn allBtn">ADD ADMINISTRATOR</button>
+                        <button type="submit" class="btn allBtn" onclick='window.location.href = "@Url.Action("AddAdministrator", "Settings", routeValues: null)"'>ADD ADMINISTRATOR</button>
                     </div>
 
                 </div>
 
-                <form>
-                    <div class="search form-inline">
-                        <div class="searchContainer form-group">
-                            <i class="fas fa-search form-control-feedback "></i>
-                            <input type="text" class="form-control" placeholder="Search" />
-                        </div>
+                @using (Html.BeginForm("ManageAdministrator", "Settings", FormMethod.Get))
+                {
 
-                    </div>
+                    <div style="display:flex; flex-direction:row; align-content: center;">
+                        <div class="search form-inline" style="margin-top: 10px;">
+        
+        <div class="searchContainer form-group" >
+            <i class="fas fa-search form-control-feedback "></i>
+            <input name="Search" type="text" class="form-control" placeholder="Search" />
+        </div>
+
+    </div>
                     <div class="bttn">
                         <button type="submit" class="btn allBtn">SEARCH</button>
                     </div>
-                </form>
+
+                        </div>
+                    }
             </div>
 
 
 
 
-            <div class="row manage-administrator-table">
+            <div class="row manage-administrator-table ">
 
                 <div class="col-md-12">
                     <div class="table-responsive{-sm|-md|-lg|-xl} data-table administrator_table">
@@ -75,91 +80,54 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">SR NO.</th>
-                                    <th>FIRST NAME</th>
-                                    <th>LAST NAME</th>
-                                    <th>EMAIL</th>
-                                    <th>PHONE NO.</th>
-                                    <th>DATE ADDED</th>
-                                    <th class="text-center">ACTIVE</th>
-                                    <th>ACTION</th>
+                                    <th>@Html.ActionLink("FIRST NAME", "ManageAdministrator", new { SortOrder = ViewBag.FirstNameSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("LAST NAME", "ManageAdministrator", new { SortOrder = ViewBag.LastNameSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("EMAIL", "ManageAdministrator", new { SortOrder = ViewBag.EmailIDSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("PHONE NO.", "ManageAdministrator", new { SortOrder = ViewBag.DateSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th>@Html.ActionLink("DATE ADDED", "ManageAdministrator", new { SortOrder = ViewBag.DateSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th class="text-center">@Html.ActionLink("ACTIVE", "ManageAdministrator", new { SortOrder = ViewBag.ActiveSortParam, Search = Request.QueryString["Search"] })</th>
+                                    <th scope="col">ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Khayati</td>
-                                    <td>Patel</td>
-                                    <td>khayatipatel@gmail.com</td>
-                                    <td>9897959512</td>
-                                    <td>09-10-2020, 10:10</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <i class="fas fa-pen"></i>
-                                        <span style="margin-left:10px;">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Rahul</td>
-                                    <td>Shah</td>
-                                    <td>rahulshah@gmail.com</td>
-                                    <td>9945321851</td>
-                                    <td>10-10-2020, 12:30</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <i class="fas fa-pen"></i>
-                                        <span style="margin-left:10px;">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Suman</td>
-                                    <td>Trivedi</td>
-                                    <td>sumantrivedi@gmail.com</td>
-                                    <td>7852189120</td>
-                                    <td>11-10-2020, 01:00</td>
-                                    <td>No</td>
-                                    <td>
-                                        <i class="fas fa-pen"></i>
-                                        <span style="margin-left:10px;">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Raj</td>
-                                    <td>Malhotra</td>
-                                    <td>rajmalhotra77@gmail.com</td>
-                                    <td>9825656874</td>
-                                    <td>12-10-2020, 10:10</td>
-                                    <td>Yes</td>
-                                    <td>
-                                        <i class="fas fa-pen"></i>
-                                        <span style="margin-left:10px;">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Niya</td>
-                                    <td>Patel</td>
-                                    <td>niyapatel12@gmail.com</td>
-                                    <td>8516794532</td>
-                                    <td>13-10-2020, 11:25</td>
-                                    <td>No</td>
-                                    <td>
-                                        <i class="fas fa-pen"></i>
-                                        <span style="margin-left:10px;">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                    </td>
-                                </tr>
+                                @{ var count = 0;
+                                    if (Model.Count == 0)
+                                    {
+                        <tr>
+                            <td colspan="8" class="text-center NoRecord">No Records Found</td>
+                        </tr>
+ } }
+                                @foreach (var item in Model)
+                                {
+                    <tr>
+                        <td>@(count + ((Model.PageNumber - 1) * Model.PageSize) + 1)</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.EmailId</td>
+                        <td>@adminnumber.Where(x => x.UserID == @item.ID).Select(y => y.PhoneCountryCode + " " + y.PhoneNumber).FirstOrDefault()</td>
+                        <td>
+                            @item.ModifiedDate.Value.ToString("dd-MM-yyyy, HH:mm")
+                        </td>
+                        <td>
+                            @if (@item.IsActive == true)
+                            {
+            <text>YES</text> }
+        else
+        {
+<text>NO</text>}
+                        </td>
+
+                        <td>
+                            <a onclick="return confirm('Are you sure you want to make this Admin Edit?')" href="/Settings/EditAdministrator/@item.ID"> <i class="fas fa-pen"></i> </a>
+
+                            <a onclick="return confirm('Are you sure you want to make this Admin inactive?')" href="/Settings/DeleteAdministrator/@item.ID">
+                                <span style="margin-left:10px;">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                            </a>
+                        </td>
+                    </tr>{ count = count + 1; }
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -169,15 +137,14 @@
 
             <div class="row paging">
                 <div class="col-md-12 text-center">
-                    <div class="pagination ">
-                        <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
-                    </div>
+                    @Html.PagedListPager(Model, page => Url.Action("Administrators", new
+                    {
+                        page,
+                        Search = Request.QueryString["Search"],
+                        SortOrder = Request.QueryString["SortOrder"]
+                    })
+                         , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = false, MaximumPageNumbersToDisplay = 5 }
+                         )
                 </div>
             </div>
         </div>
@@ -185,15 +152,7 @@
 
     </section>
 
-
-
-
-    <script src="../js/jQuery.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="../js/bootstrap/popper.min.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
-
-
+    <script src="~/Scripts/js/bootstrap/popper.min.js"></script>
 </body>
 
 </html>

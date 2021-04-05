@@ -10,29 +10,22 @@
 
 <head>
 
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
-    <!--Title-->
     <title>Notes Under Review</title>
 
-    <!-- Favicon -->
     <link rel="shortcut icon" href="images/home/favicon.ico">
 
-    <!--Custom css-->
     <link href="~/Content/AdminCss/style.css" rel="stylesheet">
 
-    <!--Responsive css-->
     <link href="~/Content/AdminCss/responsive.css" rel="stylesheet">
 
 
-    <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
           rel="stylesheet">
 
-    <!-- Fontawesome -->
     <link rel="stylesheet" href="~/Content/AdminCss/font-awesome/css/all.css">
 
 </head>
@@ -49,40 +42,40 @@
             <p id="tit">Notes Under Review </p>
             @using (Html.BeginForm("NotesUnderReview", "Admin", FormMethod.Get, new { id = "AllSeachNote" }))
             {
-        <div class="mid-head">
+<div class="mid-head">
 
-            <div class="drops">
+    <div class="drops">
 
-                <div class="search_detail">
-                    <p>Seller</p>
-                </div>
+        <div class="search_detail">
+            <p>Seller</p>
+        </div>
 
-                <div class="dropdown_tic">
-                    <div class="dropdown">
-                        @Html.DropDownList("SellerName", (SelectList)ViewBag.SellerName, "Select Seller", new { id = "SellerName", name = "SellerName", @class = "form-control", onchange = "NoteFunction();" })
-
-                    </div>
-                </div>
+        <div class="dropdown_tic">
+            <div class="dropdown">
+                @Html.DropDownList("SellerName", (SelectList)ViewBag.SellerName, "Select Seller", new { id = "SellerName", name = "SellerName", @class = "form-control", onchange = "NoteFunction();" })
 
             </div>
+        </div>
+
+    </div>
 
 
-            <div class="set">
-                <div class="search form-inline">
-                    <div class="searchContainer form-group">
-                        <i class="fas fa-search form-control-feedback "></i>
-                        <input type="text" class="form-control" placeholder="Search" />
-                    </div>
-
-                </div>
-                <div class="bttn">
-                    <button type="submit" class="btn allBtn">SEARCH</button>
-                </div>
+    <div class="set">
+        <div class="search form-inline">
+            <div class="searchContainer form-group">
+                <i class="fas fa-search form-control-feedback "></i>
+                <input type="text" class="form-control" placeholder="Search" />
             </div>
 
-        </div>            }
+        </div>
+        <div class="bttn">
+            <button type="submit" class="btn allBtn">SEARCH</button>
+        </div>
+    </div>
 
- 
+</div>}
+
+
 
 
             <div class="row notes_reviews">
@@ -93,20 +86,12 @@
                             <thead>
                                 <tr>
                                     <th>SR NO.</th>
-                                    @*<th>NOTE TITLE</th>
-                                                                  <th>CATEGORY</th>
-                                                                    <th>SELLER</th>
-                                <th></th>
-                                <th>DATE ADDED</th>
-                                <th>STATUS</th>*@
+                                   
                                     <th>@Html.ActionLink("NOTE TITLE", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.TitleSortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
                                     <th>@Html.ActionLink("CATEGORY", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.CategorySortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
-                                    @* <th>SELLER</th>*@
                                     <th>@Html.ActionLink("SELLER", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.SellerSortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
                                     <th></th>
-                                    @*<th>DATE ADDED</th>*@
                                     <th>@Html.ActionLink("DATE ADDED", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.DateSortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
-                                    @*<th>STATUS</th>*@
                                     <th>@Html.ActionLink("STATUS", "NotesUnderReview", new { SortOrderUnderReview = ViewBag.StatusSortParamPublish, SearchUnderReview = Request.QueryString["SearchUnderReview"] })</th>
 
                                     <th class="text-center"> ACTION </th>
@@ -120,39 +105,24 @@
                                 @{ var count = 0;
                                     if (UnderReview.Count == 0)
                                     {
-                            <tr>
-                                <td colspan="9" class="text-center NoRecord">No Records Found</td>
-                            </tr>
- } }
+                        <tr>
+                            <td colspan="9" class="text-center NoRecord">No Records Found</td>
+                        </tr> } }
                                 @foreach (var item in UnderReview)
-                                {@*<tr>
-                <td>1</td>
-                <td>Software Engineer</td>
-                <td>IT</td>
-                <td>Khyati Patel</td>
-                <td><i class="far fa-eye"></i></td>
-                <td>25-11-2020, 11:08</td>
-                <td>InReview</td>
-                <td class="menu-button">
-                    <button type="button" class="btn btn-top btn-approve">Approve</button>
-                    <button type="button" class="btn btn-top btn-reject" data-toggle="modal" data-target="#exampleModal">Reject</button>
-                    <button type="button" class="btn btn-top btn-inreview">InReview</button>
-                </td>
-                <td><i class="fa fa-ellipsis-v"></i></td>
-            </tr>*@
+                                {
 
 
                                                 <tr>
 
                                                     <td>@(count + ((UnderReview.PageNumber - 1) * UnderReview.PageSize) + 1)</td>
                                                     <td>
-                                                        <a href="/Admin/NoteDetails_admin/@item.NoteDetails.ID"> @item.NoteDetails.ID  @item.NoteDetails.NoteTitle</a>
+                                                        <a style="color:#6255a5" href="/Admin/NoteDetails_admin/@item.NoteDetails.ID"> @item.NoteDetails.NoteTitle</a>
                                                     </td>
                                                     <td>
                                                         @item.Category.CategoryName
                                                     </td>
                                                     <td>@item.user.FirstName @item.user.LastName</td>
-                                                    <td><a href="/Admin/MemberDetails/@item.NoteDetails.SellerID"> <i class="far fa-eye"></i></a> </td>
+                                                    <td><a  href="/AdminMember/MemberDetails/@item.NoteDetails.SellerID"> <i class="far fa-eye"></i></a> </td>
                                                     <td>
                                                         @item.NoteDetails.ModifiedDate
                                                     </td>
@@ -191,29 +161,37 @@
 
 
                                                     <td class="menu-button">
-   
+
                                                         @using (Html.BeginForm("Approve/" + @item.NoteDetails.ID, "Admin", FormMethod.Get, new { id = "AllSeachNote" }))
                                                         {
-                                                        <button onclick="return confirm('Are You Sure for Approve !!')" type="submit" class="btn btn-top btn-approve"> Approve </button>           
-                                            
-                                        }
-                                                    <button class="btn btn-top btn-reject" data-toggle="modal" data-target="#x_@item.NoteDetails.ID"> Reject </button>
-                                                            
+                                        <button onclick="return confirm('Are You Sure for Approve !!')" type="submit" class="btn btn-top btn-approve"> Approve </button>}
+                                                        <button class="btn btn-top btn-reject" data-toggle="modal" data-target="#x_@item.NoteDetails.ID"> Reject </button>
+
                                                         @using (Html.BeginForm("InReview/" + @item.NoteDetails.ID, "Admin", FormMethod.Get, new { id = "AllSeachNote" }))
                                                         {
                                         <button onclick="return confirm('Are You Sure for InReview !!')" type="submit" class="btn btn-top btn-inreview" id="">
                                             InReview
-                                        </button>
-                                        }
+                                        </button>}
                                                     </td>
 
 
-                                                    <td><i class="fa fa-ellipsis-v"></i></td>
-                                                </tr>{ count = count + 1; }
+                                                    <td><div class="dropdown">
+                                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                </i>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                                     aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="/Front/DownloadAttechedFile/@item.NoteDetails.ID">Download Notes</a>
+                                                    <a class="dropdown-item" href="/Admin/NoteDetails_Admin/@item.NoteDetails.ID">View More Details</a>
+                                                    <a class="dropdown-item" href="#">Unpublish</a>
+                                                </div>
+                                            </div></td>
+                                                </tr>
+{ count = count + 1; }
 
-                                                            }
+                                            }
 
-                               
+
                             </tbody>
                         </table>
                     </div>
@@ -223,42 +201,34 @@
 
             <div class="row paging">
                 <div class="col-md-12 text-center">
-                    <div class="pagination ">
-                        @*    <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
-                        *@
+                    
 
                         @Html.PagedListPager(UnderReview, NotesUnderReviewspage => Url.Action("NotesUnderReview", new
-                        {
-                            NotesUnderReviewspage,
-                            SearchUnderReview = Request.QueryString["SearchUnderReview"],
-                            SortOrderUnderReview = Request.QueryString["SearchUnderReview"]
-                        })
-                               , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true }
-                               )
+                   {
+                       NotesUnderReviewspage,
+                       SearchUnderReview = Request.QueryString["SearchUnderReview"],
+                       SortOrderUnderReview = Request.QueryString["SearchUnderReview"]
+                   })
+                                    , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+                                        DisplayPageCountAndCurrentLocation = false,
+                                        MaximumPageNumbersToDisplay = 5,
+                                        LiElementClasses = new string[] { "pagination" },
+                                    }
+                                    )
 
-                    </div>
+                  
                 </div>
             </div>
 
         </div>
-            </div>
-        </section>
+        </div>
+    </section>
+
+    <script src="~/Scripts/AdminJs/bootstrap/popper.min.js"></script>
+
+    <script src="~/Scripts/AdminJs/script.js"></script>
 
 
-        <script src="~/Scripts/AdminJs/jQuery.min.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="~/Scripts/AdminJs/bootstrap/bootstrap.min.js"></script>
-
-
-        <script src="~/Scripts/AdminJs/bootstrap/popper.min.js"></script>
-
-
-    </body>
+</body>
 
 </html>

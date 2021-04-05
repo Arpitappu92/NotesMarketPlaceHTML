@@ -9,36 +9,28 @@
 
 <head>
 
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
-    <!--Title-->
     <title>Home Page</title>
 
-    <!--Custom css-->
     <link href="~/Content/css/style.css" rel="stylesheet">
 
-    <!-- Responsive css-->
     <link href="~/Content/css/responsive.css" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Fontawesome -->
     <link rel="stylesheet" href="~/Content/css/font-awesome/css/all.css">
 
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.min.css">
 
 
 
-    <!-- Fontawesome -->
     <link rel="stylesheet" href="~/Content/css/font-awesome/css/all.css">
 
 
@@ -54,12 +46,9 @@
     </style>
 
 
-    <!-- FRONT HEADER LOGIN -->
     <header class="navbar-transparent">
-        <!-- Custom CSS -->
         <link rel="stylesheet" href="~/Content/css/front-header/header.css">
 
-        <!-- Responsive CSS -->
         <link rel="stylesheet" href="~/Content/css/front-header/header-responsive.css">
 
         <nav class="navbar fixed-top navbar-inner navbar-expand-lg navbar-light bg-light">
@@ -75,31 +64,31 @@
                 <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
                     <ul class="navbar-nav ">
                         <li class="menu-item">
-                            <a href="@Url.Action("SearchNotes", "Home")">Search Notes</a>
+                            <a class="menu-link" href="@Url.Action("SearchNotes", "Home")">Search Notes</a>
 
                         </li>
                         <li class="menu-item">
-                            <a href="@Url.Action("Dashboard", "Front")">Sell Your Notes</a>
+                            <a class="menu-link" href="@Url.Action("Dashboard", "Front")">Sell Your Notes</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="menu-item">
-                                <a href="@Url.Action("BuyerRequest", "Front")">Buyer Requests</a>
+                                <a class="menu-link" href="@Url.Action("BuyerRequest", "Front")">Buyer Requests</a>
                             </li>
                         }
                         <li class="menu-item">
-                            <a href="@Url.Action("FAQ", "Home")">FAQ</a>
+                            <a class="menu-link" href="@Url.Action("FAQ", "Home")">FAQ</a>
                         </li>
                         <li class="menu-item">
-                            <a href="@Url.Action("ContactUs", "Home")">Contact Us</a>
+                            <a class="menu-link" href="@Url.Action("ContactUs", "Home")">Contact Us</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li>
                                 <div class="dropdown">
-                                    <a href="#" style="margin-right: 15px;" type="button" id="dropdownMenuButton"
+                                    <a href="#" style="margin-right: 5px;" type="button" id="dropdownMenuButton"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="@Html.Action("GetPP", "Front")">
+                                        <img alt="Image placeholder" width="40" height="40" style="border-radius: 50%;" src="@Html.Action("GetPP", "Front")">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-center "
                                          aria-labelledby="dropdownMenuButton">
@@ -109,7 +98,7 @@
                                         <a class="dropdown-item" href="#">My Rejected Notes</a>
                                         <a class="dropdown-item" href="@Url.Action("ChangePassword", "Front")">Change Password</a>
                                         <a class="dropdown-item" href="@Url.Action("Logout", "Account")" style="color: #6255a5">LOGOUT</a>
-                                         
+
                                     </div>
                                 </div>
                             </li>
@@ -143,8 +132,7 @@
         </nav>
     </header>
 
-    <!-- FRONT HEADER LOGIN ENDS-->
-
+ 
 
 
     <div class="content-box-lg">
@@ -308,7 +296,6 @@
 
             </div>
 
-            <!-- 1 row -->
             <div class="col-md-12 col-md-12" style="margin-top: 30px;">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
@@ -362,7 +349,6 @@
                 </div>
 
             </div>
-            <!-- 1 row end-->
 
         </div>
     </div>
@@ -370,27 +356,19 @@
 
 
 
-    <!-- JQuery -->
-    <script src="~/Script/js/jQuery.min.js"></script>
+
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
-    <!-- Custom JS -->
     <script src="~/Scripts/AdminJs/headerjs/js/header.js"></script>
 
+    <script src="~/Scripts/AdminJs/bootstrap/bootstrap.bundle.min.js"></script>
 
-
-    <!-- Bootstrap JS -->
-  <script src="~/Script/js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap JS -->
+    <script src="~/Script/js/bootstrap/popper.min.js"></script>
     <script src="~/Script/js/bootstrap/bootstrap.min.js"></script>
 
     <script src="~/Script/js/header.js"></script>
 
-@*
-    <script src="~/Script/jquery-3.4.1.min.js"></script>
-    <script src="~/Script/jquery.validate.min.js"></script>
-    <script src="~/Script/jquery.validate.unobtrusive.min.js"></script>
-*@
+    <script src="~/Scripts/js/script.js"></script>
 
 
 </body>

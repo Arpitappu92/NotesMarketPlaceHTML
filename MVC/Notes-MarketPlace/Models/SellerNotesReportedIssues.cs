@@ -26,7 +26,6 @@ namespace Notes_MarketPlace.Models
     
         public virtual Downloads Downloads { get; set; }
         public virtual SellerNotes SellerNotes { get; set; }
-        public virtual SellerNotesReportedIssues SellerNotesReportedIssues1 { get; set; }
-        public virtual SellerNotesReportedIssues SellerNotesReportedIssues2 { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

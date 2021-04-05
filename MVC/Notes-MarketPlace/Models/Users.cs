@@ -21,6 +21,7 @@ namespace Notes_MarketPlace.Models
             this.Downloads1 = new HashSet<Downloads>();
             this.SellerNotes = new HashSet<SellerNotes>();
             this.SellerNotes1 = new HashSet<SellerNotes>();
+            this.SellerNotesReportedIssues = new HashSet<SellerNotesReportedIssues>();
             this.SellerNotesReviews = new HashSet<SellerNotesReviews>();
             this.UserProfile = new HashSet<UserProfile>();
         }
@@ -46,6 +47,8 @@ namespace Notes_MarketPlace.Models
         public virtual ICollection<SellerNotes> SellerNotes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SellerNotes> SellerNotes1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SellerNotesReportedIssues> SellerNotesReportedIssues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SellerNotesReviews> SellerNotesReviews { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

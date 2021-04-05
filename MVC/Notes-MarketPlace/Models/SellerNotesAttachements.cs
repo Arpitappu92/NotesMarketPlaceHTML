@@ -18,6 +18,7 @@ namespace Notes_MarketPlace.Models
         public int NoteID { get; set; }
         public string FileName { get; set; }
         public string FilePath { get; set; }
+        public string FileSize { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }

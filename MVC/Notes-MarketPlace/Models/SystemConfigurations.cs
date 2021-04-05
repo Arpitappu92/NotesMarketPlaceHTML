@@ -15,6 +15,8 @@ namespace Notes_MarketPlace.Models
     public partial class SystemConfigurations
     {
         public int ID { get; set; }
+        public string keys { get; set; }
+        public string value { get; set; }
         public string SupportEmail { get; set; }
         public string SupportContactNumber { get; set; }
         public string EmailAddress { get; set; }

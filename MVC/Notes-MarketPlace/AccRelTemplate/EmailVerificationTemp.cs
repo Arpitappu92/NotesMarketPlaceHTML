@@ -14,7 +14,7 @@ namespace Notes_MarketPlace.AccRelTemplate
         {
             var fromEmail = new MailAddress("arpitprajapati92.am@gmail.com", "Notes Marketplace"); //need system email
             var toEmail = new MailAddress(objUser.EmailId);
-            var fromEmailPassword = "10032000@appu"; // Replace with actual password
+            var fromEmailPassword = "2012@Appu"; // Replace with actual password
             string subject = "Notes Marketplace - Email Verification";
             string msg = "Hello " + objUser.FirstName + " " + objUser.LastName + "<br/>";
             msg += "<br/>Thank you for signing up with us.Please click on below link to verify your email address and to do login.<br/>";

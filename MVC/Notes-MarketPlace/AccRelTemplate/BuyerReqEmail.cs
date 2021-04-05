@@ -13,9 +13,9 @@ namespace Notes_MarketPlace.AccRelTemplate
 
         public static void BuyerNotifyEmail(Users objUser, Users sellerRecord)
         {
-            var fromEmail = new MailAddress("arpitprajapati92.am@gmail.com", "Notes Marketplace"); //need system email
+            var fromEmail = new MailAddress("arpitprajapati92.am@gmail.com", "Notes Marketplace"); 
             var toEmail = new MailAddress(sellerRecord.EmailId);
-            var fromEmailPassword = "2012@Appu"; // Replace with actual password
+            var fromEmailPassword = "2012@Appu"; 
             string subject = " " + objUser.FirstName + " " + objUser.LastName + " - wants to purchase your notes";
             string body = "Hello " + sellerRecord.FirstName + " " + sellerRecord.LastName + "<br/>";
             body += "<br/>We would like to inform you that, <b> " + objUser.FirstName + " " + objUser.LastName + "</b>" +

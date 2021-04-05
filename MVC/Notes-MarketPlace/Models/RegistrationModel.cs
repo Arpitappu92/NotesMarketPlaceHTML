@@ -10,9 +10,11 @@ namespace Notes_MarketPlace.Models
     public class RegistrationModel
     {
             [Required(ErrorMessage = "Please Enter Your First Name")]
+            [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "only alphabet allowed !")]  
             public string FirstName { get; set; }
 
             [Required(ErrorMessage = "Please Enter Your Last Name")]
+            [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "only alphabet allowed !")]
             public string LastName { get; set; }
 
             [Required(ErrorMessage = "Please Enter EmailID")]
@@ -22,6 +24,7 @@ namespace Notes_MarketPlace.Models
 
             [Display(Name = "Password")]
             [Required(ErrorMessage = "Please Enter Password")]
+            [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#$^+=!*()@%&]).{6,24}$", ErrorMessage = "Invalid password format")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 

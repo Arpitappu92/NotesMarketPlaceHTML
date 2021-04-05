@@ -8,7 +8,9 @@ namespace Notes_MarketPlace.Models
     public class SellereNotesAttachmentsModel
     {
         public int NoteID { get; set; }
+
         public string FileName { get; set; }
+
         public HttpPostedFileBase FilePath { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }

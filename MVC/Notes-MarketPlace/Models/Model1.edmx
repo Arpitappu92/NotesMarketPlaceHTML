@@ -133,6 +133,7 @@
           <Property Name="NoteID" Type="int" Nullable="false" />
           <Property Name="FileName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="FilePath" Type="varchar(max)" Nullable="false" />
+          <Property Name="FileSize" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="int" />
           <Property Name="ModifiedDate" Type="datetime" />
@@ -143,7 +144,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NoteID" Type="int" Nullable="false" />
           <Property Name="ReportedByID" Type="int" Nullable="false" />
           <Property Name="AgainstDownloadID" Type="int" Nullable="false" />
@@ -198,6 +199,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="keys" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="value" Type="varchar(max)" Nullable="false" />
           <Property Name="SupportEmail" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="SupportContactNumber" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
@@ -412,14 +415,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SellerNotesReportedIssues_SellerNotesReportedIssues">
-          <End Role="SellerNotesReportedIssues" Type="Self.SellerNotesReportedIssues" Multiplicity="1" />
-          <End Role="SellerNotesReportedIssues1" Type="Self.SellerNotesReportedIssues" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SellerNotesReportedIssues" Type="Self.SellerNotesReportedIssues" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SellerNotesReportedIssues">
+            <Principal Role="Users">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SellerNotesReportedIssues1">
-              <PropertyRef Name="ID" />
+            <Dependent Role="SellerNotesReportedIssues">
+              <PropertyRef Name="ReportedByID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -561,8 +564,8 @@
             <End Role="SellerNotesReportedIssues" EntitySet="SellerNotesReportedIssues" />
           </AssociationSet>
           <AssociationSet Name="FK_SellerNotesReportedIssues_SellerNotesReportedIssues" Association="Self.FK_SellerNotesReportedIssues_SellerNotesReportedIssues">
+            <End Role="Users" EntitySet="Users" />
             <End Role="SellerNotesReportedIssues" EntitySet="SellerNotesReportedIssues" />
-            <End Role="SellerNotesReportedIssues1" EntitySet="SellerNotesReportedIssues" />
           </AssociationSet>
           <AssociationSet Name="FK_SellerNotesReviews_Downloads" Association="Self.FK_SellerNotesReviews_Downloads">
             <End Role="Downloads" EntitySet="Downloads" />
@@ -742,6 +745,7 @@
           <Property Name="NoteID" Type="Int32" Nullable="false" />
           <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
@@ -753,7 +757,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NoteID" Type="Int32" Nullable="false" />
           <Property Name="ReportedByID" Type="Int32" Nullable="false" />
           <Property Name="AgainstDownloadID" Type="Int32" Nullable="false" />
@@ -764,8 +768,7 @@
           <Property Name="ModifiedBy" Type="Int32" />
           <NavigationProperty Name="Downloads" Relationship="Self.FK_SellerNotesReportedIssues_Downloads" FromRole="SellerNotesReportedIssues" ToRole="Downloads" />
           <NavigationProperty Name="SellerNotes" Relationship="Self.FK_SellerNotesReportedIssues_SellerNotes" FromRole="SellerNotesReportedIssues" ToRole="SellerNotes" />
-          <NavigationProperty Name="SellerNotesReportedIssues1" Relationship="Self.FK_SellerNotesReportedIssues_SellerNotesReportedIssues" FromRole="SellerNotesReportedIssues" ToRole="SellerNotesReportedIssues1" />
-          <NavigationProperty Name="SellerNotesReportedIssues2" Relationship="Self.FK_SellerNotesReportedIssues_SellerNotesReportedIssues" FromRole="SellerNotesReportedIssues1" ToRole="SellerNotesReportedIssues" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_SellerNotesReportedIssues_SellerNotesReportedIssues" FromRole="SellerNotesReportedIssues" ToRole="Users" />
         </EntityType>
         <EntityType Name="SellerNotesReviews">
           <Key>
@@ -815,6 +818,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="keys" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SupportEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SupportContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -888,6 +893,7 @@
           <NavigationProperty Name="Downloads1" Relationship="Self.FK_Downloads_Users1" FromRole="Users" ToRole="Downloads" />
           <NavigationProperty Name="SellerNotes" Relationship="Self.FK_SellerNotes_Users" FromRole="Users" ToRole="SellerNotes" />
           <NavigationProperty Name="SellerNotes1" Relationship="Self.FK_SellerNotes_Users1" FromRole="Users" ToRole="SellerNotes" />
+          <NavigationProperty Name="SellerNotesReportedIssues" Relationship="Self.FK_SellerNotesReportedIssues_SellerNotesReportedIssues" FromRole="Users" ToRole="SellerNotesReportedIssues" />
           <NavigationProperty Name="SellerNotesReviews" Relationship="Self.FK_SellerNotesReviews_Users" FromRole="Users" ToRole="SellerNotesReviews" />
           <NavigationProperty Name="UserProfile" Relationship="Self.FK_UserProfile_Users" FromRole="Users" ToRole="UserProfile" />
           <NavigationProperty Name="UserRole" Relationship="Self.FK_Users_UserRole" FromRole="Users" ToRole="UserRole" />
@@ -1075,14 +1081,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SellerNotesReportedIssues_SellerNotesReportedIssues">
-          <End Role="SellerNotesReportedIssues" Type="Self.SellerNotesReportedIssues" Multiplicity="1" />
-          <End Role="SellerNotesReportedIssues1" Type="Self.SellerNotesReportedIssues" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SellerNotesReportedIssues" Type="Self.SellerNotesReportedIssues" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SellerNotesReportedIssues">
+            <Principal Role="Users">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SellerNotesReportedIssues1">
-              <PropertyRef Name="ID" />
+            <Dependent Role="SellerNotesReportedIssues">
+              <PropertyRef Name="ReportedByID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1200,8 +1206,8 @@
             <End Role="SellerNotesReviews" EntitySet="SellerNotesReviews" />
           </AssociationSet>
           <AssociationSet Name="FK_SellerNotesReportedIssues_SellerNotesReportedIssues" Association="Self.FK_SellerNotesReportedIssues_SellerNotesReportedIssues">
+            <End Role="Users" EntitySet="Users" />
             <End Role="SellerNotesReportedIssues" EntitySet="SellerNotesReportedIssues" />
-            <End Role="SellerNotesReportedIssues1" EntitySet="SellerNotesReportedIssues" />
           </AssociationSet>
           <AssociationSet Name="FK_SellerNotesReviews_Users" Association="Self.FK_SellerNotesReviews_Users">
             <End Role="Users" EntitySet="Users" />
@@ -1356,6 +1362,7 @@
                 <ScalarProperty Name="NoteID" ColumnName="NoteID" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
@@ -1426,6 +1433,8 @@
             <EntityTypeMapping TypeName="Model.SystemConfigurations">
               <MappingFragment StoreEntitySet="SystemConfigurations">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="keys" ColumnName="keys" />
+                <ScalarProperty Name="value" ColumnName="value" />
                 <ScalarProperty Name="SupportEmail" ColumnName="SupportEmail" />
                 <ScalarProperty Name="SupportContactNumber" ColumnName="SupportContactNumber" />
                 <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />

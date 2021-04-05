@@ -21,11 +21,6 @@ namespace Notes_MarketPlace.Controllers
         {
             int id = Int16.Parse(Request.Cookies["ID"].Value);
 
-            /*       ViewBag.Country = objNotesEntities.Country.Where(x => x.IsActive == true);
-                   ViewBag.NoteType = objNotesEntities.NoteTypes.Where(x => x.IsActive == true);
-                   ViewBag.NoteCategory = objNotesEntities.NoteCategories.Where(x => x.IsActive == true);
-       */
-
 
             List<SellerNotes> NoteTitle = objNotesEntities.SellerNotes.OrderBy(x => x.NoteTitle).Where(x => x.IsActive == true && (x.NoteTitle.StartsWith(search) || search == null)).ToList();
             List<NoteCategories> CategoryName = objNotesEntities.NoteCategories.ToList();
@@ -33,21 +28,7 @@ namespace Notes_MarketPlace.Controllers
             List<Country> CountryName = objNotesEntities.Country.ToList();
 
 
-            /*          var notes = objNotesEntities.SellerNotes.Where(x => x.NoteTitle.StartsWith(search) || search == null).ToList();
-                      var cr = objNotesEntities.Country.ToList();
-
-                      var seachedNotes = (from n in notes
-                                          join c in cr on n.ID equals c.ID into table1
-                                          from c in table1.ToList()
-                                          select new nd
-                                          {
-                                              note = n,
-                                              countryname = c
-                                          }).ToList();
-
-                      ViewBag.filterNotes = seachedNotes;
-
-                     */
+       
             var AllNotesRecords = from noti in NoteTitle
                                   join catnam in CategoryName on noti.NoteCategory equals catnam.ID into table1
                                   from catnam in table1.ToList()
@@ -67,7 +48,6 @@ namespace Notes_MarketPlace.Controllers
                                       status = stnam,
                                       Country = coname,
                                   };
-            /*ViewBag.nd = objNotesEntities.SellerNotes.Where(x => x.NoteTitle.StartsWith(search) || search == null).ToList().Count();*/
 
 
             ViewBag.TotalNotesRecord = AllNotesRecords.Count();
@@ -78,7 +58,6 @@ namespace Notes_MarketPlace.Controllers
             ViewBag.Category = new SelectList(objNotesEntities.NoteCategories, "ID", "CategoryName");
             ViewBag.NoteType = new SelectList(objNotesEntities.NoteTypes, "ID", "TypeName");
 
-            /*List<SellerNotes> stnam = objNotesEntities.SellerNotes.ToList();*/
 
             return View(AllNotesRecords.ToList().ToPagedList(pagesearch ?? 1, 9));
 

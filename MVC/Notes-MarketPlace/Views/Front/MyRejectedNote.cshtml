@@ -10,21 +10,16 @@
 
 <head>
 
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
-    <!--Title-->
     <title>My Rejected Notes</title>
 
-    <!--Custom css-->
     <link href="~/Content/css/style.css" rel="stylesheet">
 
-    <!--Responsive css-->
     <link href="~/Content/css/responsive.css" rel="stylesheet">
 
-    <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
           rel="stylesheet">
 
@@ -61,16 +56,14 @@
                 <div class="col-md-12">
                     <div class="table-responsive{-sm|-md|-lg|-xl} data-table rejected_note">
                         <table class="table table-bordered text-nowrap">
+                            <style>
+                                th > a {
+                                    color: black;
+                                }
+                            </style>
                             <thead>
                                 <tr>
-                                    @*                                    <th>SR NO.</th>
-                                            <th>NOTE TITLE</th>
-                                            <th>CATEGORY</th>
-                                            <th>REMARKS</th>
-                                            <th>CLONE </th>
-                                            <th class="text-center"></th>
-                                        </tr>*@
-
+                                 
 
                                     <th>SR NO.</th>
                                     <th>@Html.ActionLink("NOTE TITLE", "MyRejectedNote", new { SortOrderProgress = ViewBag.TitleSortParm, SearchText = Request.QueryString["SearchText"] }) </th>
@@ -89,118 +82,45 @@
 
                                     if (Rejected.Count == 0)
                                     {
-                                    <tr>
-                                        <td colspan="6" class="text-center NoRecord">No Records Found</td>
-                                    </tr> }
+                                        <tr>
+                                            <td colspan="6" class="text-center NoRecord">No Records Found</td>
+                                        </tr>
+ }
 
                                     foreach (var Note in Rejected)
                                     {
 
-                            <tr>
-                                <td>@(count + ((Rejected.PageNumber - 1) * Rejected.PageSize) + 1)</td>
-                                <td><a href="/HomePage/NoteDetails/@Note.NoteDetails.ID"> @Note.NoteDetails.NoteTitle</a></td>
-                                <td> @Note.Category.CategoryName</td>
-                                <td> @Note.NoteDetails.AdminRemarks</td>
-                                <td><a onclick="return confirm('Are You Sure For Clone !!')" href="/Front/Clone/@Note.NoteDetails.ID"> Clone</a></td>
-                                <td>
-                                    <div class="dropdown">
-                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        </i>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                             aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="/Front/AttechedFile/@Note.NoteDetails.ID">Download Note</a>
+                                        <tr>
+                                            <td>@(count + ((Rejected.PageNumber - 1) * Rejected.PageSize) + 1)</td>
+                                            <td><a style="color:#6255a5" href="/HomePage/NoteDetails/@Note.NoteDetails.ID"> @Note.NoteDetails.NoteTitle</a></td>
+                                            <td> @Note.Category.CategoryName</td>
+                                            <td> @Note.NoteDetails.AdminRemarks</td>
+                                            <td><a onclick="return confirm('Are You Sure For Clone !!')" style="color:#6255a5" href="/Front/Clone/@Note.NoteDetails.ID"> Clone</a></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    </i>
+                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                                         aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="/Front/AttechedFile/@Note.NoteDetails.ID">Download Note</a>
 
-                                        </div>
-                                    </div>
+                                                    </div>
+                                                </div>
 
-                                </td>
-                            </tr> 
+                                            </td>
+                                        </tr>
+
                                         { count = count + 1; }
                                     }
-                                    }
+                                }
 
 
 
 
 
-                                    @*                                <tr>
-                                <td>2</td>
-                                <td>Software Engineer</td>
-                                <td>IT</td>
-                                <td> Dummy texts</td>
-                                <td>Clone</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        </i>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                             aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Download Note</a>
-
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Software Engineer</td>
-                                <td>IT</td>
-                                <td> Dummy texts</td>
-                                <td>Clone</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        </i>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                             aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Download Note</a>
-
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Software Engineer</td>
-                                <td>IT</td>
-                                <td> Dummy texts</td>
-                                <td>Clone</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        </i>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                             aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Download Note</a>
-
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Software Engineer</td>
-                                <td>IT</td>
-                                <td> Dummy texts</td>
-                                <td>Clone</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        </i>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                             aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Download Note</a>
-
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>*@
-                                                </tbody>
+                            
+                            </tbody>
 
                         </table>
                     </div>
@@ -210,29 +130,24 @@
 
             <div class="row paging">
                 <div class="col-md-12 text-center">
-                    <div class="pagination ">
-                        @*                      <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
-                        *@
+                   
 
 
                         @Html.PagedListPager(Rejected, page => Url.Action("MyRejectedNote", new
-                        {
-                            page,
-                            SearchText = Request.QueryString["SearchText"],
-                            SortOrderProgress = Request.QueryString["SortOrderProgress"]
+                   {
+                       page,
+                       SearchText = Request.QueryString["SearchText"],
+                       SortOrderProgress = Request.QueryString["SortOrderProgress"]
 
-                        })
-                       , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, MaximumPageNumbersToDisplay = 5 }
+                   })
+                       , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+                           DisplayPageCountAndCurrentLocation = false,
+                           MaximumPageNumbersToDisplay = 5,
+                           LiElementClasses = new string[] { "pagination" },
+                       }
                        )
 
 
-                    </div>
                 </div>
             </div>
         </div>

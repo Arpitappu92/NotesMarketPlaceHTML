@@ -6,15 +6,12 @@
     <title>Document</title>
 
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 
-    <!-- Fontawesome -->
     <link rel="stylesheet" href="~/Content/css/font-awesome/css/all.css">
 
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/Content/AdminCss/bootstrap/bootstrap.min.css">
 
 
@@ -23,18 +20,18 @@
 
 </head>
 <body>
-
-    <!-- Admin logout Header -->
+    <style>
+        th > a {
+            color: black;
+        }
+    </style>
     <header>
-        <!-- Custom CSS -->
         <link rel="stylesheet" href="~/Content/AdminCss/admin-header/css/header1.css">
 
-        <!-- Responsive CSS -->
         <link rel="stylesheet" href="~/Content/AdminCss/admin-header/css/header-responsive.css">
 
         @if (User.Identity.IsAuthenticated)
         {
-            @*<nav class="navbar navbar-expand-lg navbar-light bg-light">*@
             <nav class="navbar fixed-top navbar-inner navbar-expand-lg navbar-light bg-light">
                 <div class="container">
                     <a class="navbar-brand" href="#">
@@ -47,7 +44,7 @@
                     <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
                             <li class="menu-item">
-                                <a href="@Url.Action("Dashboard", "Admin")">Dashboard</a>
+                                <a class="menu-link" href="@Url.Action("Dashboard", "Admin")">Dashboard</a>
                             </li>
                             <li class="menu-item">
                                 <div class="dropdown">
@@ -67,10 +64,21 @@
                             </li>
 
                             <li class="menu-item">
-                                <a href="#">Members</a>
+                                <a class="menu-link" href="@Url.Action("Members", "AdminMember")">Members</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#">Reports</a>
+                                <div class="dropdown">
+                                    <a href="#" type="button" id="dropdownMenuButton"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Reports
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-center "
+                                         aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="/Admin/SpamReports">Spam Reports</a>
+                                
+
+                                    </div>
+                                </div>
                             </li>
                             <li class="menu-item">
                                 <div class="dropdown">
@@ -80,8 +88,8 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-center "
                                          aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Manage System Configuration</a>
-                                        <a class="dropdown-item" href="#">Manage Administrator</a>
+                                        <a class="dropdown-item" href="@Url.Action("ManageSystemConfiguration", "Settings")">Manage System Configuration</a>
+                                        <a class="dropdown-item" href="@Url.Action("ManageAdministrator", "Settings")">Manage Administrator</a>
                                         <a class="dropdown-item" href="#">Manage Category</a>
                                         <a class="dropdown-item" href="#">Manage Type</a>
                                         <a class="dropdown-item" href="#">Manage Countries</a>
@@ -94,13 +102,13 @@
                                 <div class="dropdown">
                                     <a href="#" type="button" id="dropdownMenuButton"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/team-4.jpg">
+                                        <img alt="Image placeholder" width="30" height="30" style="border-radius: 50%;" src="@Html.Action("GetPP", "Front")">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-center"
                                          aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="@Url.Action("MyProfile", "Admin")">Update Profile</a>
                                         <a class="dropdown-item" href="@Url.Action("ChangePassword", "Front")">Change Password</a>
-                                        <a class="dropdown-item" href="#" style="color: #6255a5">LOGOUT</a>
+                                        <a class="dropdown-item" href="@Url.Action("Logout", "Account")" style="color: #6255a5">LOGOUT</a>
 
                                     </div>
                                 </div>
@@ -146,19 +154,46 @@
 
 
 
-    <!-- JQuery -->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
     <script src="~/Scripts/AdminJs/jQuery.min.js"></script>
 
-
-    <!-- Bootstrap JS -->
     <script src="~/Scripts/AdminJs/bootstrap/bootstrap.min.js"></script>
 
-    <script src="~/Scripts/AdminJs/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="~/Scripts/AdminJs/bootstrap/popper.min.js"></script>
 
-    <!-- Custom JS -->
-    <!--<script src="~/Scripts/AdminJs/header.js"></script>-->
 
+
+
+
+    <script>
+        $(document).ready(function () {
+            var url2 = window.location.href.split('/');
+            var url4 = url2[4].split('?');
+            var url5 = url4[0];
+            var url = url2.slice(0, 4).join('/') + '/' + url5;
+            var url3 = window.location.href;
+            $('.navbar .navbar-nav a[href="' + url + '"]').addClass('active');
+            $('.navbar .navbar-nav a').filter(function () {
+                return this.href == url;
+            }).addClass('active');
+        });
+
+        $(document).ready(function () {
+            var url2 = window.location.href.split('/');
+            var url4 = url2[4].split('?');
+            var url5 = url4[0];
+            var url = url2.slice(0, 4).join('/') + '/' + url5;
+            $('.navbar .navbar-nav .dropdown-menu a[href="' + url + '"]').parent().parent().addClass('active');
+            $('.navbar .navbar-nav .dropdown-menu a').filter(function () {
+                return this.href == url;
+            }).parent().parent().addClass('active');
+        });
+
+    </script>
 
 </body>
 </html>

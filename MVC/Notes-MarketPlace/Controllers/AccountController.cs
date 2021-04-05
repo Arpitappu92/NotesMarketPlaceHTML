@@ -48,13 +48,10 @@ namespace Notes_MarketPlace.Controllers
                 objNotesEntities.SaveChanges();
 
 
-
-                // Generating Email Verification Link
                 var activationCode = obj.Password;
                 var verifyUrl = "/Account/VerifyAccount/" + activationCode;
                 var activationlink = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
 
-                // Sending Email
                 EmailVerificationTemp.SendVerifyLinkEmail(obj, activationlink);
                 ViewBag.Title = "Notes_MarketPlace";
                 @TempData["UserName"] = obj.FirstName.ToString();
@@ -76,8 +73,7 @@ namespace Notes_MarketPlace.Controllers
         {
             using (NotesEntities DBobj = new NotesEntities())
             {
-                DBobj.Configuration.ValidateOnSaveEnabled = false; // This line I have added here to avoid 
-                                                                      // Confirm password does not match issue on save changes
+                DBobj.Configuration.ValidateOnSaveEnabled = false; 
                 var ema = DBobj.Users.Where(x => x.Password == id).FirstOrDefault();
                 if (ema != null)
                 {
@@ -104,7 +100,6 @@ namespace Notes_MarketPlace.Controllers
 
 
         [Route("Login")]
-        // GET: Account
         [HttpGet]
         public ActionResult Login()
         {
@@ -118,7 +113,6 @@ namespace Notes_MarketPlace.Controllers
             if (ModelState.IsValid)
             {
 
-                //Encrypt Password and Save
                 var newPassword = EncryptPasswords.EncryptPasswordMd5(ObjLogin.Password);
 
                 bool isValid = objNotesEntities.Users.Any(x => x.EmailId == ObjLogin.EmailId && x.Password == newPassword);
@@ -143,13 +137,7 @@ namespace Notes_MarketPlace.Controllers
                         else
                         {
 
-                            /*      var Emailid = User.Identity.Name.ToString();
-                       var v = objNotesMarketPlaceEntities.Users.Where(x => x.EmailID == Emailid).FirstOrDefault();*/
-                            /*UserProfile userprofile = objNotesMarketPlaceEntities.UserProfile.Where(x => x.UserID == userDetails.UserID).FirstOrDefault();
-                            if (userprofile != null)
-                            {
-                                return RedirectToAction("SearchNotesPage", "HomePage");
-                            }*/
+                  
                             return RedirectToAction("Dashboard", "Front");
                         }
 
@@ -186,11 +174,9 @@ namespace Notes_MarketPlace.Controllers
                     var otp = rand.Next();
                     var strotp = otp.ToString();
 
-                    //Encrypt Password and Save
                     userDetails.Password = EncryptPasswords.EncryptPasswordMd5(strotp);
                     objNotesEntities.SaveChanges();
 
-                    //Sent Otp On email address
                     ForgetPasswordEmail.SendOtpToEmail(userDetails, otp);
 
                     TempData["Message"] = "Otp Sent To Your Registered EmailAddress use it for login";

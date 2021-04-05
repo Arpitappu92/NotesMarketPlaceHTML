@@ -11,16 +11,13 @@
 
 <head>
 
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
 
-    <!--Custom css-->
     <link href="~/Content/css/style.css" rel="stylesheet">
 
-    <!-- Responsive css-->
     <link href="~/Content/css/responsive.css" rel="stylesheet">
 
 </head>
@@ -54,6 +51,11 @@
                 <div class="col-md-12">
                     <div class="table-responsive{-sm|-md|-lg|-xl} data-table buy_request">
                         <table class="table table-bordered text-nowrap">
+                            <style>
+                                th > a {
+                                    color: black;
+                                }
+                            </style>
                             <thead>
                                 <tr>
                                     <th>SR NO.</th>
@@ -63,19 +65,11 @@
                                     <th>PHONE No.</th>
                                     <th>SELL <br /> TYPE</th>
                                     <th>@Html.ActionLink("PRICE", "BuyerRequest", new { SortOrder = ViewBag.PriceSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
-                                    <th class="text-center">@Html.ActionLink("DOWNLOADED DATE/TIME", "BuyerRequest", new { SortOrder = ViewBag.DateSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] }) </th>
+                                    <th class="text-center">DOWNLOADED <br /> @Html.ActionLink("DATE/TIME", "BuyerRequest", new { SortOrder = ViewBag.DateSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] }) </th>
                                     <th class="text-center"></th>
                                     <th></th>
 
-                                    @*<th scope="col" class="text-center">sr no.</th>
-                                        <th scope="col"> @Html.ActionLink("Note Title", "BuyerRequest", new { SortOrder = ViewBag.TitleSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
-                                        <th scope="col"> @Html.ActionLink("CATEGORY", "BuyerRequest", new { SortOrder = ViewBag.CategorySortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
-                                        <th scope="col">buyer</th>
-                                        <th scope="col">Phone no.</th>
-                                        <th scope="col">sell type</th>
-                                        <th scope="col">@Html.ActionLink("price", "BuyerRequest", new { SortOrder = ViewBag.PriceSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
-                                        <th scope="col">@Html.ActionLink("Requested date/time", "BuyerRequest", new { SortOrder = ViewBag.DateSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
-                                        <th scope="col"></th>*@
+                                 
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,137 +77,44 @@
 
                                     if (Model.Count == 0)
                                     {
-                                        <tr>
-                                            <td colspan="10" class="text-center NoRecord">No Records Found</td>
-                                        </tr>
-                                    }
+                        <tr>
+                            <td colspan="10" class="text-center NoRecord">No Records Found</td>
+                        </tr> }
 
                                     foreach (var Note in Model)
                                     {
-                                        <tr>
-                                            <td>@(count + ((Model.PageNumber - 1) * Model.PageSize) + 1)</td>
-                                            <td><a href="/HomePage/NoteDetails/@Note.DownloadNote.NoteID"> @Note.DownloadNote.NoteTitle</a></td>
-                                            <td>@Note.DownloadNote.NoteCategory</td>
-                                            <td>EMAIL ID</td>
-                                            <td>+@Note.UserProfileNote.PhoneCountryCode @Note.UserProfileNote.PhoneNumber</td>
-                                            <td>
-                                                @if (@Note.DownloadNote.IsPaid == true)
-                                                {
-                                                    <text>Paid</text> }
-                                                else
-                                                {
-                                                    <text>Free</text>}
-                                            </td>
-                                            <td>$<span class="count">@Note.DownloadNote.PurchasedPrice</span></td>
-                                            <td>@Note.DownloadNote.CreatedDate</td>
-                                            <td><i class="far fa-eye"> </i> </td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    </i>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                                         aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Yes, I Received</a>
+                        <tr>
+                            <td>@(count + ((Model.PageNumber - 1) * Model.PageSize) + 1)</td>
+                            <td ><a style="color:#6255a5" href="/Front/NoteDetails/@Note.DownloadNote.NoteID"> @Note.DownloadNote.NoteTitle</a></td>
+                            <td>@Note.DownloadNote.NoteCategory</td>
+                            <td>@Note.BuyerDetail.EmailId</td>
+                            <td>@Note.UserProfileNote.PhoneCountryCode @Note.UserProfileNote.PhoneNumber</td>
+                            <td>
+                                @if (@Note.DownloadNote.IsPaid == true)
+                                {
+                        <text>Paid</text> }
+                    else
+                    {
+                        <text>Free</text>}
+                            </td>
+                            <td>$<span class="count">@Note.DownloadNote.PurchasedPrice</span></td>
+                            <td>@Note.DownloadNote.CreatedDate</td>
+                            <td> <a href="/Front/NoteDetails/@Note.DownloadNote.NoteID"><i class="far fa-eye"> </i></a> </td>
+                            <td>
+                                <div class="dropdown">
+                                    <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    </i>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                         aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="/Front/AllowDownload/@Note.DownloadNote.ID">Allow Download</a>
 
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        { count = count + 1; }
+                                    </div>
+                                </div>
+                            </td>
+                        </tr> { count = count + 1; }
                                     } }
-                                @*<tr>
-                                        <td>2</td>
-                                        <td>Software Engineer</td>
-                                        <td>IT</td>
-                                        <td> xyz@gmail.com</td>
-                                        <td>+91 8141539620</td>
-                                        <td>Free</td>
-                                        <td>$0</td>
-                                        <td>09-10-2020, 10:10</td>
-                                        <td><i class="far fa-eye"></i></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                </i>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                                     aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="#">Download Note</a>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Software Engineer</td>
-                                        <td>IT</td>
-                                        <td> xyz@gmail.com</td>
-                                        <td>+91 8141539620</td>
-                                        <td>Paid</td>
-                                        <td>$500</td>
-                                        <td>09-10-2020, 10:10</td>
-                                        <td><i class="far fa-eye"></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                </i>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                                     aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="#">Download Note</a>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Software Engineer</td>
-                                        <td>IT</td>
-                                        <td> xyz@gmail.com</td>
-                                        <td>+91 8141539620</td>
-                                        <td>Paid</td>
-                                        <td>$200</td>
-                                        <td>09-10-2020, 10:10</td>
-                                        <td><i class="far fa-eye"></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                </i>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                                     aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="#">Download Note</a>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Software Engineer</td>
-                                        <td>IT</td>
-                                        <td> xyz@gmail.com</td>
-                                        <td>+91 8141539620</td>
-                                        <td>Free</td>
-                                        <td>$0</td>
-                                        <td>09-10-2020, 10:10</td>
-                                        <td><i class="far fa-eye"></i></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                </i>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                                     aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="#">Download Note</a>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>*@
+                           
                             </tbody>
                         </table>
                     </div>
@@ -223,26 +124,22 @@
 
             <div class="row paging">
                 <div class="col-md-12 text-center">
-                    <div class="pagination ">
-                        @*    <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
-                            <a href="#" class="active">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
-                        *@
+                    
 
                         @Html.PagedListPager(Model, page => Url.Action("BuyerRequest", new
-                        {
-                            page,
-                            SearchNoteTitle = Request.QueryString["SearchNoteTitle"],
-                            SortOrder = Request.QueryString["SortOrder"]
-                        })
-                     , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true }
+                   {
+                       page,
+                       SearchNoteTitle = Request.QueryString["SearchNoteTitle"],
+                       SortOrder = Request.QueryString["SortOrder"]
+                   })
+                     , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+                         DisplayPageCountAndCurrentLocation = false,
+                         MaximumPageNumbersToDisplay = 5,
+                         LiElementClasses = new string[] { "pagination" },
+                     }
                      )
 
-                    </div>
+                
                 </div>
             </div>
         </div>
@@ -251,8 +148,8 @@
 
 
 
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="~/Scripts/js/bootstrap/popper.min.js"></script>
+    <script src= "~/Scripts/js/bootstrap/bootstrap.bundle.min.js"></script>
 
 
 

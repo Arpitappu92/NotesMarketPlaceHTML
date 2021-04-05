@@ -1,4 +1,4 @@
-﻿@using PagedList;
+﻿ @using PagedList;
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "Dashboard";
@@ -9,28 +9,21 @@
 <html lang="en">
 
 <head>
-    <!--Important meta tags-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1">
 
-    <!--Title-->
     <title>Dashboard</title>
 
-    <!-- Favicon -->
     <link rel="shortcut icon" href="images/home/favicon.ico">
 
-    <!--Custom css-->
     <link href="~/Content/AdminCss/style.css" rel="stylesheet">
 
-    <!--Responsive css-->
     <link href="~/Content/AdminCss/responsive.css" rel="stylesheet">
 
-    <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
           rel="stylesheet">
 
-    <!-- Fontawesome -->
     <link rel="stylesheet" href="~/Content/AdminCss/font-awesome/css/all.css">
 
 </head>
@@ -56,19 +49,19 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="box7">
-                                    <h2 class="counter">20</h2>
+                                    <h2 class="counter">@TempData["UnderReviewNotes"]</h2>
                                     <p>Number of Notes in Review for Publish</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="box8">
-                                    <h2 class="counter">103</h2>
+                                    <h2 class="counter">@TempData["7DayDownloads"]</h2>
                                     <p>Number of New Notes Downloaded <br /> (Last 7 days) </p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="box9">
-                                    <h2 class="counter">223</h2>
+                                    <h2 class="counter">@TempData["7DayRegistrations"]</h2>
                                     <p>Number of New Registrations (Last 7 days) </p>
                                 </div>
                             </div>
@@ -80,7 +73,6 @@
             </div>
         </div>
     </section>
-    <!-- next -->
 
     <section class="middle">
         <div class="container">
@@ -91,7 +83,7 @@
             <div class="search form-inline">
                 <div class="searchContainer form-group">
                     <i class="fas fa-search form-control-feedback"></i>
-                    <input type="text" class="form-control" placeholder="Search" />
+                    <input type="text" name="SearchPublished" class="form-control" placeholder="Search" />
                 </div>
             </div>
                             <div class="bttn">
@@ -128,18 +120,6 @@
                     <div class="table-responsive{-sm|-md|-lg|-xl} data-table dashboard">
                         <table class="table table-bordered text-nowrap">
                             <thead>
-                                @*<tr>
-            <th>SR NO.</th>
-            <th>TITLE</th>
-            <th>CATEGORY</th>
-            <th>ATTACHMENT<br> SIZE</th>
-            <th>SELL TYPE</th>
-            <th>PRICE</th>
-            <th>PUBLISHER</th>
-            <th>PUBLISHED DATE </th>
-            <th>NUMBER OF<br> DOWNLOADS</th>
-            <th class="text-center"></th>
-        </tr>*@
 
                                 <tr>
                                     <th>SR NO.</th>
@@ -152,9 +132,9 @@
                                     <th>@Html.ActionLink("PUBLISH DATE", "Dashboard", new { SortOrderPublished = ViewBag.DateSortParamPublish, SearchPublished = Request.QueryString["SearchPublished"] })</th>
                                     <th>@Html.ActionLink("NUMBER OF DOWNLOADS", "Dashboard", new { SortOrderPublished = ViewBag.DownloadsSortParamPublish, SearchPublished = Request.QueryString["SearchPublished"] })</th>
                                     <th class="text-center"></th>
-
                                 </tr>
                             </thead>
+
                             <tbody>
                                 @{ IPagedList<Notes_MarketPlace.Models.AllPublishedNote> Published = ViewBag.PublishedNote; }
 
@@ -169,11 +149,11 @@
 
                             <tr>
                                 <td>@(count + ((Published.PageNumber - 1) * Published.PageSize) + 1)</td>
-                                <td><a href="/Admin/NoteDetailsAdmin/@item.NoteDetails.ID">  @item.NoteDetails.NoteTitle</a> </td>
+                                <td><a style="color:#6255a5" href="/Admin/NoteDetails_Admin/@item.NoteDetails.ID">  @item.NoteDetails.NoteTitle</a> </td>
                                 <td>
                                     @item.Category.CategoryName
                                 </td>
-                                <td>5 KB</td>
+                                <td>@item.attachment.FileSize KB</td>
                                 <td>
                                     @if (@item.NoteDetails.isPaid == true)
                                     {
@@ -197,7 +177,7 @@
                                     @item.NoteDetails.PublishedDate
                                 </td>
 
-                                <td class="text-center"><a href="4.3.3-Downloaded-Notes.html" class="count">@item.NoteDetails.Downloads.Where(x => x.NoteID == @item.NoteDetails.ID).Count()</a></td>
+                                <td class="text-center"><a style="color:#6255a5" href="/Admin/DownloadedNotes" class="count">@item.NoteDetails.Downloads.Where(x => x.NoteID == @item.NoteDetails.ID).Count()</a></td>
                                 <td>
                                     <div class="dropdown">
                                         <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
@@ -205,8 +185,8 @@
                                         </i>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
                                              aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Download Notes</a>
-                                            <a class="dropdown-item" href="#">View More Details</a>
+                                            <a class="dropdown-item" href="/Admin/DownloadAttechedFile/@item.NoteDetails.ID">Download Notes</a>
+                                            <a class="dropdown-item" href="/Admin/NoteDetails_Admin/@item.NoteDetails.ID">View More Details</a>
                                             <a class="dropdown-item" href="#">Unpublish</a>
 
                                         </div>
@@ -215,98 +195,8 @@
                             </tr>
                                     { count = count + 1; }
                                 }
-@*                                            <tr>
-                                                <td>2</td>
-                                                <td>Software Engineer</td>
-                                                <td>IT</td>
-                                                <td> 50 MB</td>
-                                                <td>Free</td>
-                                                <td>$0</td>
-                                                <td>Arpit Prajapati</td>
-                                                <td>09-10-2020, 10:10</td>
-                                                <td>20</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        </i>
-                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                                             aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" href="#">Download Note</a>
 
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>Software Engineer</td>
-                                                                <td>IT</td>
-                                                                <td> 50 MB</td>
-                                                                <td>Paid</td>
-                                                                <td>$500</td>
-                                                                <td>Arpit Prajapati</td>
-                                                                <td>09-10-2020, 10:10</td>
-                                                                <td>30</td>
-                                                                <td>
-                                                                    <div class="dropdown">
-                                                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        </i>
-                                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                                                             aria-labelledby="dropdownMenuButton">
-                                                                            <a class="dropdown-item" href="#">Download Note</a>
 
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                                            <tr>
-                                                                                <td>4</td>
-                                                                                <td>Software Engineer</td>
-                                                                                <td>IT</td>
-                                                                                <td> 50 MB</td>
-                                                                                <td>Paid</td>
-                                                                                <td>$200</td>
-                                                                                <td>Arpit Prajapati</td>
-                                                                                <td>09-10-2020, 10:10</td>
-                                                                                <td>40</td>
-                                                                                <td>
-                                                                                    <div class="dropdown">
-                                                                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                                                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                        </i>
-                                                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                                                                             aria-labelledby="dropdownMenuButton">
-                                                                                            <a class="dropdown-item" href="#">Download Note</a>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>5</td>
-                                                                                                <td>Software Engineer</td>
-                                                                                                <td>IT</td>
-                                                                                                <td> 50 MB</td>
-                                                                                                <td>Free</td>
-                                                                                                <td>$0</td>
-                                                                                                <td>Arpit Prajapati</td>
-                                                                                                <td>09-10-2020, 10:10</td>
-                                                                                                <td>50</td>
-                                                                                                <td>
-                                                                                                    <div class="dropdown">
-                                                                                                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
-                                                                                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                                        </i>
-                                                                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
-                                                                                                             aria-labelledby="dropdownMenuButton">
-                                                                                                            <a class="dropdown-item" href="#">Download Note</a>
-
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>*@
                                                                                                         </tbody>
                         </table>
                     </div>
@@ -318,23 +208,20 @@
             <div class="row paging">
                 <div class="col-md-12 text-center">
                     <div class="pagination ">
-                        @*<a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
-                        *@
+                     
 
                         @Html.PagedListPager(Published, PublishedNotespage => Url.Action("Dashboard", new
-                        {
-                            PublishedNotespage,
-                            SearchPublished = Request.QueryString["SearchPublished"],
-                            SortOrderPublished = Request.QueryString["SearchPublished"]
+                   {
+                       PublishedNotespage,
+                       SearchPublished = Request.QueryString["SearchPublished"],
+                       SortOrderPublished = Request.QueryString["SearchPublished"]
 
-                        })
-                              , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true }
+                   })
+                              , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+                                  DisplayPageCountAndCurrentLocation = false,
+                                  MaximumPageNumbersToDisplay = 5,
+                                  LiElementClasses = new string[] { "pagination" },
+                              }
                               )
 
 
@@ -349,20 +236,9 @@
 
 
 
-    <script src="~/Scripts/AdminJs/jQuery.min.js"></script>
 
-    <!-- Bootstrap JS -->
-
-    <script src="~/Scripts/AdminJs/bootstrap/bootstrap.min.js"></script>
     <script src="~/Scripts/AdminJs/bootstrap/popper.min.js"></script>
 
-
-    @*    <script src="~/Scripts/AdminJs/counter/jquery.counterup.min.js"></script>
-    *@
-    <script src="~/Scripts/AdminJs/waypoints/jquery.waypoints.min.js"></script>
-
-
-    <!-- Custom JS -->
     <script src="~/Scripts/AdminJs/script.js"></script>
 
 

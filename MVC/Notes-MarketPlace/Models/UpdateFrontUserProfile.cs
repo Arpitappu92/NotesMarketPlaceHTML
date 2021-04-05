@@ -30,12 +30,28 @@ namespace Notes_MarketPlace.Models
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Gender { get; set; }
         public string PhoneCountryCode { get; set; }
+        [Required(ErrorMessage = "Please Enter Phone Number")]
+        [RegularExpression("^[0-9]{1,12}$", ErrorMessage = "Only Numerics Allowed with max 12 !")]
+
         public string PhoneNumber { get; set; }
         public HttpPostedFileBase ProfilePicture { get; set; }
+        [Required(ErrorMessage = "Please Enter AddressLine1")]
+
         public string AddressLine1 { get; set; }
+        [Required(ErrorMessage = "Please Enter AddressLine2")]
+
         public string AddressLine2 { get; set; }
+
+
+        [Required(ErrorMessage = "Please Enter Phone City")]
+
         public string City { get; set; }
+        [Required(ErrorMessage = "Please Enter State")]
+
         public string State { get; set; }
+        [Required(ErrorMessage = "Please Enter Zip Code")]
+        [RegularExpression("^[0-9]{1,8}$", ErrorMessage = "Only Numerics Allowed with max 8 !")]
+
         public string ZipCode { get; set; }
         public int Country { get; set; }
         public string University { get; set; }
