@@ -1,0 +1,163 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<Notes_MarketPlace.Models.MySoldNote>
+
+@{
+    ViewBag.Title = "MySoldNotes";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <link href="~/Content/css/style.css" rel="stylesheet">
+
+    <link href="~/Content/css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <section class="my_sold_notes">
+
+        <div class="container">
+            <div class="middle-head">
+                <p> My Sold Notes </p>
+
+                @using (Html.BeginForm("MySoldNotes", "Member", FormMethod.Get, new { id = "AllSeachNote" }))
+                {
+    <div class="search form-inline">
+        <div class="searchContainer form-group">
+            <i class="fas fa-search form-control-feedback "></i>
+            <input type="text" name="SearchNoteTitle" class="form-control" placeholder="Search" />
+        </div>
+
+    </div>
+                    <div class="bttn">
+                        <button type="submit" class="btn allBtn">SEARCH</button>
+                    </div>}
+
+            </div>
+
+
+            <div class="row my_sold_note">
+
+                <div class="col-md-12">
+                    <div class="table-responsive{-sm|-md|-lg|-xl} data-table sold_notes">
+                        <table class="table table-bordered text-nowrap">
+                            <style>
+                                th > a {
+                                    color: black;
+                                }
+                            </style>
+                            <thead>
+
+                                <tr>
+                                    <th>SR NO.</th>
+                                    <th> @Html.ActionLink("NOTE TITLE", "MySoldNotes", new { SortOrder = ViewBag.TitleSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
+                                    <th> @Html.ActionLink("CATEGORY", "MySoldNotes", new { SortOrder = ViewBag.CategorySortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
+                                    <th>BUYER</th>
+                                    <th>@Html.ActionLink("SELL TYPE", "MySoldNotes", new { SortOrder = ViewBag.SellTypeSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
+                                    <th>@Html.ActionLink("PRICE", "MySoldNotes", new { SortOrder = ViewBag.PriceSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
+                                    <th>@Html.ActionLink("DOWNLOADED DATE/TIME", "MySoldNotes", new { SortOrder = ViewBag.DateSortParm, SearchNoteTitle = Request.QueryString["SearchNoteTitle"] })</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+
+
+                            </thead>
+                            <tbody>
+
+                                @{ var count = 0;
+
+                                    if (Model.Count == 0)
+                                    {
+                        <tr>
+                            <td colspan="8" class="text-center NoRecord">No Records Found</td>
+                        </tr> }
+
+                                    foreach (var Note in Model)
+                                    {
+                        <tr>
+                            <td>@(count + ((Model.PageNumber - 1) * Model.PageSize) + 1)</td>
+                            <td><a style="color:#6255a5" href="/HomePage/NoteDetails/@Note.DownloadNote.NoteID"> @Note.DownloadNote.NoteTitle</a></td>
+                            <td>@Note.DownloadNote.NoteCategory</td>
+                            <td>arpitprajapati92.am@gmail.com</td>
+                            <td>
+                                @if (@Note.DownloadNote.IsPaid == true)
+                                {
+                <text>Paid</text> }
+            else
+            {
+<text>Free</text>}
+                            </td>
+                            <td>$<span class="count">@Note.DownloadNote.PurchasedPrice</span></td>
+                            <td>@Note.DownloadNote.CreatedDate</td>
+                            <td>
+                                <a style="color:#6255a5" href="/Front/NoteDetails/@Note.DownloadNote.NoteID"><i class="far fa-eye"></i></a>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    </i>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                         aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="/Front/AttechedFile/@Note.DownloadNote.ID">Download Note</a>
+
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+ { count = count + 1; }
+                    } }
+                         
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row paging">
+                <div class="col-md-12 text-center">
+           
+
+                        @Html.PagedListPager(Model, page => Url.Action("MyDownloads", new
+                   {
+                       page,
+                       SearchNoteTitle = Request.QueryString["SearchNoteTitle"],
+                       SortOrder = Request.QueryString["SortOrder"]
+                   })
+                          , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+                              DisplayPageCountAndCurrentLocation = false,
+                              MaximumPageNumbersToDisplay = 5,
+                              LiElementClasses = new string[] { "pagination" },
+                          }
+                          )
+
+
+                
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+
+    <script src="~/Scripts/js/bootstrap/popper.min.js"></script>
+    <script src="~/Scripts/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

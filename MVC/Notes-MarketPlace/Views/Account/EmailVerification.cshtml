@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "EmailVerification";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Email Verification</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/logins-type.css">
+
+    <link rel="stylesheet" href="~/Content/css/logins-type-responsive.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <script src="~/Scripts/js/bootstrap/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <img src="~/Userimages/home/logo.png" id="emailveriid" height="37" width="280">
+
+                <h1 id="ev"> Email Verification </h1>
+
+                <h2 id="ev1"> Dear  @TempData["UserName"],  </h2>
+
+                <p class="p-ev"> Thanks for Signing up! </p>
+
+                <p class="p-ev"> Simply click below for email verification. </p>
+
+                <button type="button" onclick="location.href='http://www.gmail.com'" class="btn" id="evbtn"> VERIFY EMAIL ADDRESS </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

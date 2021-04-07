@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "ManageSystemConfiguration";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ManageSystemConfiguration</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <!-- Title -->
+    <title>Manage System Configuration</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/good-to-have.css">
+
+</head>
+
+<body>
+
+    <!-- Main Body-->
+    <section id="main">
+
+        <div class="container">
+
+            <div class="row heading">
+                <div class="col-md-12">
+                    <h2>Manage System Configuration</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="myForm">
+
+                        <div class="form-group">
+                            <label for="supportemail">Support Email address *</label>
+                            <input type="email" class="form-control" id="supportemail" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="supportphone">Support phone number *</label>
+                            <input type="tel" class="form-control" id="supportphone" placeholder="Enter phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailaddress">Email Address(es) (for various events system will send notifications to these users) *</label>
+                            <input type="email" class="form-control" id="emailaddress" placeholder="Enter email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="facebookurl">Facebook URL</label>
+                            <input type="text" class="form-control" id="facebookurl" placeholder="Enter facebook url">
+                        </div>
+                        <div class="form-group">
+                            <label for="twitterurl">Twitter URL</label>
+                            <input type="text" class="form-control" id="twitterurl" placeholder="Enter twitter url">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedinurl">LinkedIn URL</label>
+                            <input type="text" class="form-control" id="supportphone" placeholder="Enter linkedin url">
+                        </div>
+                        <div class="form-group">
+                            <label for="defaultimage">Default image for notes (if seller do not upload)</label>
+                            <input type="text" class="form-control upload" id="defaultimage" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="defaultprofile">Default profile picture (if seller do not upload)</label>
+                            <input type="text" class="form-control upload" id="defaultprofile" placeholder="">
+                        </div>
+                        <button type="submit" class="btn btn-general allBtn">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <script src="../js/jQuery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap/popper.min.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

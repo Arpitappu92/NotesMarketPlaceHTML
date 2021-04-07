@@ -1,0 +1,435 @@
+ 
+ .form-control:focus {
+  border-color: #6255a5 !important;
+  box-shadow: 0 0 0 0.2rem rgba(98, 85, 165, 0.25) !important;
+} 
+ /* ###### Login page######## */
+ html,body
+ {
+  height: 100%;
+  width: 100%;
+ }
+ /* Background */
+.bg {
+    
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+/*for logo */
+.top-logo
+{
+  padding-top: 5%;
+}
+/*card for login/signup/password-change/forget */
+.card
+{
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-top: 20px;
+  margin-left: 24%;
+  width: 580px;
+  align-content: center;
+}
+/* Heading */
+.pg
+{
+  font-family: Open Sans;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 38px;
+  color: #6255a5;
+  padding-top: 45px;
+}
+/* Red line */
+ #inpass
+ {
+  margin-top: 10px;
+  font-family: Open Sans;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #FF3636;
+  padding-left: 50px;
+ }
+ /* below heading */
+ .subtitle
+ {
+  font-family: Open Sans;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #333333;
+  margin-top: 15px;
+}
+/* Email label */
+.info
+ {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #333333;
+  padding-top: :105px;
+  padding-left: 50px;
+ }
+ /* Password label */
+ .info1
+ {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #333333;
+  margin-top:30px;
+  padding-left: 50px;
+  margin-bottom: 0px;
+ }
+ .form-control
+ {
+  width: 480px;
+  height:50px;
+  border-radius: 3px;
+  margin-left: 50px;
+  margin-top: 0px
+ }
+
+ #loginemail
+ {
+  border: 1px solid #6255a5;
+  font-family: Open Sans;
+  font-size:16px;
+  font-weight: 400;
+  line-height:20px;
+  color: #000;
+  margin-left: 50px;
+  margin-right: 50px;
+ } 
+
+ .password-field
+ {
+  border: 1px solid #6255a5;
+  border-left-width: thick;
+  font-family: Open Sans;
+  font-size:16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #8a8a8a;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 7px;
+ }
+
+
+
+
+ 
+ .form-check-input 
+ {
+  background-color:#6255a5 !important;
+  border: 1px solid #d1d1d1;
+  width:30px;
+  height:30px;
+  border-radius:3px;
+  margin-top: 20px;
+  margin-left: 50px;
+  position: relative !important;
+ } 
+
+/** focus shadow pinkish **/
+.custom-checkbox .custom-control-input:focus~.custom-control-label::before{
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 247, 0.25); 
+}
+ 
+ #dnthvacc
+ {
+  margin-top:20px;
+  margin-bottom: 50px;
+ }
+
+ a
+ {
+  color: #6255a5;
+ }
+
+ #forgetpassword
+ {
+  float:right;
+  margin-right: 50px;
+  font-family: Open Sans; 
+  font-size: 16px; 
+  font-weight:400; 
+  line-height: 20px; 
+  color: #6255a5;
+ }
+
+ #rem
+ {
+  position: relative;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #333333;
+  margin-left: 6px;
+  vertical-align: middle;
+  top:-6px;
+ }
+ .btn
+ {
+  background-color: #6255a5;
+  width: 480px;
+  height: 50px;
+  border-radius: 3px;
+  color: #fff;
+  font-family: Open Sans;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 30px;
+  margin-left:50px;
+  margin-right: 50px;
+ }
+
+ #fp
+ {
+  color: #FF3636;
+ }
+
+ input:focus
+ {
+  outline: none;
+ }
+
+
+.form-control:focus {
+    border-color: #6255a5 !important;
+    box-shadow: 0 0 0 0.2rem rgba(98, 85, 165, 0.25) !important;
+} 
+
+/* ###### Signup page ######## */
+.signuptextinput
+{
+  font-family: Open Sans;
+  font-size:16px;
+  font-weight: 400;
+  line-height:20px;
+  color: #000;
+  margin-left: : 50px;
+  margin-right: 50px;
+}
+
+.signup-password
+{
+  font-family: Open Sans;
+  font-size:16px;
+  font-weight: 400;
+  line-height:20px;
+  color: #000;
+  margin-left: : 50px;
+  margin-right: 50px;
+}
+
+
+#tick
+{
+  color: green;
+  margin-top: 35px;
+}
+
+#login
+{
+  margin-bottom: 40px;
+}
+
+#signupbtn
+{
+  background-color: #6255a5;
+  width: 480px;
+  height: 50px;
+  border-radius: 3px;
+  color: #fff;
+  font-family: : Open Sans;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 30px;
+  margin-left:50px;
+  margin-right: 50px;
+ }
+
+.info1sign
+ {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #333333;
+  padding-left: 50px;
+  margin-top: 15px;
+ }
+
+
+/* ###### Change Password page ######## */
+ .password-field-cp
+ {
+  font-family: Open Sans;
+  font-size:16px;
+  font-weight: 400;
+  line-height:20px;
+  color: #000;
+  margin-left: : 50px;
+  margin-right: 50px;
+ 
+  
+ }
+
+ .field-icon
+ {
+  float: right;
+  margin-left: -25px;
+  margin-top: -35px;
+  position: relative;
+  z-index: 2;
+  margin-right: 61px;
+  font-size: 24px;
+  color: grey;
+ }
+ 
+ #btn-cp
+ {
+  background-color: #6255a5;
+  width: 480px;
+  height: 50px;
+  border-radius: 3px;
+  color: #fff;
+  font-family: : Open Sans;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 25px;
+  margin-left:50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+ }
+
+ .infocp
+ {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #333333;
+  padding-top: :105px;
+  padding-left: 50px;
+  margin-top:20px;
+ }
+
+ /* ###### Forget Password ######## */
+#fpemail {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #000;
+    margin-left: : 50px;
+    margin-right: 50px;
+    margin-top: 5px;
+    border: 1px solid #6255a5;
+}
+
+#btnfp
+{
+  background-color: #6255a5;
+  width: 480px;
+  height: 50px;
+  border-radius: 3px;
+  color: #fff;
+  font-family: : Open Sans;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 20px;
+  margin-left:50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+ }
+
+
+.infofp {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+    margin-top: 30px;
+    padding-left: 50px;
+    margin-bottom: 0px;
+}
+
+ #fplogo
+ {
+  padding-top: 12%;
+ }
+
+/* ######  Email Verification ######## */
+ #emailveriid
+ {
+  margin-top: 30px;
+  margin-left: 30px;
+ }
+
+ #ev
+ {
+     font-family: Open Sans;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 30px;
+  color: #6255a5;
+  margin-top: 50px;
+  margin-left: 30px;
+}
+
+#ev1
+{
+     font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #333333;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.p-ev
+{
+     margin-top: 20px;
+  margin-left: 30px;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #333333;
+}
+
+ #evbtn
+ {
+     background-color: #6255a5;
+  width: 540px;
+  height: 50px;
+  border-radius: 3px;
+  color: #fff;
+  font-family: Open Sans;
+  font-style: 600;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 50px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+ }
