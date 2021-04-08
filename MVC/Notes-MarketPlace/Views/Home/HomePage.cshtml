@@ -1,0 +1,376 @@
+﻿
+@{
+    ViewBag.Title = "HomePage";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <title>Home Page</title>
+
+    <link href="~/Content/css/style.css" rel="stylesheet">
+
+    <link href="~/Content/css/responsive.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/css/font-awesome/css/all.css">
+
+
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.min.css">
+
+
+
+    <link rel="stylesheet" href="~/Content/css/font-awesome/css/all.css">
+
+
+
+</head>
+
+<body>
+
+    <style>
+        body {
+            margin-top: -80px !important;
+        }
+    </style>
+
+
+    <header class="navbar-transparent">
+        <link rel="stylesheet" href="~/Content/css/front-header/header.css">
+
+        <link rel="stylesheet" href="~/Content/css/front-header/header-responsive.css">
+
+        <nav class="navbar fixed-top navbar-inner navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand navbar-brand-2" href="@Url.Action("HomePage", "Home")">
+
+                    <img src="~/Userimages/headerimg/logo.png" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" style="border-color: #6255a5; outline:none" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars" style="color: #6255a5; border-color: #6255a5;"></i>
+                </button>
+
+                <div class="collapse navbar-collapse item-set" id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+                        <li class="menu-item">
+                            <a class="menu-link" href="@Url.Action("SearchNotes", "Home")">Search Notes</a>
+
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-link" href="@Url.Action("Dashboard", "Front")">Sell Your Notes</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="menu-item">
+                                <a class="menu-link" href="@Url.Action("BuyerRequest", "Front")">Buyer Requests</a>
+                            </li>
+                        }
+                        <li class="menu-item">
+                            <a class="menu-link" href="@Url.Action("FAQ", "Home")">FAQ</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-link" href="@Url.Action("ContactUs", "Home")">Contact Us</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <div class="dropdown">
+                                    <a href="#" style="margin-right: 5px;" type="button" id="dropdownMenuButton"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img alt="Image placeholder" width="40" height="40" style="border-radius: 50%;" src="@Html.Action("GetPP", "Front")">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-center "
+                                         aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="@Url.Action("UpdateProfile", "Front")">My Profile</a>
+                                        <a class="dropdown-item" href="@Url.Action("MyDownloads", "Front")">My Downloads</a>
+                                        <a class="dropdown-item" href="@Url.Action("MySoldNotes", "Front")">My Sold Notes</a>
+                                        <a class="dropdown-item" href="#">My Rejected Notes</a>
+                                        <a class="dropdown-item" href="@Url.Action("ChangePassword", "Front")">Change Password</a>
+                                        <a class="dropdown-item" href="@Url.Action("Logout", "Account")" style="color: #6255a5">LOGOUT</a>
+
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <form>
+
+                                    <button class="btn log_btn" type="submit" formaction='@Url.Action("Logout", "Account")'>Logout</button>
+
+                                </form>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li>
+                                <form style="margin-left: 15px;">
+
+                                    <button class="btn log_btn" type="submit" formaction='@Url.Action("Login", "Account")'>Login</button>
+
+                                </form>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+ 
+
+
+    <div class="content-box-lg">
+        <div class="img" style="background-image : url('@Url.Content("~/Userimages/home/banner-with-overlay.jpg")') ;">
+            <div class="container">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="row">
+                        <div class="title1">
+                            <p>Download Free/Paid Notes or Sale your book</p>
+                        </div>
+                        <div class="title2">
+                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an uunknown printer took a galley of type</p>
+                        </div>
+                        <div class="learnMore">
+                            <input type="button" value="LEARN MORE">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about_mktplace">
+        <div class="container">
+            <div class="col-md-12 col-md-12">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5">
+                        <div class="row">
+                            <h3>About <br>NotesMarketPlace</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="row">
+                            <div class="para">
+                                <p>Lorem ipsum text allows you to create title, paragraph or sentence instantly without having to write actual copy. It makes it possible to represent how a certain webpage, infographic, blog post would look like with a certain amount of content and gives a feel of the content. This placeholder text is designed in a way that it has no meaning to it which makes it flexible to be used anywhere.</p>
+                                <p>Designers & webmasters use it to visualize existence of text form of content on websites, wireframes or posters. In most of the cases, the person who writes the content and design the page are two different people. Designers prefer to just put dummy content before the final version is ready to make sure you have the right font size, color, line height, font-family, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="works">
+        <div class="how_works">
+            <div class="container">
+                <div class="col-md-12 col-md-12">
+                    <div class="row justify-content-md-center">
+                        <h3> How it Works</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-md-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="row justify-content-sm-center">
+                                <div class="content1">
+                                    <div class="row justify-content-md-center">
+                                        <div class="icon">
+                                            <img src="~/Userimages/home/download.png" alt="download">
+                                        </div>
+                                    </div>
+                                    <h4>Download Free/Paid Notes</h4>
+                                    <p>Get Material for your <br> Cource etc.</p>
+                                    <div class="row" style="margin-left: 70px;">
+                                        <div class="bttn">
+                                            <button type="submit" class="btn allBtn">DOWNLOAD</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="row justify-content-sm-center">
+                                <div class="content2">
+                                    <div class="row justify-content-md-center">
+                                        <div class="icon">
+                                            <img src="~/Userimages/home/seller.png" alt="download">
+                                        </div>
+                                    </div>
+                                    <h4>Seller</h4>
+                                    <p>Upload and Download Course <br> and Materials etc.</p>
+                                    <div class="row" style="margin-left: 45px;">
+                                        <div class="bttn">
+                                            <button type="submit" class="btn allBtn">SELL BOOK</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <div class="customer_custo_review">
+        <div class="container">
+            <div class="col-md-12 col-md-12 col-sm-12" style="margin-bottom: 20px;">
+                <div class="row justify-content-lg-center">
+                    <h3> What our Customers are Saying</h3>
+                </div>
+            </div>
+
+
+            <div class="col-md-12 col-md-12" style="margin-top: 30px;">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="customer_box">
+                            <div class="row">
+                                <div class="custo_img">
+                                    <img src="~/Userimages/home/customer-1.png" alt="customer">
+                                </div>
+                                <div class="custo_info">
+                                    <h4>Walter Meller</h4>
+                                    <p>Founder & CEO, Matrix Group</p>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 col-md-12" style="margin-bottom: 20px;">
+                                <div class="row">
+                                    <div class="custo_review">
+                                        <p>"Life. Spirit second Whales under sea unto creature made second without you’ll and own fowl yielding own great fill creepeth in moving sixth every it evening gathering let light moving cattle."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="customer_box">
+                            <div class="row">
+
+                                <div class="custo_img">
+                                    <img src="~/Userimages/home/customer-2.png" alt="customer">
+                                </div>
+
+                                <div class="custo_info">
+                                    <h4>Jonnie Riley</h4>
+                                    <p>Employee, Curious Snakcs at usa</p>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12 col-md-12">
+                                <div class="row">
+                                    <div class="custo_review">
+                                        <p>"Life. Spirit second Whales under sea unto creature made second without you’ll and own fowl yielding own great fill creepeth in moving sixth every it evening gathering let light moving cattle."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-12 col-md-12" style="margin-top: 30px;">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="customer_box">
+                            <div class="row">
+                                <div class="custo_img">
+                                    <img src="~/Userimages/home/customer-3.png" alt="customer">
+                                </div>
+                                <div class="custo_info">
+                                    <h4>Amilia Luna</h4>
+                                    <p>Teacher, Saint Joseph High School</p>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 col-md-12" style="margin-bottom: 20px;">
+                                <div class="row">
+                                    <div class="custo_review">
+                                        <p>"Life. Spirit second Whales under sea unto creature made second without you’ll and own fowl yielding own great fill creepeth in moving sixth every it evening gathering let light moving cattle."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="customer_box">
+                            <div class="row">
+
+                                <div class="custo_img">
+                                    <img src="~/Userimages/home/customer-4.png" alt="customer">
+                                </div>
+
+                                <div class="custo_info">
+                                    <h4>Daniel Cardos</h4>
+                                    <p>Software Engineer, Infinitum Company</p>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12 col-md-12">
+                                <div class="row">
+                                    <div class="custo_review">
+                                        <p>"Life. Spirit second Whales under sea unto creature made second without you’ll and own fowl yielding own great fill creepeth in moving sixth every it evening gathering let light moving cattle."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="~/Scripts/AdminJs/headerjs/js/header.js"></script>
+
+    <script src="~/Scripts/AdminJs/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script src="~/Script/js/bootstrap/popper.min.js"></script>
+    <script src="~/Script/js/bootstrap/bootstrap.min.js"></script>
+
+    <script src="~/Script/js/header.js"></script>
+
+    <script src="~/Scripts/js/script.js"></script>
+
+
+</body>
+
+</html>
