@@ -1,0 +1,286 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "MemberDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <title>Member Details</title>
+
+    <link rel="shortcut icon" href="images/home/favicon.ico">
+
+    <link href="~/Content/AdminCss/details.css" rel="stylesheet">
+
+    <link href="~/Content/AdminCss/details-responsive.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/AdminCss/font-awesome/css/all.css">
+
+</head>
+
+<body>
+
+
+    <div class="container" id="md">
+
+        <div class="row main-section-title">
+
+            <span>Member Details</span>
+
+        </div>
+        <div class="row" id="md-upper-box">
+            <div class="col-md-6 member-info-left">
+                <div class="row">
+                    <div class="col-md-3" style="padding-left: 0;">
+                        <img src="@Html.Action("GetPP", "Front")" width="110px" height="110px">
+                    </div>
+                    <div class="col-md-9 md-upper-right">
+
+                        <table class="table md-upper-table">
+                            <tr>
+                                <td class="columnname">
+                                    First Name:
+                                </td>
+                                <td class="columndata">
+                                    @ViewBag.User.FirstName
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    Last Name:
+                                </td>
+                                <td class="columndata">
+                                    @ViewBag.User.LastName
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    Email:
+                                </td>
+                                <td class="columndata">
+                                    @ViewBag.User.EmailId
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    DOB:
+                                </td>
+                                <td class="columndata">
+                                    @if (@ViewBag.MemberDetails.DateOfBirth != null)
+                                    {
+                        @ViewBag.MemberDetails.DateOfBirth.ToString("dd-MM-yyyy") }
+                    else
+                    {
+        <text>N/A</text>}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    Phone Number:
+                                </td>
+                                <td class="columndata">
+                                    @ViewBag.MemberDetails.PhoneCountryCode @ViewBag.MemberDetails.PhoneNumber
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="columnname">
+                                    College/University:
+                                </td>
+                                <td class="columndata">
+                                    @if (@ViewBag.MemberDetails.College != null)
+                                    {
+                                        if (@ViewBag.MemberDetails.University != null)
+                                        {
+                        @ViewBag.MemberDetails.College<text> / </text>@ViewBag.MemberDetails.University;
+                    }
+                    else
+                    {
+    @ViewBag.MemberDetails.College<text> / N/A</text>;
+}
+}
+else
+{
+if (@ViewBag.MemberDetails.University != null)
+{
+<text>N/A / </text>@ViewBag.MemberDetails.University;
+}
+else
+{
+<text>N/A</text>;
+}
+
+}
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 member-info-right">
+                <table class="table md-upper-table">
+                    <tr>
+                        <td class="columnname">
+                            Address1:
+                        </td>
+                        <td class="columndata">
+                            @ViewBag.MemberDetails.AddressLine1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            Address2:
+                        </td>
+                        <td class="columndata">
+                            @ViewBag.MemberDetails.AddressLine2
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            City:
+                        </td>
+                        <td class="columndata">
+                            @ViewBag.MemberDetails.City
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            State:
+                        </td>
+                        <td class="columndata">
+                            @ViewBag.MemberDetails.State
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            Country:
+                        </td>
+                        <td class="columndata">
+                            @ViewBag.MemberDetails.Country
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnname">
+                            Zip Code:
+                        </td>
+                        <td class="columndata">
+                            @ViewBag.MemberDetails.ZipCode
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row bottom-section-title">
+            <span>Notes</span>
+        </div>
+        <div class="row notes-details-table">
+            <table class="table table-hover table-responsive" id="md-bottom-table">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center;">SR NO</th>
+                        <th scope="col">@Html.ActionLink("TITLE", "MemberDetails", new { SortOrderPublished = ViewBag.TitleSortParamPublish, SearchPublished = Request.QueryString["SearchPublished"] })</th>
+                        <th scope="col">@Html.ActionLink("CATEGORY", "MemberDetails", new { SortOrderPublished = ViewBag.CategorySortParamPublish, SearchPublished = Request.QueryString["SearchPublished"] })</th>
+                        <th scope="col">@Html.ActionLink("STATUS", "MemberDetails", new { SortOrderPublished = ViewBag.StatusSortParamPublish, SearchPublished = Request.QueryString["SearchPublished"] })</th>
+                        <th scope="col">@Html.ActionLink("DOWNLOADED NOTES", "MemberDetails", new { SortOrderPublished = ViewBag.DownloadSortParamPublish, SearchPublished = Request.QueryString["SearchPublished"] })</th>
+                        <th scope="col">@Html.ActionLink("TOTAL EARNINGS", "MemberDetails", new { SortOrderPublished = ViewBag.EarningSortParamPublish, SearchPublished = Request.QueryString["SearchPublished"] })</th>
+                        <th scope="col">@Html.ActionLink("DATE ADDED", "MemberDetails", new { SortOrderPublished = ViewBag.DateSortParamPublish, SearchPublished = Request.QueryString["SearchPublished"] })</th>
+                        <th scope="col">@Html.ActionLink("PUBLISHED DATE", "MemberDetails", new { SortOrderPublished = ViewBag.PublishedDateSortParamPublish, SearchPublished = Request.QueryString["SearchPublished"] })</th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ IPagedList<Notes_MarketPlace.Models.MemberNotes> AllMemberNotes = ViewBag.MemberAllNotes; }
+
+                    @{ var count = 0;
+                        if (AllMemberNotes.Count == 0)
+                        {
+            <tr>
+                <td colspan="9" class="text-center NoRecord">No Records Found</td>
+            </tr> }
+                        foreach (var Note in AllMemberNotes)
+                        {
+            <tr>
+                <td>@(count + ((AllMemberNotes.PageNumber - 1) * AllMemberNotes.PageSize) + 1)</td>
+                <td><a style="color:#6255a5" href="/Admin/NoteDetailsAdmin/@Note.NoteDetails.ID"> @Note.NoteDetails.NoteTitle</a></td>
+                <td> @Note.Category.CategoryName</td>
+                <td> @Note.status.Value</td>
+                <td><a style="color:#6255a5" href="/Admin/DownloadedNotes?Search=@Note.NoteDetails.NoteTitle" class="count">@Note.NoteDetails.Downloads.Where(x => x.NoteID == @Note.NoteDetails.ID && x.IsSellerHasAllowedDownload == true && x.AttachmentPath != null && x.IsAttachedDownloaded == true).Count()</a></td>
+                <td><a style="color:#6255a5" href="/Admin/DownloadedNotes?SellerName=@ViewBag.User.FirstName@ViewBag.User.LastName">$<span class="count">@Note.NoteDetails.Downloads.Where(x => x.NoteID == @Note.NoteDetails.ID && x.IsSellerHasAllowedDownload == true && x.AttachmentPath != null).Select(x => x.PurchasedPrice).Sum()</span></a></td>
+                <td>
+                    @Note.NoteDetails.ModifiedDate.Value.ToString("dd-MM-yyyy, HH:mm")
+                </td>
+                <td>
+                    @if (@Note.status.Value == "Published")
+                    {
+    @Note.NoteDetails.PublishedDate.Value.ToString("dd-MM-yyyy, HH:mm") }
+else
+{
+<text>N/A</text>}
+                </td>
+                <td>
+
+
+                    <div class="dropdown">
+                        <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </i>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                             aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/Front/DownloadAttechedFile/@Note.NoteDetails.ID">Download Notes</a>
+                        </div>
+                    </div>
+                </td>
+            </tr> { count = count + 1; }
+                        } }
+
+
+
+                </tbody>
+            </table>
+        </div>
+        <div class="row paging">
+            <div class="col-md-12 text-center">
+
+                    @Html.PagedListPager(AllMemberNotes, PublishedNotespage => Url.Action("MemberDetails", new
+               {
+                   PublishedNotespage,
+                   SearchPublished = Request.QueryString["SearchPublished"],
+                   SortOrderPublished = Request.QueryString["SortOrderPublished"]
+               })
+                    , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+                        DisplayPageCountAndCurrentLocation = false,
+                        MaximumPageNumbersToDisplay = 5,
+                        LiElementClasses = new string[] { "pagination" },
+                    }
+                    )
+                </div>
+            
+        </div>
+    </div>
+
+
+
+    <script src="~/Scripts/AdminJs/bootstrap/popper.min.js"></script>
+
+    <script src="~/Scripts/AdminJs/script.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+﻿@model Notes_MarketPlace.Models.RegistrationModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.min.css">
+
+
+    <title>MarketPlace Signup</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/Content/css/logins-type.css">
+
+    <link rel="stylesheet" href="~/Content/css/logins-type-responsive.css">
+
+
+
+</head>
+
+<body class="bg" style="background-image: url('@Url.Content("~/Userimages/pre-login/banner-with-overlay.jpg")');">
+
+    <div class="container">
+        <center>
+            <div class="top-logo">
+                <img src="~/Userimages/pre-login/top-logo.png" width="200" height="30">
+            </div>
+        </center>
+
+        <div class="card">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { }))
+                    {
+
+                        <form class="box" method="post" action=" ">
+                            <center><h1 class="pg"> Create an Account</h1></center>
+                            <center><h3 class="subtitle"> Enter your details to sign up </h3></center>
+
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.FirstName, "First Name*", new { @class = "info1sign" })
+                                @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "text-danger errormessage info1sign" })
+                                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control signuptextinput", @placeholder = "Enter your first name" })
+
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.LastName, "Last Name*", new { @class = "info1sign" })
+                                @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger errormessage info1sign" })
+                                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control signuptextinput", @placeholder = "Enter your last name" })
+
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.EmailId, "Email *", new { @class = "info1sign" })
+                                @Html.ValidationMessageFor(x => x.EmailId, "", new { @class = "text-danger errormessage info1sign" })
+                                @Html.TextBoxFor(x => x.EmailId, new { @class = "form-control", @placeholder = "Enter your email address" })
+
+
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Password, "Password", new { @class = "info1sign" })
+                                @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger errormessage info1sign" })
+                                @Html.PasswordFor(x => x.Password, new { @class = "form-control signup-password", @id = "password-field-signup", @placeholder = "Enter your password", @type = "password" })
+
+                                <span toggle="#password-field-signup" id="toggle-password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.ConfirmPassword, "Confirm Password", new { @class = "info1sign" })
+                                @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new { @class = "text-danger errormessage info1sign" })
+                                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control signup-password", @id = "password-field-signup1", @placeholder = "Re-enter your password", @type = "password" })
+
+                                <span toggle="#password-field-signup1" id="toggles-password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
+                            <button type="submit" class="btn form-control" id="signupbtn"><b>SIGN UP</b></button>
+                        </form>
+                    }
+                    <center>
+                        <br>
+                        <p id="login"> Already have an account? <a href="">Login </a></p>
+                    </center>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <script src="~/Scripts/js/bootstrap/bootstrap.min.js"></script>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script type="text/javascript">
+        $("#toggle-password").click(function () {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+
+
+        $("#toggles-password").click(function () {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    </script>
+
+</body>
+</html>
