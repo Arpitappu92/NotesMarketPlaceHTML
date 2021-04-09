@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewBag.Title = "ManageType";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ManageType</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Important meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <!-- Title -->
+    <title>Manage-type</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Responsive CSS-->
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+<body>
+
+
+    <!-- Main Body-->
+    <section id="main">
+        <div class="container">
+            <p id="tit">Manage Type</p>
+
+            <div class="mid-head">
+                <div class="drops">
+                    <div class="large-bttn">
+                        <button type="submit" class="btn allBtn">MANAGE TYPE</button>
+                    </div>
+                </div>
+
+                <form>
+                    <div class="search form-inline">
+                        <div class="searchContainer form-group">
+                            <i class="fas fa-search form-control-feedback "></i>
+                            <input type="text" class="form-control" placeholder="Search" />
+                        </div>
+
+                    </div>
+                    <div class="bttn">
+                        <button type="submit" class="btn allBtn">SEARCH</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="row manage-type-table">
+
+                <div class="col-md-12">
+                    <div class="table-responsive{-sm|-md|-lg|-xl} data-table type_table">
+                        <table class="table table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">SR NO.</th>
+                                    <th>TYPE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>DATE ADDED</th>
+                                    <th>ADDED BY</th>
+                                    <th class="text-center"> ACTIVE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Val 1</td>
+                                    <td>Lorem ipsum is simply dummy text</td>
+                                    <td>09-10-2020, 10:10</td>
+                                    <td>Khayati Patel</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Val 2</td>
+                                    <td>Lorem ipsum is simply dummy text</td>
+                                    <td>10-10-2020, 11:25</td>
+                                    <td>Rahul Shah</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Val 3</td>
+                                    <td>Lorem ipsum is simply dummy text</td>
+                                    <td>11-10-2020, 01:00</td>
+                                    <td>Suman Trivedi</td>
+                                    <td>No</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Val 4</td>
+                                    <td>Lorem ipsum is simply dummy text</td>
+                                    <td>12-10-2020, 10:10</td>
+                                    <td>Raj Malhotra</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Val 5</td>
+                                    <td>Lorem ipsum is simply dummy text</td>
+                                    <td>13-10-2020, 11:25</td>
+                                    <td>Niya Patel</td>
+                                    <td>No</td>
+                                    <td>
+                                        <i class="fas fa-pen"></i>
+                                        <span style="margin-left:10px;">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row paging">
+                <div class="col-md-12 text-center">
+                    <div class="pagination ">
+                        <a href="#" style="margin-right: 10px;"><i class="fa fa-angle-left"></i></a>
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#" style="margin-left: 10px;"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script src="../js/jQuery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap/popper.min.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+/* =========================================
+                Mobile Menu
+============================================ */
+
+.navbar-header {
+    position: relative;
+}
+
+#mobile-nav-open-btn {
+    font-size: 30px;
+    color: #f4c613;
+    cursor: pointer;
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    /* hide mobile nav open btn */
+    display: none;
+}
+
+#mobile-nav {
+    /* by default, mobile nav will be hidden with height 0% */
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: rgba(255, 255, 255, .9);
+    -webkit-transition: all 300ms linear;
+    transition: all 300ms linear;
+    overflow-y: hidden;
+}
+
+#mobile-nav-close-btn {
+    font-family: "Raleway", sans-serif;
+    font-size: 70px;
+    color: #212226;
+    font-weight: 400;
+    cursor: pointer;
+    position: absolute;
+    top: -9px;
+    right: 13px;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+#mobile-nav-content {
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+    top: 10%;
+}
+
+#mobile-nav ul li {
+    margin-bottom: 20px;
+}
+
+#mobile-nav a {
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+    color: #212226;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: inline;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+#mobile-nav a:hover,
+#mobile-nav a:focus,
+#mobile-nav-close-btn:hover,
+#mobile-nav-close-btn:focus {
+    color: #f4c613;
+    background: none;
+}
+
+
+/* Mobile nav scroll spy active state */
+
+.white-nav-top #mobile-nav ul.nav>li.active>a {
+    color: #f4c613;
+    font-weight: 500;
+}
+

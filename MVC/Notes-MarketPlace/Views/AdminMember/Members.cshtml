@@ -1,0 +1,171 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Members";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Members </title>
+
+    <link rel="shortcut icon" href="images/home/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/font-awesome/css/all.css">
+
+    <link href="~/Content/AdminCss/style.css" rel="stylesheet">
+
+    <link href="~/Content/AdminCss/responsive.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <section id="mains">
+
+        <div class="container">
+            <div class="middle-head">
+                <p> Members </p>
+
+                @using (Html.BeginForm("Members", "AdminMember", FormMethod.Get, new { }))
+                {
+    <div class="search form-inline">
+        <div class="searchContainer form-group">
+            <i class="fas fa-search form-control-feedback "></i>
+            <input name="Search" type="text" class="form-control" placeholder="Search" />
+        </div>
+    </div>
+                    <div class="bttn">
+                        <button type="submit" class="btn allBtn">SEARCH</button>
+                    </div>}
+
+            </div>
+
+
+
+            <div class="row members-table">
+
+                <div class="col-md-12">
+                    <div class="table-responsive{-sm|-md|-lg|-xl} data-table mem_table">
+                        <table class="table table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">SR NO.</th>
+                                    <th scope="col"> @Html.ActionLink("FIRST NAME", "MembersAdmin", new { SortOrder = ViewBag.FirstNameSortParam, Search = Request.QueryString["Search"] }) </th>
+                                    <th scope="col"> @Html.ActionLink("LAST NAME", "MembersAdmin", new { SortOrder = ViewBag.LastNameSortParam, Search = Request.QueryString["Search"] }) </th>
+                                    <th scope="col">@Html.ActionLink("EMAIL", "MembersAdmin", new { SortOrder = ViewBag.EmailIDSortParam, Search = Request.QueryString["Search"] }) </th>
+                                    <th scope="col"> @Html.ActionLink("JOINING DATE", "MembersAdmin", new { SortOrder = ViewBag.DateSortParam, Search = Request.QueryString["Search"] }) </th>
+
+                                    <th class="text-center">UNDER REVIEW <br> NOTES</th>
+                                    <th class="text-center">PUBLISHED <br> NOTES</th>
+                                    <th class="text-center">DOWNLOADED <br> NOTES</th>
+                                    <th class="text-center">TOTAL <br> EXPENSES</th>
+                                    <th class="text-center">TOTAL <br> EARNINGS</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            @model IPagedList<Notes_MarketPlace.Models.Users>
+
+                            @{ IEnumerable<Notes_MarketPlace.Models.Downloads> downloads = ViewBag.Download;
+                                IEnumerable<Notes_MarketPlace.Models.ReferenceData> status = ViewBag.status; }
+                            <tbody>
+                                @{ var count = 0;
+                                    if (Model.Count == 0)
+                                    {
+                        <tr>
+                            <td colspan="11" class="text-center NoRecord">No Records Found</td>
+                        </tr>
+ } }
+
+                                @foreach (var item in Model)
+                                {
+                    <tr>
+                        <td>@(count + ((Model.PageNumber - 1) * Model.PageSize) + 1)</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.EmailId</td>
+                        <td>
+                            @item.CreateDate.Value.ToString("dd-MM-yyyy, HH:mm")
+                        </td>
+                        <td>
+                            <a style="color: #6255a5" href="/Admin/NotesUnderReview?SellerName=@item.FirstName@item.LastName" class="count">@item.SellerNotes.Where(x => (x.SellerID == @item.ID && x.Status == @status.Where(r => r.Value.ToLower() == "in review").Select(r => r.ID).FirstOrDefault()) || (x.SellerID == @item.ID && x.Status == @status.Where(r => r.Value.ToLower() == "submitted for review").Select(r => r.ID).FirstOrDefault())).Count()</a>
+                        </td>
+                        <td>
+                            <a style="color: #6255a5" href="/Admin/PublishedNotes?SellerName=@item.FirstName@item.LastName" class="count">@item.SellerNotes.Where(x => x.SellerID == @item.ID && x.Status == @status.Where(r => r.Value.ToLower() == "published").Select(r => r.ID).FirstOrDefault()).Count()</a>
+                        </td>
+                        <td>
+                            <a style="color: #6255a5" href="/Admin/DownloadedNotes?BuyerName=@item.FirstName@item.LastName" class="count">@downloads.Where(x => x.Downloader == @item.ID && x.IsAttachedDownloaded == true).Count()</a>
+                        </td>
+                        <td><a style="color: #6255a5" href="/Admin/DownloadedNotes?BuyerName=@item.FirstName@item.LastName">$<span class="count">@downloads.Where(x => x.Downloader == @item.ID).Select(x => x.PurchasedPrice).Sum()</span></a></td>
+                        <td><a style="color: #6255a5" href="/Admin/DownloadedNotes?SellerName=@item.FirstName@item.LastName">$<span class="count">@item.Downloads.Where(x => x.Seller == @item.ID && x.IsSellerHasAllowedDownload == true && x.AttachmentPath != null).Select(x => x.PurchasedPrice).Sum()</span></a></td>
+                        <td>
+                            <div class="dropdown">
+                                <i class="fas fa-ellipsis-v" type="button" id="dropdownMenuButton"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </i>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-right "
+                                     aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/AdminMember/MemberDetails/@item.ID">View More Details</a>
+                                    <a class="dropdown-item" onclick="return confirm('Are you sure you want to make this member inactive?')" href="/Admin/DeactivateMember/@item.ID">Deactivate</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+{ count = count + 1; }
+                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="row paging">
+                        <div class="col-md-12 text-center">
+                           
+
+                                @Html.PagedListPager(Model, page => Url.Action("Members", new
+                           {
+                               page,
+                               SearchPublished = Request.QueryString["SearchPublished"],
+                               SortOrderPublished = Request.QueryString["SortOrderPublished"]
+                           })
+, new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+    DisplayPageCountAndCurrentLocation = false,
+    MaximumPageNumbersToDisplay = 5,
+    LiElementClasses = new string[] { "pagination" },
+}
+)
+                           
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <script src="~/Scripts/AdminJs/bootstrap/popper.min.js"></script>
+
+    <script src="~/Scripts/AdminJs/script.js"></script>
+
+
+</body>
+
+</html>

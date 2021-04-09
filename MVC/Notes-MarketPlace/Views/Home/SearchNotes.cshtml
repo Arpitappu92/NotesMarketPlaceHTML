@@ -1,0 +1,246 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using System.IO;
+
+@model IPagedList<Notes_MarketPlace.Models.AllSearchNotes>
+
+@{
+    ViewBag.Title = "SearchNotes";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+    <title>Search Notes - Notes MarketPlace</title>
+
+    <link rel="stylesheet" href="~/Content/css/form.css">
+
+    <link rel="stylesheet" href="~/Content/css/responsive-form.css">
+</head>
+
+<body style="overflow-x: hidden;">
+    <section id="search-notes">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner-outer col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="banner-box">
+                        <img src="~/Userimages/search/banner-with-overlay.jpg" alt="bg-overlay" class="image-responsive">
+                        <h1>Search Notes</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="general-box">
+            <div class="content-box-lg">
+
+                <div class="container">
+                    <div class="row">
+                        <p class="box-heading">Search and Filter Notes</p>
+                    </div>
+                </div>
+
+
+
+                <div class="container">
+                    <div class="row">
+
+
+                        <div class="search-notes-input-box">
+                            @using (Html.BeginForm("SearchNotes", "Home", FormMethod.Get, new { id = "AllSeachNote" }))
+                            {
+                                <div class="form-group has-search-bar">
+                                    <span class="search-symbol"><img src="~/Userimages/Search/search-icon.png" alt=""></span>
+                                    <input type="text" name="search" class="form-control input-box-style search-notes-bar" id="example" placeholder="Search notes here..." title="Type in a name">
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                           
+                                            @Html.DropDownList("NoteType", null, "Select your NoteType", new { id = "NoteType", name = "NoteType", @class = "form-control", onchange = "NoteFunction();" })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                           
+                                            @Html.DropDownList("Category", null, "Select your category", new { id = "Category", name = "Category", @class = "form-control", onchange = "NoteFunction();" })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                          
+                                            @Html.DropDownList("University", new SelectList(ViewBag.University, "UniversityInformation", "UniversityInformation"), "Select your University", new { id = "University", name = "University", @class = "form-control", onchange = "NoteFunction();" })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                        
+                                            @Html.DropDownList("Course", new SelectList(ViewBag.Course, "Course", "Course"), "Select your course", new { id = "Category", name = "Course", @class = "form-control", onchange = "NoteFunction();" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4 padding-right-0">
+                                        <div class="form-group">
+                                         
+                                            @Html.DropDownList("Country", null, "Select your Country", new { id = "Country", name = "Country", @class = "form-control", onchange = "NoteFunction();" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control input-box-style" id="exampleFormControlSelect1">
+                                                <option value="" disabled selected>Select rating</option>
+                                                <option>A</option>
+                                                <option>B</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+   
+        <div class="general-box searched-notes-box">
+            <div class="content-box-lg">
+                @{ var counter = 1; }
+
+
+                <div class="container">
+                    <div class="row">
+                        <p class="box-heading">Total @ViewBag.TotalNotesRecord Notes</p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        @if (Model.Count == 0)
+                        {
+                            <div class=" ml-3 NoRecord">
+                                <h3>No Records Found </h3>
+                            </div>}
+
+                        @foreach (var item in Model)
+                        {<div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="note-details-box">
+
+
+                                    <img src="@Url.Content(@item.NoteDetails.DisplayPicture)" alt="dsf">
+
+                                    <div class="note-details">
+
+
+                                        <a href="/Front/NoteDetails/@item.NoteDetails.ID">    <p class="note-name-title"> @item.NoteDetails.NoteTitle </p></a>
+                                        <p class="note-info-with-icon"><span><img src="~/Userimages/Search/university.png" alt=""></span>@item.NoteDetails.UniversityInformation, @item.NoteDetails.Country1.CountryName</p>
+                                        <p class="note-info-with-icon"><span><img src="~/Userimages/Search/pages.png" alt=""></span>@item.NoteDetails.NumberOfPages</p>
+                                        <p class="note-info-with-icon"><span><img src="~/Userimages/Search/date.png" alt=""></span>@item.NoteDetails.PublishedDate</p>
+                                        <p class="note-info-with-icon red-text"><span><img src="~/Userimages/Search/flag.png" alt=""></span>@item.NoteDetails.SellerNotesReportedIssues.Where(x => x.NoteID == @item.NoteDetails.ID).Count() Users marked this note as  inappropriate</p>
+
+                                        <div class="notes-rating">
+                                            <div class="col-md-7 col-sm-8 col-8">
+                                      
+
+                                                @{ var ratingSum = @item.NoteDetails.SellerNotesReviews.Where(x => x.NoteID == @item.NoteDetails.ID).Select(x => x.Ratings).Sum();
+                                                                    var ratingCount = @item.NoteDetails.SellerNotesReviews.Where(x => x.NoteID == @item.NoteDetails.ID).Count(); }
+                                                @if (ratingCount > 0)
+                                                {
+
+                                                    for (int i = 1; i <= Math.Round(ratingSum / ratingCount); i++)
+                                                    {
+                                            <i class="text-warning fa fa-star"></i> }
+                                                                for (int i = 1; i <= 5 - Math.Round(ratingSum / ratingCount); i++)
+                                                                {
+                                            <i class="text-muted fa fa-star"></i>}
+                                                            }
+                                                @if (ratingCount == 0)
+                                                {
+                                                    for (int i = 1; i <= 5; i++)
+                                                    {
+                                            <i class="text-muted fa fa-star"></i>}
+                                                            }
+                        
+
+                                            </div>
+                                            <div class="col-md-5 col-sm-4 col-4">
+                                                <p class="review-count">
+
+                                                    <span>@item.NoteDetails.SellerNotesReviews.Where(x => x.NoteID == @item.NoteDetails.ID).Count() Reviews</span>
+
+
+                                              
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+     
+
+        <div class="row paging">
+            <div class="col-md-12 text-center">
+                <div class="pagination ">
+               
+
+                    @Html.PagedListPager(Model, page => Url.Action("SearchNotes", new
+               {
+                   page,
+                   search = Request.QueryString["search"],
+                   NoteTp = Request.QueryString["NoteTp"],
+                   Cntry = Request.QueryString["Cntry"],
+                   Catgry = Request.QueryString["Catgry"],
+                   Univrsty = Request.QueryString["Univrsty"],
+                   Crs = Request.QueryString[" Crs"]
+
+               })
+                         , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded,
+                             DisplayPageCountAndCurrentLocation = false,
+                             MaximumPageNumbersToDisplay = 5,
+                             LiElementClasses = new string[] { "pagination" },
+                         }
+                         )
+
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+    <script src="~/Scripts/js/script.js"></script>
+
+
+</body>
+
+</html>
